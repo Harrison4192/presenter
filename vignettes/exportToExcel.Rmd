@@ -1,0 +1,44 @@
+---
+title: "exportToExcel"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{exportToExcel}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(dataExporter)
+```
+
+# automatic formatting
+
+Output is automatically formatted depending on the mode of the columns
+
+# argument descriptions
+
+## df
+
+When using make excel, the first input is a dataframe, but do not input an expression or use a pipe. A variable name is necessary for proper naming of the excel output, which is sent to the working directory and named after the data frame. 
+
+## last id col
+
+The recommended ouput format is to put ID style columns first and and value columns after. Last_id_col takes the integer index of the last id column.
+
+## header words
+
+If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to mantain ease of read / write compatability of the workbook with R. 
+
+
+```{r eval=FALSE}
+make_excel(df = iris, 
+           header_word = c("Sepal", "Petal"),
+           last_id_col = NULL)
+
+```
+
+
+![output of make excel](exceloutput.png)
+
+
+

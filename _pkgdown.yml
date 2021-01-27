@@ -1,0 +1,49 @@
+template:
+  params:
+    bootswatch: cerulean
+
+development:
+  mode: auto
+
+home:
+- title: Present Your Data Frames with Style
+reference:
+- title: Export to Excel
+  contents:
+  - '`finish_excel_wb`'
+  - '`make_excel`'
+  - '`make_excel_wb`'
+- title: Export to Powerpoint
+  contents:
+  - '`make_flextable`'
+articles:
+- title: All vignettes
+  desc: null
+  contents:
+  - '`exportToExcel`'
+  - '`flextableAndPowerpoint`'
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    articles:
+      text: Articles
+      menu:
+      - text: exportToExcel
+        href: articles/exportToExcel.html
+      - text: flextableAndPowerpoint
+        href: articles/flextableAndPowerpoint.html
+

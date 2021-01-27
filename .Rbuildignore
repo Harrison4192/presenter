@@ -1,0 +1,10 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^doc$
+^Meta$
+^/Users/Harrison/Desktop/packages/dataExporter/_pkgdown\.yml$
+^buildYaml\.R$
