@@ -114,7 +114,16 @@ flex_mergev1 <- function(x, df){
 #' @return a flextable
 #' @export
 #'
-make_flextable <- function(df, header_words = NULL, last_id_col = NULL){
+make_flextable <- function(df, header_words = NULL, last_id_col = NULL, merge_col_indices = NULL,
+                           odd_header = "steelblue3",
+                           even_header = "steelblue2",
+                           odd_body = "#A4D3EE",
+                           even_body = "azure2",
+                           header_color = "white",
+                           id_color = "grey45",
+                           header_font_size = 16,
+                           body_font_size = 12,
+                           cell_border_color = "white"){
 
 
   flextable::flextable(df) -> f1
@@ -139,20 +148,24 @@ make_flextable <- function(df, header_words = NULL, last_id_col = NULL){
     merge_cols <- 1:length(names(df))
   }
 
+  if(!is.null(merge_col_indices)){
+    merge_cols <- merge_col_indices
+  }
+
   f1 %>%
     flextable::theme_zebra(
-      odd_header = "steelblue3",
-      even_header = "steelblue2",
-      odd_body = "#A4D3EE",
-      even_body = "azure2"
+      odd_header = odd_header,
+      even_header = even_header,
+      odd_body = odd_body,
+      even_body = even_body
     ) %>%
-    flextable::color( color = "white", part = "header") %>%
-    flextable::color(color = "gray45", j = id_cols) %>%
-    flextable::fontsize(size = 16, part = "header") %>%
-    flextable::fontsize(size = 12, part = "body") %>%
+    flextable::color( color = header_color, part = "header") %>%
+    flextable::color(color = id_color, j = id_cols) %>%
+    flextable::fontsize(size = header_font_size, part = "header") %>%
+    flextable::fontsize(size = body_font_size, part = "body") %>%
     flextable::bold(j = id_cols) %>%
     flextable::merge_v(j = merge_cols) %>%
-    flextable::border(border = officer::fp_border(color = "white", style = "solid", width = 1.5), part = "all") %>%
+    flextable::border(border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "all") %>%
     flextable::align( align = "center", part= "all") %>%
     flextable::border_outer(part="all", border = officer::fp_border(width = 3) ) %>%
     flextable::fix_border_issues(.) %>%

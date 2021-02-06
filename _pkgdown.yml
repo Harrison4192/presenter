@@ -5,6 +5,7 @@ template:
 development:
   mode: auto
 
+
 home:
 - title: Present Your Data Frames with Style
 reference:
@@ -14,8 +15,7 @@ reference:
   - '`make_excel`'
   - '`make_excel_wb`'
 - title: Export to Powerpoint
-  contents:
-  - '`make_flextable`'
+  contents: '`make_flextable`'
 articles:
 - title: All vignettes
   desc: null
