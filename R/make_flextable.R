@@ -1,107 +1,4 @@
 
-#' flex_create_headers
-#'
-#' create data frame of header specifications for flextable::set_header_df
-#'
-#' @param df a data frame
-#' @param word_vec word vec
-#' @keywords internal
-#'
-#' @return data frame
-#'
-flex_create_headers <- function(df, word_vec){
-
-  stringr::str_c(word_vec, collapse = "|") -> strs
-
-  df %>% names -> nms1
-  nms1 %>% stringr::str_match(strs) %>% stringr::str_remove( "^[_\\.]|[_\\.]$")-> head1
-  nms1 %>% stringr::str_remove(strs) %>% stringr::str_remove( "^[_\\.]|[_\\.]$")  -> head2
-
-
-  headers <- data.frame(
-    head = nms1,
-    head1 = head1,
-    head2 = head2,
-    stringsAsFactors = F
-  ) %>%
-    dplyr::mutate(
-      head1 = head1 %>% dplyr::coalesce(nms1),
-      head2 = head2 %>% dplyr::coalesce(head1),
-    )
-
-  headers
-}
-#' charvec_to_formula
-#'
-#' @param chr character vector
-#' @keywords internal
-#'
-#' @return a formula
-#'
-charvec_to_formula <- function(chr){
-
-  if(rlang::is_empty(chr)){rlang::abort("requires a character column")}
-
-  stringr::str_c(chr, collapse = " + ") %>%
-    stringr::str_c("~ ", ., collapse = "")  %>%
-    parse(text = .) %>%
-    eval
-}
-
-#' flex_mergev1_formula
-#'
-#' @param df a dataframe
-#' @keywords internal
-#'
-#' @return a formula
-#'
-flex_mergev1_formula <- function(df){
-
-  df %>%
-    purrr::map_lgl(~is.character(.)|is.factor(.)) %>%
-    which(arr.ind = T) %>%
-    names %>%
-    charvec_to_formula(.)
-
-}
-
-## in table chain
-
-#' charvec_to_formula
-#'
-#' @param x flextable
-#' @param df data frame
-#' @param word_vec  word
-#' @keywords internal
-#'
-#' @return a flextable
-#'
-flex_set_headers <- function(x, df, word_vec){
-
-  df %>%
-    flex_create_headers(word_vec) -> headers
-
-  flextable::set_header_df(x, mapping = headers, key = "head") %>%
-    flextable::merge_h( part = "header") %>%
-    flextable::merge_v( part = "header")
-}
-#' flex_mergev1
-#'
-#' @param x a flextable
-#' @param df data frame
-#' @keywords internal
-#'
-#' @return a flextable
-#'
-flex_mergev1 <- function(x, df){
-
-  df %>%
-    flex_mergev1_formula(.) -> my_form
-
-  x %>%
-    flextable::merge_v(j = my_form)
-
-}
 
 ## make table
 
@@ -115,6 +12,7 @@ flex_mergev1 <- function(x, df){
 #' @export
 #'
 make_flextable <- function(df, header_words = NULL, last_id_col = NULL, merge_col_indices = NULL,
+                           theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli"),
                            odd_header = "steelblue3",
                            even_header = "steelblue2",
                            odd_body = "#A4D3EE",
@@ -123,10 +21,15 @@ make_flextable <- function(df, header_words = NULL, last_id_col = NULL, merge_co
                            id_color = "grey45",
                            header_font_size = 16,
                            body_font_size = 12,
-                           cell_border_color = "white"){
+                           cell_border_color = "white",
+                           border_outer_color = "black",
+                           border_outer_style = "solid",
+                           cell_border_style = "solid"){
+
 
 
   flextable::flextable(df) -> f1
+theme <- theme[1]
 
   if(!is.null(header_words)){
 
@@ -138,36 +41,111 @@ make_flextable <- function(df, header_words = NULL, last_id_col = NULL, merge_co
 
     df %>%
       dplyr::select(1:{{last_id_col}}) %>%
-      names %>%
+      names -> id_nms
+
+    last_id_col_num <- length(id_nms)
+
+    (last_id_col_num+1):ncol(df) -> value_cols
+    1:last_id_col_num -> id_col_nums
+
+    id_nms %>%
       charvec_to_formula(.) -> id_cols
 
     merge_cols <- id_cols
   }
   else{
+    id_col_nums <- NULL
     id_cols <- flex_mergev1_formula(df)
-    merge_cols <- 1:length(names(df))
+    merge_cols <- value_cols <- 1:length(names(df))
   }
 
   if(!is.null(merge_col_indices)){
     merge_cols <- merge_col_indices
   }
 
+  if(theme == "zebra_blue"){
+    f1 %>%
+      flextable::theme_zebra(
+        odd_header = odd_header,
+        even_header = even_header,
+        odd_body = odd_body,
+        even_body = even_body
+      ) -> f1
+
+    if(!is.null(id_col_nums)){
+    f1 %>%
+      flextable::bg(j = id_col_nums, bg = odd_body) -> f1}
+    } else if(theme == "zebra_gold"){
+        f1 %>%
+        flextable::theme_zebra(
+          odd_header = "darkgoldenrod2",
+          even_header = "gold2",
+          odd_body = "gold",
+          even_body = "wheat"
+        ) -> f1
+
+        cell_border_color <-  "black"
+        header_color <- "black"
+
+
+        if(!is.null(id_col_nums)){
+        f1 %>%
+          flextable::bg(j = id_col_nums, bg = "gold2" ) -> f1}
+
+
+      } else if(theme == "tron"){
+        f1 %>% flextable::theme_tron() -> f1
+        border_outer_color <- "skyblue"
+        cell_border_color <- "skyblue"
+      } else if(theme == "vader"){
+        f1 %>% flextable::theme_vader() -> f1
+        border_outer_color <- "pink"
+        cell_border_color <- "pink"
+      } else if(theme == "vanilla"){
+        f1 %>% flextable::theme_vanilla() -> f1
+        border_outer_color <- "darkgrey"
+        cell_border_color <- "grey"
+        header_color <- "black"
+        cell_border_style <- "dashed"
+      } else if(theme == "booktabs"){
+        f1 %>% flextable::theme_booktabs() -> f1
+        border_outer_color <- "darkgrey"
+        cell_border_color <- "grey"
+        header_color <- "black"
+        cell_border_style <- "solid"
+      } else if(theme == "alafoli"){
+        f1 %>% flextable::theme_alafoli() -> f1
+        border_outer_color <- "darkgrey"
+        cell_border_color <- "grey"
+        header_color <- "black"
+        cell_border_style <- "dashed"
+        header_color <- "black"
+      } else if(theme == "box"){
+        f1 %>% flextable::theme_box() -> f1
+        border_outer_color <- "darkgrey"
+        cell_border_color <- "grey"
+        header_color <- "black"
+        cell_border_style <- "dashed"
+        header_color <- "black"
+      } else{
+        stop("You did not enter a valid theme. Choose from zebra_blue, zebra_gold, tron, vader, box, vanilla, booktabs, alafoli", call. = F)
+      }
+
   f1 %>%
-    flextable::theme_zebra(
-      odd_header = odd_header,
-      even_header = even_header,
-      odd_body = odd_body,
-      even_body = even_body
-    ) %>%
     flextable::color( color = header_color, part = "header") %>%
     flextable::color(color = id_color, j = id_cols) %>%
     flextable::fontsize(size = header_font_size, part = "header") %>%
     flextable::fontsize(size = body_font_size, part = "body") %>%
-    flextable::bold(j = id_cols) %>%
-    flextable::merge_v(j = merge_cols) %>%
-    flextable::border(border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "all") %>%
+    flextable::bold(j = id_cols) -> f1
+
+  if(!is.null(merge_col_indices) | !is.null(last_id_col)){
+    f1 %>% flextable::merge_v(j = merge_cols) -> f1}
+  f1 %>%
+    flextable::border_inner(border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "header") %>%
+    flextable::border(j = last_id_col, border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "body") %>%
+    flextable::border(j = value_cols, border = officer::fp_border(color = cell_border_color, style = cell_border_style, width = 1.5), part = "body") %>%
     flextable::align( align = "center", part= "all") %>%
-    flextable::border_outer(part="all", border = officer::fp_border(width = 3) ) %>%
+    flextable::border_outer(part="all", border = officer::fp_border(width = 3, color = border_outer_color, style = border_outer_style) ) %>%
     flextable::fix_border_issues(.) %>%
     flextable::autofit(.)
 }

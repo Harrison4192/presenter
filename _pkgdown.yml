@@ -12,10 +12,13 @@ reference:
 - title: Export to Excel
   contents:
   - '`finish_excel_wb`'
+  - '`make_simple_excel`'
   - '`make_excel`'
   - '`make_excel_wb`'
 - title: Export to Powerpoint
-  contents: '`make_flextable`'
+  - '`export_powerpoint`'
+  - '`make_flex_table`'
+  - '`make_pivot_table`'
 articles:
 - title: All vignettes
   desc: null

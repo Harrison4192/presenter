@@ -4,7 +4,7 @@ Version: 0.1.0
 Author: Harrison Tietze
 Maintainer: Harrison Tietze <harrison4192@gmail.com>
 Description:  This package consists of custom wrapper functions using packages
-    openxlsx and flextable to create highly formatted MS office friendly output of your data frames.
+    openxlsx, flextable, and officer to create highly formatted MS office friendly output of your data frames.
     These viewer friendly outputs are intended to match expectations of professional looking presentations
     in business and consulting scenarios. The functions are opinionated in the sense that they expect the input data
     frame to have certain properties in order to take advantage of the automated formatting.

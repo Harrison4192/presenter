@@ -1,4 +1,7 @@
-make_pivot_table <- function(tbl, col1, col2, tbl_nm = NULL,
+make_pivot_table <- function(tbl, col1, col2,
+                             show_percentages = T,
+                             tbl_nm = NULL,
+                             theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli"),
                              odd_header = "steelblue3",
                              even_header = "steelblue2",
                              odd_body = "#A4D3EE",
@@ -15,7 +18,7 @@ make_pivot_table <- function(tbl, col1, col2, tbl_nm = NULL,
     tbl_nm %>% stringr::str_replace_all(" ", "_") -> tbl_nm
   }
 
-
+theme <- theme[1]
 
 
   col1 <- rlang::ensym(col1)
@@ -27,10 +30,18 @@ make_pivot_table <- function(tbl, col1, col2, tbl_nm = NULL,
 
 
   tbl %>%
-    janitor::tabyl(!!col1, !!col2)  %>%
+    dplyr::mutate(dplyr::across(c(!!col1, !!col2), as.factor)) %>%
+    janitor::tabyl(!!col1, !!col2)  -> tbl1
+
+  if(show_percentages){
+
+    tbl1 %>%
     janitor::adorn_percentages(denominator = "all") %>%
     janitor::adorn_pct_formatting() %>%
-    janitor::adorn_ns() %>%
+    janitor::adorn_ns() -> tbl2} else{
+      tbl1 -> tbl2
+    }
+  tbl2 %>%
     tibble::as_tibble() %>%
     dplyr::mutate("S" = col1_nm, .before = 1) %>%
     rlang::set_names(names(.) %>% stringr::str_c(col2_nm,"_", .) %>% replace(1:2, c(tbl_nm, tbl_nm1 ))) %>%
@@ -43,13 +54,45 @@ make_pivot_table <- function(tbl, col1, col2, tbl_nm = NULL,
                    id_color =        id_color,
                    header_font_size = header_font_size,
                    body_font_size =   body_font_size ,
-                   cell_border_color =cell_border_color) %>%
-    flextable::bg(i = 1:2, j = 1:2, bg = title_cell_color, part = "header") %>%
+                   cell_border_color = cell_border_color,
+                   theme = theme) ->f1
+  f1 %>%
     flextable::merge_at(i = 1:2, j = 1:2, part = "header") %>%
-    flextable::bg(j = 1,  bg = "steelblue3") %>%
-    flextable::bg(j = 2,  bg = "steelblue2") %>%
-    flextable::color(j = 1:2, color = "white") %>%
-    flextable::fontsize(j = 1:2, size = 16)
+    flextable::fix_border_issues() -> f1
+
+  if(theme == "zebra_blue"){
+    f1 %>%
+    flextable::bg(i = 1:2, j = 1:2, bg = title_cell_color, part = "header") %>%
+    flextable::bg(j = 1,  bg = odd_header) %>%
+    flextable::bg(j = 2,  bg = even_header) %>%
+      flextable::color(j = 1:2, color = "white") -> f1}
+  else if(theme == "zebra_gold"){
+
+    odd_header = "darkgoldenrod2"
+    even_header = "gold2"
+    header_color = "black"
+
+        f1 %>%
+          flextable::bg(i = 1:2, j = 1:2, bg = odd_header, part = "header") %>%
+          flextable::bg(j = 1,  bg = odd_header) %>%
+          flextable::bg(j = 2,  bg = even_header) %>%
+          flextable::color(j = 1:2, color = "black") -> f1}
+  else if(theme %in% c("booktabs", "box", "vanilla")){
+  f1 %>%
+    flextable::color(j = 1:2, color = "black") -> f1}
+  else if(theme %in% c("vader", "tron")){
+    f1 %>%
+      flextable::color(j = 1:2, color = "white") -> f1}
+f1 %>%
+  flextable::fontsize(j = 1:2, size = 16) %>%
+  flextable::bold(j = 1:2) %>%
+  flextable::rotate(j = 1, rotation = "btlr") %>%
+  flextable::fix_border_issues() %>%
+  flextable::width( j = 2:(ncol(tbl2)+1) , width = .5) %>%
+  flextable::width(j = 1, width = .35)
+
+
 }
+
 
 

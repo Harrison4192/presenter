@@ -40,5 +40,30 @@ make_excel(df = iris,
 
 ![output of make excel](exceloutput.png)
 
+## make simple excel
+
+`make_simple_excel` allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specfied otherwise in `output_file, the resulting excel file will be named after the data frame. 
+
+```{r eval = FALSE}
+iris %>% 
+  make_simple_excel()
+```
+
+![output of make simple excel](simpleexceloutput.png)
+
+
+## make an excel workbook with multiple sheets
+
+```{r}
+make_excel_wb(wb = NULL,
+              object = iris,
+              last_id_col = NULL,
+              header_word = c("Sepal", "Petal")) %>% 
+  make_excel_wb(object = anscombe,
+                last_id_col = NULL,
+                header_word = NULL) %>% 
+  finish_excel_wb(wb_name = "data_workbook")
+```
+
 
 
