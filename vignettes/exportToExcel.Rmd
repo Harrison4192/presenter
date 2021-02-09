@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r setup}
-library(dataExporter)
+library(presenteR)
 ```
 
 # automatic formatting
@@ -54,7 +54,7 @@ iris %>%
 
 ## make an excel workbook with multiple sheets
 
-```{r}
+```{r eval=F}
 make_excel_wb(wb = NULL,
               object = iris,
               last_id_col = NULL,

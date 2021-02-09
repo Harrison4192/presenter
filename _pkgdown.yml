@@ -1,24 +1,24 @@
 template:
   params:
     bootswatch: cerulean
+    ganalytics: G-VD1VCCZHJK
+
 
 development:
   mode: auto
 
-
-home:
-- title: Present Your Data Frames with Style
 reference:
-- title: Export to Excel
+- title: Make excel
   contents:
   - '`finish_excel_wb`'
-  - '`make_simple_excel`'
   - '`make_excel`'
   - '`make_excel_wb`'
-- title: Export to Powerpoint
-  - '`export_powerpoint`'
-  - '`make_flex_table`'
+  - '`make_simple_excel`'
+- title: Make flextable
+  contents:
+  - '`make_flextable`'
   - '`make_pivot_table`'
+  - '`table_to_powerpoint`'
 articles:
 - title: All vignettes
   desc: null
@@ -42,6 +42,9 @@ navbar:
     reference:
       text: Reference
       href: reference/index.html
+    news:
+      text: Changelog
+      href: news/index.html
     articles:
       text: Articles
       menu:

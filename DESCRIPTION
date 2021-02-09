@@ -1,5 +1,6 @@
-Package: dataExporter
+Package: presenteR
 Type: Package
+Title: Create stylized R output for MS office
 Version: 0.1.0
 Author: Harrison Tietze
 Maintainer: Harrison Tietze <harrison4192@gmail.com>

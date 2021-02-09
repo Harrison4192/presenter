@@ -6,14 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make Flextable — make_flextable • dataExporter</title>
+<title>Make Flextable — make_flextable • presenteR</title>
 
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Make Flextable — make_flextable" />
-<meta property="og:description" content="Make Flextable" />
+<meta property="og:description" content="Turns a data frame into a flextable" />
 
 
 
@@ -71,7 +71,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">dataExporter</a>
+        <a class="navbar-link" href="../index.html">presenteR</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -102,6 +102,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -124,10 +127,17 @@
     </div>
 
     <div class="ref-description">
-    <p>Make Flextable</p>
+    <p>Turns a data frame into a flextable</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_flextable</span><span class='op'>(</span><span class='va'>df</span>, header_words <span class='op'>=</span> <span class='cn'>NULL</span>, last_id_col <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>make_flextable</span><span class='op'>(</span>
+  <span class='va'>df</span>,
+  header_words <span class='op'>=</span> <span class='cn'>NULL</span>,
+  last_id_col <span class='op'>=</span> <span class='cn'>NULL</span>,
+  merge_col_indices <span class='op'>=</span> <span class='cn'>NULL</span>,
+  theme <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"zebra_blue"</span>, <span class='st'>"zebra_gold"</span>, <span class='st'>"tron"</span>, <span class='st'>"vader"</span>, <span class='st'>"vanilla"</span>, <span class='st'>"booktabs"</span>,
+    <span class='st'>"alafoli"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,6 +153,14 @@
     <tr>
       <th>last_id_col</th>
       <td><p>last id col</p></td>
+    </tr>
+    <tr>
+      <th>merge_col_indices</th>
+      <td><p>merge specific column indices</p></td>
+    </tr>
+    <tr>
+      <th>theme</th>
+      <td><p>string to choose a preselected theme</p></td>
     </tr>
     </table>
 

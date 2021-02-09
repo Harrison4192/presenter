@@ -1,32 +1,31 @@
-
-
-## make table
-
 #' Make Flextable
+#'
+#' Turns a data frame into a flextable
 #'
 #' @param df data frame
 #' @param header_words header words
 #' @param last_id_col last id col
+#' @param merge_col_indices merge specific column indices
+#' @param theme string to choose a preselected theme
 #'
 #' @return a flextable
 #' @export
-#'
 make_flextable <- function(df, header_words = NULL, last_id_col = NULL, merge_col_indices = NULL,
-                           theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli"),
-                           odd_header = "steelblue3",
-                           even_header = "steelblue2",
-                           odd_body = "#A4D3EE",
-                           even_body = "azure2",
-                           header_color = "white",
-                           id_color = "grey45",
-                           header_font_size = 16,
-                           body_font_size = 12,
-                           cell_border_color = "white",
-                           border_outer_color = "black",
-                           border_outer_style = "solid",
-                           cell_border_style = "solid"){
+                           theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli")){
 
 
+  odd_header = "steelblue3"
+  even_header = "steelblue2"
+  odd_body = "#A4D3EE"
+  even_body = "azure2"
+  header_color = "white"
+  id_color = "grey45"
+  header_font_size = 16
+  body_font_size = 12
+  cell_border_color = "white"
+  border_outer_color = "black"
+  border_outer_style = "solid"
+  cell_border_style = "solid"
 
   flextable::flextable(df) -> f1
 theme <- theme[1]

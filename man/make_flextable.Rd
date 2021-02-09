@@ -4,7 +4,14 @@
 \alias{make_flextable}
 \title{Make Flextable}
 \usage{
-make_flextable(df, header_words = NULL, last_id_col = NULL)
+make_flextable(
+  df,
+  header_words = NULL,
+  last_id_col = NULL,
+  merge_col_indices = NULL,
+  theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",
+    "alafoli")
+)
 }
 \arguments{
 \item{df}{data frame}
@@ -12,10 +19,14 @@ make_flextable(df, header_words = NULL, last_id_col = NULL)
 \item{header_words}{header words}
 
 \item{last_id_col}{last id col}
+
+\item{merge_col_indices}{merge specific column indices}
+
+\item{theme}{string to choose a preselected theme}
 }
 \value{
 a flextable
 }
 \description{
-Make Flextable
+Turns a data frame into a flextable
 }

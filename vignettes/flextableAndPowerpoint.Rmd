@@ -9,7 +9,7 @@ vignette: >
 
 
 ```{r setup, warning=F, message=F}
-library(dataExporter)
+library(presenteR)
 library(dplyr)
 ```
 
@@ -52,7 +52,7 @@ tbl
 
 ## export tables to powerpoint
 
-```{r}
+```{r eval=F}
 
 my_flex %>% 
   export_powerpoint("mytables.pptx")
