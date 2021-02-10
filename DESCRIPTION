@@ -4,7 +4,7 @@ Title: Create stylized R output for MS office
 Version: 0.1.0
 Author: Harrison Tietze
 Maintainer: Harrison Tietze <harrison4192@gmail.com>
-Description:  This package consists of custom wrapper functions using packages
+Description: This package consists of custom wrapper functions using packages
     openxlsx, flextable, and officer to create highly formatted MS office friendly output of your data frames.
     These viewer friendly outputs are intended to match expectations of professional looking presentations
     in business and consulting scenarios. The functions are opinionated in the sense that they expect the input data
@@ -28,3 +28,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/Harrison4192/presenteR
+BugReports: https://github.com/Harrison4192/presenteR/issues
