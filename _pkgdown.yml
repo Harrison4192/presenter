@@ -3,7 +3,6 @@ template:
     bootswatch: cerulean
     ganalytics: G-VD1VCCZHJK
 
-
 development:
   mode: auto
 
