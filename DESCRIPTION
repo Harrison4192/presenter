@@ -22,11 +22,14 @@ Imports:
     officer,
     randomcoloR,
     openxlsx,
-    lubridate
+    lubridate,
+    janitor,
+    tibble
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    badger
 VignetteBuilder: knitr
 URL: https://github.com/Harrison4192/presenteR
 BugReports: https://github.com/Harrison4192/presenteR/issues
