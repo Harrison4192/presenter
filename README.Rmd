@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/presenteR)](https://CRAN.R-project.org/package=presenteR)
 [![R-CMD-check](https://github.com/Harrison4192/presenteR/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/presenteR/actions)
+
 `r badger::badge_cran_download("presenteR", "grand-total", "blue")`
 `r badger::badge_code_size("Harrison4192/presenteR")`
 `r badger::badge_last_commit("Harrison4192/presenteR")`
