@@ -34,7 +34,9 @@ navbar:
     - articles
     - tutorials
     - news
-    right: github
+    right:
+    - github
+    - TidyConsultant
   components:
     home:
       icon: fas fa-home fa-lg
@@ -42,6 +44,9 @@ navbar:
     reference:
       text: Reference
       href: reference/index.html
+    TidyConsultant:
+      text: TC
+      href: https://harrison4192.github.io/TidyConsultant/
     news:
       text: Changelog
       href: news/index.html
