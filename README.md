@@ -15,9 +15,14 @@ status](https://www.r-pkg.org/badges/version/presenteR)](https://CRAN.R-project.
 [![](https://img.shields.io/github/last-commit/Harrison4192/presenteR.svg)](https://github.com/Harrison4192/presenteR/commits/master)
 <!-- badges: end -->
 
-The goal of presenteR is to …
-
-## Installation
+This package consists of custom wrapper functions using packages
+openxlsx, flextable, and officer to create highly formatted MS office
+friendly output of your data frames. These viewer friendly outputs are
+intended to match expectations of professional looking presentations in
+business and consulting scenarios. The functions are opinionated in the
+sense that they expect the input data frame to have certain properties
+in order to take advantage of the automated formatting. \#\#
+Installation
 
 You can install the released version of presenteR from
 [CRAN](https://CRAN.R-project.org) with:

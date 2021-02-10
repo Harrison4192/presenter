@@ -31,7 +31,6 @@ navbar:
     - intro
     - reference
     - articles
-    - tutorials
     - news
     right:
     - github

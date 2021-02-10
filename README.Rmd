@@ -24,8 +24,9 @@ knitr::opts_chunk$set(
 `r badger::badge_last_commit("Harrison4192/presenteR")`
 <!-- badges: end -->
 
-The goal of presenteR is to ...
-
+This package consists of custom wrapper functions using packages openxlsx, flextable, and officer to create highly formatted MS office friendly output of your data frames. These viewer friendly outputs are intended to match expectations of professional looking presentations
+    in business and consulting scenarios. The functions are opinionated in the sense that they expect the input data
+    frame to have certain properties in order to take advantage of the automated formatting.
 ## Installation
 
 You can install the released version of presenteR from [CRAN](https://CRAN.R-project.org) with:
