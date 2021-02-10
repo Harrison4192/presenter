@@ -98,7 +98,7 @@ usethis::use_github_action("render-rmarkdown")
 usethis::use_github_action("pkgdown")
 usethis::use_github_actions()
 usethis::use_github_links()
-usethis::use_github_pages()
+# usethis::use_github_pages()
 
 # build and check ---------------------------------------------------------
 load_all()
