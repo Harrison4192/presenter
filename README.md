@@ -21,8 +21,9 @@ friendly output of your data frames. These viewer friendly outputs are
 intended to match expectations of professional looking presentations in
 business and consulting scenarios. The functions are opinionated in the
 sense that they expect the input data frame to have certain properties
-in order to take advantage of the automated formatting. \#\#
-Installation
+in order to take advantage of the automated formatting.
+
+## Installation
 
 You can install the released version of presenteR from
 [CRAN](https://CRAN.R-project.org) with:
