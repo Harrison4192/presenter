@@ -10,7 +10,7 @@ make_pivot_table(
   col2,
   show_percentages = T,
   tbl_nm = NULL,
-  tabyl_denominator = "all",
+  tabyl_denominator = c("all", "row", "col"),
   theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",
     "alafoli")
 )

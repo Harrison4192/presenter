@@ -14,7 +14,7 @@
 make_pivot_table <- function(tbl, col1, col2,
                              show_percentages = T,
                              tbl_nm = NULL,
-                             tabyl_denominator = "all",
+                             tabyl_denominator = c("all", "row", "col"),
                              theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli")){
 
   if(is.null(tbl_nm)){
@@ -23,7 +23,7 @@ make_pivot_table <- function(tbl, col1, col2,
   }
 
 theme <- theme[1]
-
+tabyl_denominator <- tabyl_denominator[1]
 
   col1 <- rlang::ensym(col1)
   col1_nm <- rlang::as_string(col1)

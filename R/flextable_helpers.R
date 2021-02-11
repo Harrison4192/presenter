@@ -40,12 +40,12 @@ flex_create_headers <- function(df, word_vec){
 #'
 charvec_to_formula <- function(chr){
 
-  if(rlang::is_empty(chr)){rlang::abort("requires a character column")}
+  if(rlang::is_empty(chr)){return(NULL)} else{
 
   stringr::str_c(chr, collapse = " + ") %>%
     stringr::str_c("~ ", ., collapse = "")  %>%
     parse(text = .) %>%
-    eval
+    eval}
 }
 
 #' flex_mergev1_formula

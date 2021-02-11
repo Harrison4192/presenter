@@ -10,7 +10,10 @@
 #'
 #' @return a flextable
 #' @export
-make_flextable <- function(df, header_words = NULL, last_id_col = NULL, merge_col_indices = NULL,
+make_flextable <- function(df,
+                           header_words = NULL,
+                           last_id_col = NULL,
+                           merge_col_indices = NULL,
                            theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli")){
 
 
@@ -132,10 +135,15 @@ theme <- theme[1]
 
   f1 %>%
     flextable::color( color = header_color, part = "header") %>%
-    flextable::color(color = id_color, j = id_cols) %>%
     flextable::fontsize(size = header_font_size, part = "header") %>%
-    flextable::fontsize(size = body_font_size, part = "body") %>%
-    flextable::bold(j = id_cols) -> f1
+    flextable::fontsize(size = body_font_size, part = "body") -> f1
+
+  if (!is.null(id_cols)) {
+    f1 %>%
+      flextable::bold(j = id_cols) %>%
+      flextable::color(color = id_color, j = id_cols) -> f1
+  }
+
 
   if(!is.null(merge_col_indices) | !is.null(last_id_col)){
     f1 %>% flextable::merge_v(j = merge_cols) -> f1}
