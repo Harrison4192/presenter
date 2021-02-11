@@ -14,11 +14,14 @@ get_lhs <- function(){
   }
 }
 
-get_piped_name <- function(objName){
+get_piped_name <- function(objName, default_name = "Title") {
   lhs <- get_lhs()
-  if(is.null(lhs)){
+  if (is.null(lhs)) {
     lhs <- rlang::ensym(objName)
+  } else if (rlang::is_symbol(lhs)) {
+    z <- rlang::as_name(lhs)
+  } else{
+    z <- default_name
   }
-  z <- rlang::as_name(lhs)
   z
 }

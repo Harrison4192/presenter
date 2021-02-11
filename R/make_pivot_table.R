@@ -5,6 +5,7 @@
 #' @param col2 unquoted col 2
 #' @param show_percentages logical; show percentages with numbers
 #' @param tbl_nm string to name table. If not given, automatically defaults to table name.
+#' @param tabyl_denominator denominator to use when calculating percentages
 #' @param theme string to choose a predefined theme
 #'
 #' @return a flextable
@@ -13,10 +14,11 @@
 make_pivot_table <- function(tbl, col1, col2,
                              show_percentages = T,
                              tbl_nm = NULL,
+                             tabyl_denominator = "all",
                              theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli")){
 
   if(is.null(tbl_nm)){
-  get_piped_name(tbl) -> tbl_nm} else {
+  get_piped_name(tbl, "Pivot") -> tbl_nm} else {
     tbl_nm %>% stringr::str_replace_all(" ", "_") -> tbl_nm
   }
 
@@ -38,7 +40,7 @@ theme <- theme[1]
   if(show_percentages){
 
     tbl1 %>%
-    janitor::adorn_percentages(denominator = "all") %>%
+    janitor::adorn_percentages(denominator = tabyl_denominator) %>%
     janitor::adorn_pct_formatting() %>%
     janitor::adorn_ns() -> tbl2} else{
       tbl1 -> tbl2
