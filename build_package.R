@@ -110,4 +110,22 @@ preview_site()
 
 
 # checks ------------------------------------------------------------------
+load_all()
+iris %>%
+  janitor::tabyl(Species) %>%
+  janitor::adorn_pct_formatting() %>%
+  make_flextable() %>%
+  list() -> tbl1
 
+iris %>%
+  make_pivot_table(Petal.Length, Species) %>% list() %>% rlang::is_bare_list()
+  make_powerpoint()
+
+
+
+officer::read_pptx() -> ppt1
+
+ppt1 %>% officer::add_slide() %>%
+  officer::ph_with(value = "title", location = officer::ph_location_type(type = "title")) %>%
+  officer::ph_with(value = tbl1[[1]], location = officer::ph_location(top = 1.5)) %>%
+  print(target = "ko.pptx")

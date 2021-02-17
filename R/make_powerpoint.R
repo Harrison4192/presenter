@@ -30,13 +30,14 @@ make_powerpoint <- function(tbl,
 
   }
 
-  if(!rlang::is_list(tbl)){
+  if(!rlang::is_bare_list(tbl)){
     list(tbl_nm = tbl) -> tbl
   }
 
   for(i in seq_along(tbl)){
 
     title <- names(tbl[i])
+
 
   if(is.null(title)){
     title <- stringr::str_c("Presentation of ", tbl_nm %>% stringr::str_replace_all("[_.]", " "))}

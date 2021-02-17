@@ -9,7 +9,7 @@ vignette: >
 
 
 ```{r setup, warning=F, message=F}
-library(presenteR)
+library(dataExporter)
 library(dplyr)
 ```
 
@@ -52,18 +52,13 @@ tbl
 
 ## export tables to powerpoint
 
-possible objects to pipe into `make_powerpoint()`
-
-* a data frame
-* a flextable
-* a list containing either
-
 ```{r eval=F}
-list(tbl1 = myflex,
-     tbl2 = tron_cross_table,
-     tbl3 = tbl) -> flextbl_list
 
-flextbl_list %>% 
-  make_powerpoint()
+myflex %>% 
+  export_powerpoint() # a new ppt is created, named after the table
+
+tron_cross_table %>% 
+  export_powerpoint("myflex.pptx") # append this slide to the previous ppt
+
 ```
-![output of make powerpoint](flexppt.png)
+![Multiple powerpoint slides](powerpointexample.png)
