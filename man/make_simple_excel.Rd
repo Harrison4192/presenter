@@ -4,12 +4,12 @@
 \alias{make_simple_excel}
 \title{Make a simple excel}
 \usage{
-make_simple_excel(object, output_file = NULL)
+make_simple_excel(object, show = T)
 }
 \arguments{
-\item{object}{a data frame}
+\item{object}{a data frame or list thereof}
 
-\item{output_file}{string to name excel file. If not given, defaults to name of table.}
+\item{show}{logical. open excel upon completion?}
 }
 \value{
 an .xlsx file

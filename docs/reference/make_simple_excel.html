@@ -110,6 +110,9 @@
     <li>
       <a href="../articles/flextableAndPowerpoint.html">flextableAndPowerpoint</a>
     </li>
+    <li>
+      <a href="../articles/flextableThemes.html">flextableThemes</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -148,18 +151,18 @@
     <p>Export a file to excel with minimal formatting and minimal effort.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_simple_excel</span><span class='op'>(</span><span class='va'>object</span>, output_file <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>make_simple_excel</span><span class='op'>(</span><span class='va'>object</span>, show <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>a data frame</p></td>
+      <td><p>a data frame or list thereof</p></td>
     </tr>
     <tr>
-      <th>output_file</th>
-      <td><p>string to name excel file. If not given, defaults to name of table.</p></td>
+      <th>show</th>
+      <td><p>logical. open excel upon completion?</p></td>
     </tr>
     </table>
 

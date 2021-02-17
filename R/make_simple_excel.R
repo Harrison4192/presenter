@@ -2,18 +2,19 @@
 #'
 #' Export a file to excel with minimal formatting and minimal effort.
 #'
-#' @param object a data frame
-#' @param output_file string to name excel file. If not given, defaults to name of table.
+#' @param object a data frame or list thereof
+#' @param  show logical. open excel upon completion?
 #'
 #' @return an .xlsx file
 #' @export
-make_simple_excel <- function(object, output_file = NULL){
+make_simple_excel <- function(object, show = T){
 
-  get_piped_name(object) -> filename
+  get_piped_name(object) -> sheetname
 
-  if(is.null(output_file)){
-  output_file <- filename %>% stringr::str_c(".xlsx", collapse = "")
-  }
+  sheetname %>%
+    paste0(stringi::stri_rand_strings(1, 4))  %>%
+    stringr::str_c(".xlsx", collapse = "")-> output_file
+
   openxlsx::write.xlsx(object, output_file,
                        headerStyle =  openxlsx::createStyle(textDecoration = "BOLD",
                                                   fontColour = "#FFFFFF",
@@ -23,7 +24,12 @@ make_simple_excel <- function(object, output_file = NULL){
                        asTable = T,
                        borders = "rows",
                        tabColour = "snow2",
-                       sheetName = filename,
+                       sheetName = sheetname,
                        borderColour = "steelblue3"
 
-  )}
+  )
+
+  if(show){
+    openxlsx::openXL(output_file)}
+  }
+

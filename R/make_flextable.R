@@ -32,6 +32,7 @@ make_flextable <- function(df,
 
   flextable::flextable(df) -> f1
 theme <- theme[1]
+id_col_nums <- NULL
 
   if(!is.null(header_words)){
 
@@ -74,9 +75,10 @@ theme <- theme[1]
         even_body = even_body
       ) -> f1
 
-    if(!is.null(id_col_nums)){
-    f1 %>%
-      flextable::bg(j = id_col_nums, bg = odd_body) -> f1}
+    # if(!is.null(id_col_nums)){
+    # f1 %>%
+    #   flextable::bg(j = id_col_nums, bg = odd_body) -> f1}
+
     } else if(theme == "zebra_gold"){
         f1 %>%
         flextable::theme_zebra(
@@ -90,9 +92,9 @@ theme <- theme[1]
         header_color <- "black"
 
 
-        if(!is.null(id_col_nums)){
-        f1 %>%
-          flextable::bg(j = id_col_nums, bg = "gold2" ) -> f1}
+        # if(!is.null(id_col_nums)){
+        # f1 %>%
+        #   flextable::bg(j = id_col_nums, bg = "gold2" ) -> f1}
 
 
       } else if(theme == "tron"){

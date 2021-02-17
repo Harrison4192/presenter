@@ -1,0 +1,83 @@
+---
+title: "flextableThemes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{flextableThemes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=F, message=F}
+library(presenteR)
+library(dplyr)
+
+iris %>% 
+  sample_n(10) %>% 
+  relocate(Species) %>% 
+  head %>% 
+  arrange(Species) -> iris1
+
+iris %>% 
+  mutate(Species_random = sample(Species)) -> iris2
+
+header_words <- c("Sepal", "Petal")
+```
+
+
+# zebra_blue
+
+default theme
+
+```{r}
+iris1 %>% 
+  make_flextable(header_words = header_words, last_id_col = 1)
+```
+
+# zebra_gold
+
+```{r}
+iris1 %>% 
+  make_flextable(header_words = header_words, last_id_col = 1, theme = "zebra_gold")
+```
+
+# tron
+
+```{r}
+iris2 %>% 
+  make_pivot_table(col1 = Species, col2 = Species_random, theme = "tron")
+```
+
+# vader
+
+```{r}
+iris1 %>% 
+  make_flextable(header_words = header_words, last_id_col = 1, theme = "vader")
+```
+
+# vanilla
+
+```{r}
+iris2 %>% 
+  make_pivot_table(col1 = Species, col2 = Species_random, theme = "vanilla", show_percentages = F)
+```
+
+# booktabs
+
+```{r}
+iris1 %>% 
+  make_flextable(header_words = header_words, last_id_col = 1, theme = "booktabs")
+```
+
+# alafoli
+
+```{r}
+iris1 %>% 
+  make_flextable(header_words = header_words, last_id_col = 1, theme = "alafoli")
+```

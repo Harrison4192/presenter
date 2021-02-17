@@ -1,6 +1,6 @@
 Package: presenteR
 Type: Package
-Title: Present Tibbles
+Title: presenteR
 Version: 0.1.0
 Authors@R: 
     person(given = "Harrison",
@@ -28,7 +28,9 @@ Imports:
     openxlsx,
     lubridate,
     janitor,
-    tibble
+    tibble,
+    stringi,
+    berryFunctions
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

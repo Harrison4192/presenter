@@ -17,13 +17,14 @@ reference:
   contents:
   - '`make_flextable`'
   - '`make_pivot_table`'
-  - '`table_to_powerpoint`'
+  - '`make_powerpoint`'
 articles:
 - title: All vignettes
   desc: null
   contents:
   - '`exportToExcel`'
   - '`flextableAndPowerpoint`'
+  - '`flextableThemes`'
 navbar:
   structure:
     left:
@@ -55,4 +56,6 @@ navbar:
         href: articles/exportToExcel.html
       - text: flextableAndPowerpoint
         href: articles/flextableAndPowerpoint.html
+      - text: flextableThemes
+        href: articles/flextableThemes.html
 

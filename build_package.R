@@ -38,7 +38,7 @@ usethis::use_package("rstudioapi", type = "Depends")
 
 usethis::use_package("rstudioapi")
 usethis::use_package("dplyr")
-usethis::use_package("stringr")
+usethis::use_package("stringi")
 usethis::use_package("tidyselect")
 usethis::use_package("purrr")
 usethis::use_package("janitor")

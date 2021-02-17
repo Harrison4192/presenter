@@ -1,5 +1,5 @@
 ## ----setup, warning=F, message=F----------------------------------------------
-library(dataExporter)
+library(presenteR)
 library(dplyr)
 
 ## -----------------------------------------------------------------------------
@@ -17,25 +17,30 @@ make_flextable(iris_slice, header_words = header_words, last_id_col = last_id_co
 
 myflex
 
-## ----eval=FALSE---------------------------------------------------------------
-#  library(officer)
+## -----------------------------------------------------------------------------
+tibble::tibble(my_letters = sample(letters[1:4], 100, T),
+       my_numbers = sample(1:4, 100, T)) -> cross_table
+
+cross_table %>% 
+  make_pivot_table(my_letters, my_numbers, theme = "tron") -> tron_cross_table
+
+tron_cross_table
+
+## -----------------------------------------------------------------------------
+iris %>% 
+  dplyr::mutate(Species1 = stringr::str_c(Species, " very good")) %>% 
+  make_pivot_table(Species1, Species, show_percentages = F, tbl_nm = "gold table", theme = "zebra_gold") -> tbl 
+
+tbl
+
+## ----eval=F-------------------------------------------------------------------
 #  
+#  my_flex %>%
+#    export_powerpoint("mytables.pptx")
 #  
-#  read_pptx("masterLayout.pptx") -> ppt1
+#  tron_cross_table %>%
+#    export_powerpoint("mytables.pptx")
 #  
-#  layout = "Two Content"
-#  master = "Office Theme"
-#  
-#  
-#  ppt1 %>%
-#    add_slide(layout = layout,
-#              master = master) %>%
-#    ph_with(value = "Iris Slice", location = ph_location_type(type = "title")) %>%
-#    ph_with(value = myflex, location = ph_location(left = 0, top = 1.5)) -> ppt2
-#  
-#  
-#  
-#  print(ppt2, target="irisSlice.pptx")
-#  
-#  file.show("irisSlice.pptx")
+#  tbl %>%
+#    export_powerpoint("mytables.pptx")
 

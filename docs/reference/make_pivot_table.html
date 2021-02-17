@@ -110,6 +110,9 @@
     <li>
       <a href="../articles/flextableAndPowerpoint.html">flextableAndPowerpoint</a>
     </li>
+    <li>
+      <a href="../articles/flextableThemes.html">flextableThemes</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -154,6 +157,7 @@
   <span class='va'>col2</span>,
   show_percentages <span class='op'>=</span> <span class='cn'>T</span>,
   tbl_nm <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tabyl_denominator <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"all"</span>, <span class='st'>"row"</span>, <span class='st'>"col"</span><span class='op'>)</span>,
   theme <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"zebra_blue"</span>, <span class='st'>"zebra_gold"</span>, <span class='st'>"tron"</span>, <span class='st'>"vader"</span>, <span class='st'>"vanilla"</span>, <span class='st'>"booktabs"</span>,
     <span class='st'>"alafoli"</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
@@ -180,6 +184,10 @@
     <tr>
       <th>tbl_nm</th>
       <td><p>string to name table. If not given, automatically defaults to table name.</p></td>
+    </tr>
+    <tr>
+      <th>tabyl_denominator</th>
+      <td><p>denominator to use when calculating percentages</p></td>
     </tr>
     <tr>
       <th>theme</th>

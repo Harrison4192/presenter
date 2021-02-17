@@ -9,6 +9,7 @@ vignette: >
 
 ```{r setup}
 library(presenteR)
+library(dplyr)
 ```
 
 # automatic formatting
@@ -50,9 +51,26 @@ iris %>%
 ```
 
 ![output of make simple excel](simpleexceloutput.png)
+## export list of dfs
 
+`make_simple_excel` also accepts a list of dfs, and exports one per sheet. This is useful when you automatically generated a list of tables, or saved a bunch of table summaries in a list. 
+
+```{r eval=F}
+iris %>% 
+  group_by(Species) %>% 
+  summarize(across(where(is.numeric), sum)) -> iris_summary
+
+list(iris, iris_summary) -> iris_list
+
+iris_list %>% 
+  make_simple_excel()
+```
+
+![list of dfs to excel wb](excellist.png)
 
 ## make an excel workbook with multiple sheets
+
+Use the automated formatting paradigm and customize the id cols and header words for each sheet. 
 
 ```{r eval=F}
 make_excel_wb(wb = NULL,
@@ -64,6 +82,7 @@ make_excel_wb(wb = NULL,
                 header_word = NULL) %>% 
   finish_excel_wb(wb_name = "data_workbook")
 ```
+![custom excel wb](formattedexcelwb.png)
 
 
 
