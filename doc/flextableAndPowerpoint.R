@@ -35,12 +35,10 @@ tbl
 
 ## ----eval=F-------------------------------------------------------------------
 #  
-#  my_flex %>%
-#    export_powerpoint("mytables.pptx")
+#  myflex %>%
+#    export_powerpoint() # a new ppt is created, named after the table
 #  
 #  tron_cross_table %>%
-#    export_powerpoint("mytables.pptx")
+#    export_powerpoint("myflex.pptx") # append this slide to the previous ppt
 #  
-#  tbl %>%
-#    export_powerpoint("mytables.pptx")
 

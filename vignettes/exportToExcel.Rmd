@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup}
+```{r setup, message=F, warning=F}
 library(presenteR)
 library(dplyr)
 ```
@@ -41,6 +41,7 @@ make_excel(df = iris,
 
 ![output of make excel](exceloutput.png)
 
+
 ## make simple excel
 
 `make_simple_excel` allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specfied otherwise in `output_file, the resulting excel file will be named after the data frame. 
@@ -51,6 +52,7 @@ iris %>%
 ```
 
 ![output of make simple excel](simpleexceloutput.png)
+
 ## export list of dfs
 
 `make_simple_excel` also accepts a list of dfs, and exports one per sheet. This is useful when you automatically generated a list of tables, or saved a bunch of table summaries in a list. 

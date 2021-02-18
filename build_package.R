@@ -129,3 +129,6 @@ ppt1 %>% officer::add_slide() %>%
   officer::ph_with(value = "title", location = officer::ph_location_type(type = "title")) %>%
   officer::ph_with(value = tbl1[[1]], location = officer::ph_location(top = 1.5)) %>%
   print(target = "ko.pptx")
+
+build_vignettes()
+

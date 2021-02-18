@@ -1,5 +1,6 @@
-## ----setup--------------------------------------------------------------------
+## ----setup, message=F, warning=F----------------------------------------------
 library(presenteR)
+library(dplyr)
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  make_excel(df = iris,
@@ -9,6 +10,16 @@ library(presenteR)
 
 ## ----eval = FALSE-------------------------------------------------------------
 #  iris %>%
+#    make_simple_excel()
+
+## ----eval=F-------------------------------------------------------------------
+#  iris %>%
+#    group_by(Species) %>%
+#    summarize(across(where(is.numeric), sum)) -> iris_summary
+#  
+#  list(iris, iris_summary) -> iris_list
+#  
+#  iris_list %>%
 #    make_simple_excel()
 
 ## ----eval=F-------------------------------------------------------------------

@@ -9,7 +9,7 @@ vignette: >
 
 
 ```{r setup, warning=F, message=F}
-library(dataExporter)
+library(presenteR)
 library(dplyr)
 ```
 
