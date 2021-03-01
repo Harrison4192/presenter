@@ -30,16 +30,16 @@ Imports:
     janitor,
     tibble,
     stringi,
-    berryFunctions
+    berryFunctions,
+    rvg,
+    tidyselect
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
-    badger
+    badger,
+    ggplot2
+
 VignetteBuilder: knitr
 URL: https://github.com/Harrison4192/presenteR
 BugReports: https://github.com/Harrison4192/presenteR/issues
-Depends: 
-    ggplot2,
-    rvg,
-    tidyselect
