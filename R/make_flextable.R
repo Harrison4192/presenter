@@ -30,6 +30,10 @@ make_flextable <- function(df,
   border_outer_style = "solid"
   cell_border_style = "solid"
 
+  df %>%
+    dplyr::mutate(dplyr::across(tidyselect::matches("p.value"), format.pval)) %>%
+    dplyr::mutate(dplyr::across(where(is.double), prettyNum)) -> df
+
   flextable::flextable(df) -> f1
 theme <- theme[1]
 id_col_nums <- NULL

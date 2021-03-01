@@ -39,3 +39,7 @@ Suggests:
 VignetteBuilder: knitr
 URL: https://github.com/Harrison4192/presenteR
 BugReports: https://github.com/Harrison4192/presenteR/issues
+Depends: 
+    ggplot2,
+    rvg,
+    tidyselect

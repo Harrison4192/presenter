@@ -6,7 +6,7 @@
 library(pacman)
 p_load(rstudioapi, devtools, roxygen2, usethis, pkgdown,
        ymlthis, magrittr, fs, covr, gitcreds, credentials,
-       badger, hexSticker, gh, xfun)
+       badger, hexSticker, gh, xfun, tidyverse)
 
 
 # add this file to .Rbuildignore ------------------------------------------
@@ -31,14 +31,14 @@ ymlthis::pkgdown_template() %>%
 usethis::use_pipe()
 
 usethis::use_package("", type = "Depends")
-usethis::use_package("rstudioapi", type = "Depends")
-usethis::use_package("rstudioapi", type = "Depends")
-usethis::use_package("rstudioapi", type = "Depends")
+usethis::use_package("", type = "Depends")
+usethis::use_package("", type = "Depends")
+usethis::use_package("", type = "Depends")
 usethis::use_package("rstudioapi", type = "Depends")
 
-usethis::use_package("rstudioapi")
-usethis::use_package("dplyr")
-usethis::use_package("stringi")
+usethis::use_package("ggplot2")
+usethis::use_package("rvg")
+usethis::use_package("tidyselect")
 usethis::use_package("tidyselect")
 usethis::use_package("purrr")
 usethis::use_package("janitor")

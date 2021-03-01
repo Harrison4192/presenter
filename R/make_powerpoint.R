@@ -8,7 +8,6 @@
 #' @param output_file path to existing ppt
 #' @param layout master layout
 #' @param master master theme
-#' @param title slide title
 #' @param show logical to open the ppt
 #'
 #' @return none
@@ -17,9 +16,13 @@ make_powerpoint <- function(tbl,
                               output_file = NULL,
                               layout = "Two Content",
                               master = "Office Theme",
-                              title = NULL,
                               show = T){
-  get_piped_name(tbl) %>% paste0(stringi::stri_rand_strings(1, 4)) -> tbl_nm
+
+  get_piped_name(tbl) -> tbl_nm0
+
+  stringi::stri_rand_strings(1, 4) -> tbl_id
+
+  tbl_nm <- paste0(tbl_nm0, tbl_id)
 
   if(is.null(output_file)){
     output_file <- tbl_nm %>% stringr::str_c(".pptx")
@@ -31,16 +34,23 @@ make_powerpoint <- function(tbl,
   }
 
   if(!rlang::is_bare_list(tbl)){
-    list(tbl_nm = tbl) -> tbl
+    rlang::list2(!!tbl_nm := tbl) -> tbl
   }
+
 
   for(i in seq_along(tbl)){
 
+
+
     title <- names(tbl[i])
 
+    if(ggplot2::is.ggplot(tbl[[i]])){
+      tbl[[i]] <- rvg::dml(ggobj = tbl[[i]])
+    }
 
-  if(is.null(title)){
-    title <- stringr::str_c("Presentation of ", tbl_nm %>% stringr::str_replace_all("[_.]", " "))}
+
+    title <- stringr::str_c("Presentation of ", title %>% stringr::str_replace_all("[_.]", " ")) %>% stringr::str_remove(tbl_id)
+
   ppt1 %>%
     officer::add_slide(layout = layout,
                        master = master) %>%

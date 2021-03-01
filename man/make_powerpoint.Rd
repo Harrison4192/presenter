@@ -9,7 +9,6 @@ make_powerpoint(
   output_file = NULL,
   layout = "Two Content",
   master = "Office Theme",
-  title = NULL,
   show = T
 )
 }
@@ -22,9 +21,9 @@ make_powerpoint(
 
 \item{master}{master theme}
 
-\item{title}{slide title}
-
 \item{show}{logical to open the ppt}
+
+\item{title}{slide title}
 }
 \value{
 none
