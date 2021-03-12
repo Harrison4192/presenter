@@ -22,8 +22,6 @@ make_powerpoint(
 \item{master}{master theme}
 
 \item{show}{logical to open the ppt}
-
-\item{title}{slide title}
 }
 \value{
 none

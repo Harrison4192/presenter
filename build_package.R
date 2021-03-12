@@ -101,11 +101,11 @@ usethis::use_github_links()
 # usethis::use_github_pages()
 
 # build and check ---------------------------------------------------------
-load_all()
+devtools::load_all()
 document()
 build_readme()
 build_site()
-check()
+devtools::check()
 preview_site()
 
 
@@ -117,18 +117,5 @@ iris %>%
   make_flextable() %>%
   list() -> tbl1
 
-iris %>%
-  make_pivot_table(Petal.Length, Species) %>% list() %>% rlang::is_bare_list()
-  make_powerpoint()
 
-
-
-officer::read_pptx() -> ppt1
-
-ppt1 %>% officer::add_slide() %>%
-  officer::ph_with(value = "title", location = officer::ph_location_type(type = "title")) %>%
-  officer::ph_with(value = tbl1[[1]], location = officer::ph_location(top = 1.5)) %>%
-  print(target = "ko.pptx")
-
-build_vignettes()
 

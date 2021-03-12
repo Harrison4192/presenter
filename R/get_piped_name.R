@@ -24,7 +24,7 @@ get_lhs <- function(){
 #' @param objName an object
 #' @param default_name default name if object name is not able to be accessed in case of a long pipe
 #'
-#' @return
+#' @return string
 #' @export
 #'
 #' @examples

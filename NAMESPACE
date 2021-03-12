@@ -2,6 +2,7 @@
 
 export("%>%")
 export(finish_excel_wb)
+export(get_piped_name)
 export(make_excel)
 export(make_excel_wb)
 export(make_flextable)
