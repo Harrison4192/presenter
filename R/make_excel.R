@@ -61,7 +61,6 @@ make_excel_wb <- function(wb = NULL,
   # create workbook -----------------------------------------------------
 
 
-
   file_name <- rlang::as_name(rlang::enexpr(object))
   wb_name <- file_name %>% stringr::str_c(".xlsx", collapse = "")
 
@@ -363,7 +362,7 @@ if(is.null(last_id_col)){last_id_col <- 0}
 finish_excel_wb <- function(wb,
                             wb_name){
 
-  wb_name <- rlang::as_name(rlang::enexpr(wb_name)) %>% paste0(".xlsx")
+  wb_name <- wb_name %>% paste0(".xlsx")
   openxlsx::saveWorkbook(wb, wb_name, overwrite = T)
   openxlsx::openXL(wb_name)
 
@@ -382,16 +381,16 @@ make_excel <- function(df,
                          last_id_col = NULL,
                          header_word = NULL,
                          widths = 13){
-  df1 <- rlang::enexpr(df)
+  df_name <- get_piped_name(df)
 
   make_excel_wb(object = df,
                   last_id_col = last_id_col,
                   header_word = header_word,
                   widths = widths) -> x1
 
-  names(x1) <- rlang::as_name(df1)
+  names(x1) <- df_name
 
-  finish_excel_wb(x1, !!df1)
+  finish_excel_wb(x1, df_name)
 }
 
 

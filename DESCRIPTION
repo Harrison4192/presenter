@@ -39,7 +39,6 @@ Suggests:
     rmarkdown,
     badger,
     ggplot2
-
 VignetteBuilder: knitr
 URL: https://github.com/Harrison4192/presenteR
 BugReports: https://github.com/Harrison4192/presenteR/issues
