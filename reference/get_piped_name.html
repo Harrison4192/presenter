@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Send Table to Powerpoint — make_powerpoint • presenteR</title>
+<title>get piped name — get_piped_name • presenteR</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,8 @@
 
 
 
-<meta property="og:title" content="Send Table to Powerpoint — make_powerpoint" />
-<meta property="og:description" content="A table can be piped in to this function to be sent to a new ppt slide. Can be called with no arguments,
-then a new ppt is created named after the table. If output_file is specified, table is sent to a new slide
-on an existing powerpoint." />
+<meta property="og:title" content="get piped name — get_piped_name" />
+<meta property="og:description" content="this function captures the name of a data frame piped into a function as a string. Powers the automatic naming found in presenter." />
 
 
 
@@ -144,53 +142,36 @@ on an existing powerpoint." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Send Table to Powerpoint</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/presenteR/blob/master/R/make_powerpoint.R'><code>R/make_powerpoint.R</code></a></small>
-    <div class="hidden name"><code>make_powerpoint.Rd</code></div>
+    <h1>get piped name</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/presenteR/blob/master/R/get_piped_name.R'><code>R/get_piped_name.R</code></a></small>
+    <div class="hidden name"><code>get_piped_name.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A table can be piped in to this function to be sent to a new ppt slide. Can be called with no arguments,
-then a new ppt is created named after the table. If output_file is specified, table is sent to a new slide
-on an existing powerpoint.</p>
+    <p>this function captures the name of a data frame piped into a function as a string. Powers the automatic naming found in presenter.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_powerpoint</span><span class='op'>(</span>
-  <span class='va'>tbl</span>,
-  output_file <span class='op'>=</span> <span class='cn'>NULL</span>,
-  layout <span class='op'>=</span> <span class='st'>"Two Content"</span>,
-  master <span class='op'>=</span> <span class='st'>"Office Theme"</span>,
-  show <span class='op'>=</span> <span class='cn'>T</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_piped_name</span><span class='op'>(</span><span class='va'>objName</span>, default_name <span class='op'>=</span> <span class='st'>"Title"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tbl</th>
-      <td><p>a data frame,  flextable, or a list thereof</p></td>
+      <th>objName</th>
+      <td><p>an object</p></td>
     </tr>
     <tr>
-      <th>output_file</th>
-      <td><p>path to existing ppt</p></td>
-    </tr>
-    <tr>
-      <th>layout</th>
-      <td><p>master layout</p></td>
-    </tr>
-    <tr>
-      <th>master</th>
-      <td><p>master theme</p></td>
-    </tr>
-    <tr>
-      <th>show</th>
-      <td><p>logical to open the ppt</p></td>
+      <th>default_name</th>
+      <td><p>default name if object name is not able to be accessed in case of a long pipe</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>none</p>
+    <p>string</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>citation: &lt;https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/&gt;</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
