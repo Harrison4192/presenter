@@ -45,10 +45,12 @@ usethis::use_package("janitor")
 usethis::use_package("tibble")
 usethis::use_package("rlang")
 usethis::use_package("lubridate")
+usethis::use_package("formattable")
+
 
 usethis::use_package("badger", type = "Suggests")
 
-
+usethis::use_r("formatters")
 
 # edit R profile ----------------------------------------------------------
 

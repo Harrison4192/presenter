@@ -32,7 +32,8 @@ Imports:
     stringi,
     berryFunctions,
     rvg,
-    tidyselect
+    tidyselect,
+    formattable
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

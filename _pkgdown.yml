@@ -18,6 +18,10 @@ reference:
   - '`make_flextable`'
   - '`make_pivot_table`'
   - '`make_powerpoint`'
+- title: Formatters
+  contents:
+  - '`format_percent`'
+  - '`format_number`'
 articles:
 - title: All vignettes
   desc: null

@@ -32,7 +32,10 @@ make_flextable <- function(df,
 
   df %>%
     dplyr::mutate(dplyr::across(tidyselect::matches("p.value"), format.pval)) %>%
-    dplyr::mutate(dplyr::across(where(is.double), prettyNum)) -> df
+    format_number() -> df
+
+    df %>%
+      select_otherwise(where(is.numeric), return_type = "names") -> numeric_cols
 
   flextable::flextable(df) -> f1
 theme <- theme[1]
@@ -153,6 +156,17 @@ id_col_nums <- NULL
 
   if(!is.null(merge_col_indices) | !is.null(last_id_col)){
     f1 %>% flextable::merge_v(j = merge_cols) -> f1}
+
+
+# paint negative numbers red
+  for(nm in numeric_cols){
+
+    my_nm <- rlang::sym(nm)
+
+    f1 %>%
+      format_red(my_nm) -> f1
+  }
+
   f1 %>%
     flextable::border_inner(border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "header") %>%
     flextable::border(j = last_id_col, border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "body") %>%

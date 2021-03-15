@@ -2,6 +2,8 @@
 
 export("%>%")
 export(finish_excel_wb)
+export(format_number)
+export(format_percent)
 export(get_piped_name)
 export(make_excel)
 export(make_excel_wb)
