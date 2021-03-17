@@ -51,7 +51,7 @@ usethis::use_package("formattable")
 usethis::use_package("badger", type = "Suggests")
 
 usethis::use_r("formatters")
-
+usethis::use_vignette("formattedFlextable")
 # edit R profile ----------------------------------------------------------
 
 

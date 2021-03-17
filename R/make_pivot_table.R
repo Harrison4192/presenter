@@ -11,7 +11,9 @@
 #' @return a flextable
 #' @export
 
-make_pivot_table <- function(tbl, col1, col2,
+make_pivot_table <- function(tbl,
+                             col1,
+                             col2,
                              show_percentages = T,
                              tbl_nm = NULL,
                              tabyl_denominator = c("all", "row", "col"),
@@ -22,8 +24,8 @@ make_pivot_table <- function(tbl, col1, col2,
     tbl_nm %>% stringr::str_replace_all(" ", "_") -> tbl_nm
   }
 
-theme <- theme[1]
-tabyl_denominator <- tabyl_denominator[1]
+theme <- match.arg(theme)
+tabyl_denominator <- math.arg(tabyl_denominator)
 
   col1 <- rlang::ensym(col1)
   col1_nm <- rlang::as_string(col1)

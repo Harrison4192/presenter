@@ -102,3 +102,14 @@ flex_mergev1 <- function(x, df){
     flextable::merge_v(j = my_form)
 
 }
+
+
+get_headers <- function(db){
+
+  db %>%
+    names() %>%
+    stringr::str_extract("^.*(?=(_|\\.))") %>%
+    table() %>%
+    subset(subset = . > 1) %>%
+    names()
+}

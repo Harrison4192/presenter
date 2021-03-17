@@ -3,7 +3,7 @@
 #' Turns a data frame into a flextable
 #'
 #' @param df data frame
-#' @param header_words header words
+#' @param header_words header words. Takes a character vector of header words. will be automatically generate via a heuristic if left NULL. can be completely disabled by the string "disable"
 #' @param last_id_col last id col
 #' @param merge_col_indices merge specific column indices
 #' @param theme string to choose a preselected theme
@@ -31,19 +31,32 @@ make_flextable <- function(df,
   cell_border_style = "solid"
 
   df %>%
-    dplyr::mutate(dplyr::across(tidyselect::matches("p.value"), format.pval)) %>%
-    format_number() -> df
+    dplyr::mutate(dplyr::across(tidyselect::matches("p.value"), format.pval)) -> df
 
-    df %>%
-      select_otherwise(where(is.numeric), return_type = "names") -> numeric_cols
 
   flextable::flextable(df) -> f1
 theme <- theme[1]
 id_col_nums <- NULL
 
-  if(!is.null(header_words)){
+
+  if(!is.null(header_words) && header_words == "disable"){
+
+    f1 <- f1
+
+
+  } else if(!is.null(header_words)) {
 
     flex_set_headers(f1, df, header_words) -> f1
+
+  } else {
+
+    get_headers(df) -> header_words
+
+    if(!is.null(header_words)){
+    flex_set_headers(f1, df, header_words) -> f1}
+    else{
+      f1 -> f1
+    }
   }
 
 
@@ -73,74 +86,76 @@ id_col_nums <- NULL
     merge_cols <- merge_col_indices
   }
 
-  if(theme == "zebra_blue"){
-    f1 %>%
-      flextable::theme_zebra(
-        odd_header = odd_header,
-        even_header = even_header,
-        odd_body = odd_body,
-        even_body = even_body
-      ) -> f1
 
-    # if(!is.null(id_col_nums)){
-    # f1 %>%
-    #   flextable::bg(j = id_col_nums, bg = odd_body) -> f1}
+if(theme == "zebra_blue"){
+  f1 %>%
+    flextable::theme_zebra(
+      odd_header = odd_header,
+      even_header = even_header,
+      odd_body = odd_body,
+      even_body = even_body
+    ) -> f1
 
-    } else if(theme == "zebra_gold"){
-        f1 %>%
-        flextable::theme_zebra(
-          odd_header = "darkgoldenrod2",
-          even_header = "gold2",
-          odd_body = "gold",
-          even_body = "wheat"
-        ) -> f1
+  # if(!is.null(id_col_nums)){
+  # f1 %>%
+  #   flextable::bg(j = id_col_nums, bg = odd_body) -> f1}
 
-        cell_border_color <-  "black"
-        header_color <- "black"
+} else if(theme == "zebra_gold"){
+  f1 %>%
+    flextable::theme_zebra(
+      odd_header = "darkgoldenrod2",
+      even_header = "gold2",
+      odd_body = "gold",
+      even_body = "wheat"
+    ) -> f1
 
-
-        # if(!is.null(id_col_nums)){
-        # f1 %>%
-        #   flextable::bg(j = id_col_nums, bg = "gold2" ) -> f1}
+  cell_border_color <-  "black"
+  header_color <- "black"
 
 
-      } else if(theme == "tron"){
-        f1 %>% flextable::theme_tron() -> f1
-        border_outer_color <- "skyblue"
-        cell_border_color <- "skyblue"
-      } else if(theme == "vader"){
-        f1 %>% flextable::theme_vader() -> f1
-        border_outer_color <- "pink"
-        cell_border_color <- "pink"
-      } else if(theme == "vanilla"){
-        f1 %>% flextable::theme_vanilla() -> f1
-        border_outer_color <- "darkgrey"
-        cell_border_color <- "grey"
-        header_color <- "black"
-        cell_border_style <- "dashed"
-      } else if(theme == "booktabs"){
-        f1 %>% flextable::theme_booktabs() -> f1
-        border_outer_color <- "darkgrey"
-        cell_border_color <- "grey"
-        header_color <- "black"
-        cell_border_style <- "solid"
-      } else if(theme == "alafoli"){
-        f1 %>% flextable::theme_alafoli() -> f1
-        border_outer_color <- "darkgrey"
-        cell_border_color <- "grey"
-        header_color <- "black"
-        cell_border_style <- "dashed"
-        header_color <- "black"
-      } else if(theme == "box"){
-        f1 %>% flextable::theme_box() -> f1
-        border_outer_color <- "darkgrey"
-        cell_border_color <- "grey"
-        header_color <- "black"
-        cell_border_style <- "dashed"
-        header_color <- "black"
-      } else{
-        stop("You did not enter a valid theme. Choose from zebra_blue, zebra_gold, tron, vader, box, vanilla, booktabs, alafoli", call. = F)
-      }
+  # if(!is.null(id_col_nums)){
+  # f1 %>%
+  #   flextable::bg(j = id_col_nums, bg = "gold2" ) -> f1}
+
+
+} else if(theme == "tron"){
+  f1 %>% flextable::theme_tron() -> f1
+  border_outer_color <- "skyblue"
+  cell_border_color <- "skyblue"
+} else if(theme == "vader"){
+  f1 %>% flextable::theme_vader() -> f1
+  border_outer_color <- "pink"
+  cell_border_color <- "pink"
+} else if(theme == "vanilla"){
+  f1 %>% flextable::theme_vanilla() -> f1
+  border_outer_color <- "darkgrey"
+  cell_border_color <- "grey"
+  header_color <- "black"
+  cell_border_style <- "dashed"
+} else if(theme == "booktabs"){
+  f1 %>% flextable::theme_booktabs() -> f1
+  border_outer_color <- "darkgrey"
+  cell_border_color <- "grey"
+  header_color <- "black"
+  cell_border_style <- "solid"
+} else if(theme == "alafoli"){
+  f1 %>% flextable::theme_alafoli() -> f1
+  border_outer_color <- "darkgrey"
+  cell_border_color <- "grey"
+  header_color <- "black"
+  cell_border_style <- "dashed"
+  header_color <- "black"
+} else if(theme == "box"){
+  f1 %>% flextable::theme_box() -> f1
+  border_outer_color <- "darkgrey"
+  cell_border_color <- "grey"
+  header_color <- "black"
+  cell_border_style <- "dashed"
+  header_color <- "black"
+} else{
+  stop("You did not enter a valid theme. Choose from zebra_blue, zebra_gold, tron, vader, box, vanilla, booktabs, alafoli", call. = F)
+}
+
 
   f1 %>%
     flextable::color( color = header_color, part = "header") %>%
@@ -158,7 +173,27 @@ id_col_nums <- NULL
     f1 %>% flextable::merge_v(j = merge_cols) -> f1}
 
 
+# format integers
+df %>%
+  select_otherwise(where(rlang::is_bare_integer), return_type = "names") -> int_nms
+
+f1 %>% flextable::colformat_int(j = int_nms) -> f1
+
+# format doubles
+df %>%
+  select_otherwise(where(rlang::is_bare_double), return_type = "names") -> dbl_nms
+
+if(!rlang::is_empty(dbl_nms)) {f1 %>% flextable::colformat_double(j = dbl_nms) -> f1}
+
+# get char cols
+df %>%
+  select_otherwise(where(rlang::is_character)) -> chr_cols
+
 # paint negative numbers red
+
+df %>%
+  select_otherwise(where(is.numeric), return_type = "names") -> numeric_cols
+
   for(nm in numeric_cols){
 
     my_nm <- rlang::sym(nm)
@@ -174,5 +209,9 @@ id_col_nums <- NULL
     flextable::align( align = "center", part= "all") %>%
     flextable::border_outer(part="all", border = officer::fp_border(width = 3, color = border_outer_color, style = border_outer_style) ) %>%
     flextable::fix_border_issues(.) %>%
-    flextable::autofit(.)
+    flextable::autofit(.) -> f1
+
+
+f1
+
 }

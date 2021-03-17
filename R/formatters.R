@@ -31,6 +31,9 @@ format_percent <- function(tbl, ..., digits = 0){
 
   tbl %>% select_otherwise(..., otherwise = where(is_percentage)) -> col_indx
 
+  tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~ifelse(. == 0, . + .0000000000001, .))) -> tbl
+
+
   tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~formattable::percent(., digits = digits)))
 }
 
@@ -57,7 +60,7 @@ is_percentage <- function(x){
   })
 
 }
-select_otherwise <- function(.data, ..., otherwise = tidyselect::everything(), col = NULL, return_type = c("index", "names", "df")){
+select_otherwise <- function(.data, ..., otherwise = NULL, col = NULL, return_type = c("index", "names", "df")){
 
   return_type <- return_type[1]
 

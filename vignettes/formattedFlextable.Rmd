@@ -1,0 +1,68 @@
+---
+title: "formattedFlextable"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{formattedFlextable}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message=F, warning=F}
+library(presenteR)
+library(tidyverse)
+```
+
+# Custom formatting
+
+* create a header word using `dplyr::rename_with`
+* format percentages with `presenteR::format_percent`
+
+```{r}
+diamonds %>% 
+  select(-clarity) %>% 
+  mutate(relative_price = price / max(price), .before = "x") %>% 
+  group_by(across(where(is.ordered))) %>% 
+  summarize(across(where(is.double), mean), .groups = "drop") %>% 
+  format_percent(relative_price) %>% 
+  rename_with(~str_c("category_", .), cut:color) %>% 
+  rename_with(~str_c("property_", .), carat:table) %>% 
+  rename_with(~str_c("dimension_", .), x:z) -> diamonds_summary
+
+diamonds_summary %>% head
+```
+
+Header words are  automatically identified by the following regular expression: `"^.*(?=(_|\\.))"`. Leaving the `header_word` argument blank produces the same result as providing the commented out argument below. The last id column controls merging and greyscaling. Numeric columns are given some automatic formatting within the `make_flextable` function. 
+
+```{r}
+diamonds_summary %>% 
+  make_flextable(last_id_col = 2,
+                 # header_words = c("category", "property", "dimension"), 
+                 theme = "zebra_gold")
+```
+
+## Automatic coloring
+
+```{r}
+tibble(x = letters[1:10],
+       y = -5:4,
+       z = -c(-.5, -.2, -.1, 0, .1, .2, .3, .4, .6, .9)) %>% 
+  format_percent(z) %>% 
+  rename_with(~str_c("sample_", .)) %>% 
+  make_flextable()
+```
+
+```{r}
+tibble(x = letters[1:10],
+       y = -5:4,
+       z = -c(-.5, -.2, -.1, 0, .1, .2, .3, .4, .6, .9)) %>% 
+  format_percent(z) %>% 
+  make_flextable()
+```
+
