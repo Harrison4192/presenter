@@ -9,7 +9,8 @@
 #' @export
 make_simple_excel <- function(object, show = T){
 
-  get_piped_name(object) -> sheetname
+  object1 <- rlang::ensym(object)
+  get_piped_name(!!object1) -> sheetname
 
   sheetname %>%
     paste0(stringi::stri_rand_strings(1, 4))  %>%

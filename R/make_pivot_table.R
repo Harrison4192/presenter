@@ -20,7 +20,8 @@ make_pivot_table <- function(tbl,
                              theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli")){
 
   if(is.null(tbl_nm)){
-  get_piped_name(tbl, "Pivot") -> tbl_nm} else {
+  tbl1 <- rlang::ensym(tbl)
+  get_piped_name(!!tbl1, "Pivot") -> tbl_nm} else {
     tbl_nm %>% stringr::str_replace_all(" ", "_") -> tbl_nm
   }
 

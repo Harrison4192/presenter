@@ -381,7 +381,9 @@ make_excel <- function(df,
                          last_id_col = NULL,
                          header_word = NULL,
                          widths = 13){
-  df_name <- get_piped_name(df)
+  df1 <- rlang::ensym(df)
+
+  df_name <- get_piped_name(!!df1)
 
   make_excel_wb(object = df,
                   last_id_col = last_id_col,

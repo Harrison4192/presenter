@@ -18,7 +18,10 @@ make_powerpoint <- function(tbl,
                               master = "Office Theme",
                               show = T){
 
-  get_piped_name(tbl) -> tbl_nm0
+
+  tbl1 <- rlang::ensym(tbl)
+
+  get_piped_name(!!tbl1) -> tbl_nm0
 
   stringi::stri_rand_strings(1, 4) -> tbl_id
 
