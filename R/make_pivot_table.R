@@ -26,7 +26,7 @@ make_pivot_table <- function(tbl,
   }
 
 theme <- match.arg(theme)
-tabyl_denominator <- math.arg(tabyl_denominator)
+tabyl_denominator <- match.arg(tabyl_denominator)
 
   col1 <- rlang::ensym(col1)
   col1_nm <- rlang::as_string(col1)

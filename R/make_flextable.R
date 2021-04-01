@@ -35,7 +35,7 @@ make_flextable <- function(df,
 
 
   flextable::flextable(df) -> f1
-theme <- theme[1]
+theme <- match.arg(theme)
 id_col_nums <- NULL
 
 
