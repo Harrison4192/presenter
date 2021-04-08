@@ -47,6 +47,7 @@ style_header_sequence <- function(header_word, object, id_col_range, wb, sheet )
 #' @param last_id_col  index of last id col
 #' @param header_word character vector of header words
 #' @param widths col widths
+#' @param random_color_seed seed for random color scheme
 #'
 #' @return excel wb object
 #' @export
@@ -55,7 +56,8 @@ make_excel_wb <- function(wb = NULL,
                             object,
                             last_id_col = NULL,
                             header_word = NULL,
-                            widths = 13){
+                            widths = 13,
+                            random_color_seed = 1){
 
 
   # create workbook -----------------------------------------------------
@@ -71,6 +73,7 @@ make_excel_wb <- function(wb = NULL,
   if(is.null(wb)){
     openxlsx::createWorkbook() -> wb}
 
+set.seed(random_color_seed)
   openxlsx::addWorksheet(wb,
                file_name,
                gridLines = FALSE,
@@ -332,12 +335,18 @@ if(is.null(last_id_col)){last_id_col <- 0}
     showGridLines = FALSE
   )
 
+  print(id_col_range)
+  print(value_col_range)
+  print(unique(c(id_col_range, value_col_range)))
+
   openxlsx::setColWidths(
     wb,
     sheet,
-    value_col_range,
+    unique(c(id_col_range, value_col_range)),
     widths = widths
   )
+
+
 
   if(length(date_col_range > 0)){
 
@@ -374,13 +383,15 @@ finish_excel_wb <- function(wb,
 #' @param last_id_col index of last id col
 #' @param header_word character vector of header words
 #' @param widths col widths
+#' @param random_color_seed seed for random color scheme
 #'
 #' @return an excel file
 #' @export
 make_excel <- function(df,
                          last_id_col = NULL,
                          header_word = NULL,
-                         widths = 13){
+                         widths = 13,
+                         random_color_seed = 1){
   df1 <- rlang::ensym(df)
 
   df_name <- get_piped_name(!!df1)
@@ -388,7 +399,8 @@ make_excel <- function(df,
   make_excel_wb(object = df,
                   last_id_col = last_id_col,
                   header_word = header_word,
-                  widths = widths) -> x1
+                  widths = widths,
+                  random_color_seed = random_color_seed) -> x1
 
   names(x1) <- df_name
 

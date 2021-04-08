@@ -1,5 +1,9 @@
 
 
+#' get lhs
+#'
+#' @keywords internal
+#'
 get_lhs <- function(){
   calls <- sys.calls()
 
@@ -14,7 +18,20 @@ get_lhs <- function(){
   }
 }
 
-
+#' get piped name
+#'
+#'this function captures the name of a data frame piped into a function as a string. Powers the automatic naming found in presenter.
+#'
+#'citation: <https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/>
+#'
+#'
+#' @param objName an object
+#' @param default_name default name if object name is not able to be accessed in case of a long pipe
+#'
+#' @return string
+#' @keywords internal
+#'
+#' @examples
 get_piped_name <- function(objName, default_name = "Title") {
   z <- get_lhs()
 

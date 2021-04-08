@@ -203,10 +203,12 @@ df %>%
   }
 
   f1 %>%
-    flextable::border_inner(border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "header") %>%
-    flextable::border(j = last_id_col, border = officer::fp_border(color = cell_border_color, style = "solid", width = 1.5), part = "body") %>%
-    flextable::border(j = value_cols, border = officer::fp_border(color = cell_border_color, style = cell_border_style, width = 1.5), part = "body") %>%
     flextable::align( align = "center", part= "all") %>%
+    flextable::border_outer(part="all", border = officer::fp_border(width = 3, color = border_outer_color, style = border_outer_style) ) %>%
+    flextable::fix_border_issues(.) %>%
+    flextable::border_inner(border = officer::fp_border(color = border_outer_color, style = "solid", width = 1.5), part = "header") %>%
+    flextable::border(j = last_id_col, border = officer::fp_border(color = border_outer_color, style = "solid", width = 1.5), part = "body") %>%
+    flextable::border(j = value_cols, border = officer::fp_border(color = cell_border_color, style = cell_border_style, width = 1.5), part = "body") %>%
     flextable::border_outer(part="all", border = officer::fp_border(width = 3, color = border_outer_color, style = border_outer_style) ) %>%
     flextable::fix_border_issues(.) %>%
     flextable::autofit(.) -> f1
