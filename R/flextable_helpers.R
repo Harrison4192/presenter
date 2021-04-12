@@ -107,9 +107,29 @@ flex_mergev1 <- function(x, df){
 get_headers <- function(db){
 
   db %>%
-    names() %>%
+    names() -> nms
+  nms %>%
     stringr::str_extract("^.*(?=(_|\\.))") %>%
     table() %>%
     subset(subset = . > 1) %>%
-    names()
+    names() -> hdrs
+
+
+
+  if(rlang::is_empty(hdrs)){
+    nms1 <- nms
+  } else{
+    nms %>%
+      str_subset(stringr::str_c(hdrs, collapse = "|"), negate = T) -> nms1
+
+  }
+
+  nms1 %>%
+    stringr::str_extract("(?<=(_|\\.)).*$") %>%
+    table() %>%
+    subset(subset = . > 1) %>%
+    names() -> hdrs1
+
+unique(c(hdrs1, hdrs))
+
 }

@@ -30,8 +30,16 @@ make_flextable <- function(df,
   border_outer_style = "solid"
   cell_border_style = "solid"
 
+
+  #format p.value
+
   df %>%
     dplyr::mutate(dplyr::across(tidyselect::matches("p.value"), format.pval)) -> df
+
+  # format percent (experimental)
+
+  # df %>%
+  #   format_percent(where(is.double) & matches("pct|PCT|percent|PERCENT")) -> df
 
 
   flextable::flextable(df) -> f1
@@ -52,7 +60,7 @@ id_col_nums <- NULL
 
     get_headers(df) -> header_words
 
-    if(!is.null(header_words)){
+    if(!rlang::is_empty(header_words)){
     flex_set_headers(f1, df, header_words) -> f1}
     else{
       f1 -> f1
@@ -185,9 +193,11 @@ df %>%
 
 if(!rlang::is_empty(dbl_nms)) {f1 %>% flextable::colformat_double(j = dbl_nms) -> f1}
 
+
 # get char cols
 df %>%
   select_otherwise(where(rlang::is_character)) -> chr_cols
+
 
 # paint negative numbers red
 
