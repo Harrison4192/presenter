@@ -335,10 +335,6 @@ if(is.null(last_id_col)){last_id_col <- 0}
     showGridLines = FALSE
   )
 
-  print(id_col_range)
-  print(value_col_range)
-  print(unique(c(id_col_range, value_col_range)))
-
   openxlsx::setColWidths(
     wb,
     sheet,

@@ -3,10 +3,9 @@
 #' @param tbl a data frame to pivot
 #' @param col1 unqouted col 1
 #' @param col2 unquoted col 2
-#' @param show_percentages logical; show percentages with numbers
 #' @param show_totals logical; show row and col totals
+#' @param show_percentages string; denominator to use when calculating percentages
 #' @param tbl_nm string to name table. If not given, automatically defaults to table name.
-#' @param tabyl_denominator denominator to use when calculating percentages
 #' @param theme string to choose a predefined theme
 #'
 #' @return a flextable
@@ -15,11 +14,10 @@
 make_pivot_table <- function(tbl,
                              col1,
                              col2,
-                             show_percentages = T,
                              show_totals = F,
-                             tbl_nm = NULL,
-                             tabyl_denominator = c("all", "row", "col"),
-                             theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli")){
+                             show_percentages = c("none", "all", "row", "col"),
+                             theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli"),
+                             tbl_nm = NULL){
 
   if(is.null(tbl_nm)){
   tbl1 <- rlang::ensym(tbl)
@@ -28,7 +26,7 @@ make_pivot_table <- function(tbl,
   }
 
 theme <- match.arg(theme)
-tabyl_denominator <- match.arg(tabyl_denominator)
+show_percentages <- match.arg(show_percentages)
 
   col1 <- rlang::ensym(col1)
   col1_nm <- rlang::as_string(col1)
@@ -87,10 +85,10 @@ if(show_totals){
 
 
 
-  if(show_percentages){
+  if(show_percentages != "none"){
 
     tbl1 %>%
-    janitor::adorn_percentages(denominator = tabyl_denominator) %>%
+    janitor::adorn_percentages(denominator = show_percentages) %>%
     janitor::adorn_pct_formatting(digits = 0) %>%
     janitor::adorn_ns() -> tbl1}
 
@@ -104,6 +102,7 @@ if(show_totals){
 
 
   tbl1 %>%
+    dplyr::mutate(dplyr::across(where(is.double), as.integer)) %>%
     dplyr::mutate("S" = col1_nm, .before = 1) %>%
     rlang::set_names(names(.) %>% stringr::str_c(col2_nm,"_", .) %>% replace(1:2, c(tbl_nm, tbl_nm1 ))) -> tbl1
 
@@ -231,7 +230,13 @@ f1 %>%
   flextable::width( j = 2:ncol(tbl1) , width = .5) %>%
   flextable::width(j = 1, width = .35) -> f1
 
-
+if(show_percentages == "col"){
+  f1 %>%
+    flextable::add_footer_row(values = "* columns add to 100%", colwidths = ncol(tbl1)) -> f1
+} else if(show_percentages == "row"){
+  f1 %>%
+    flextable::add_footer_row(values = "* rows add to 100%", colwidths = ncol(tbl1)) -> f1
+}
 
 f1
 }
