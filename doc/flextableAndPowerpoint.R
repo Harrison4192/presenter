@@ -29,7 +29,7 @@ tron_cross_table
 ## -----------------------------------------------------------------------------
 iris %>% 
   dplyr::mutate(Species1 = stringr::str_c(Species, " very good")) %>% 
-  make_pivot_table(Species1, Species, show_percentages = F, tbl_nm = "gold table", theme = "zebra_gold") -> tbl 
+  make_pivot_table(Species1, Species, show_percentages = "none", tbl_nm = "gold table", theme = "zebra_gold") -> tbl 
 
 tbl
 

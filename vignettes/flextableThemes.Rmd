@@ -65,7 +65,7 @@ iris1 %>%
 
 ```{r}
 iris2 %>% 
-  make_pivot_table(col1 = Species, col2 = Species_random, theme = "vanilla", show_percentages = F)
+  make_pivot_table(col1 = Species, col2 = Species_random, theme = "vanilla")
 ```
 
 # booktabs

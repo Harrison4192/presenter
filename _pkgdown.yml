@@ -32,6 +32,8 @@ articles:
   - '`exportToExcel`'
   - '`flextableAndPowerpoint`'
   - '`flextableThemes`'
+  - '`formattedFlextable`'
+  - '`pivotSummary`'
 navbar:
   structure:
     left:
@@ -65,4 +67,8 @@ navbar:
         href: articles/flextableAndPowerpoint.html
       - text: flextableThemes
         href: articles/flextableThemes.html
+      - text: formattedFlextable
+        href: articles/formattedFlextable.html
+      - text: pivotSummary
+        href: articles/pivotSummary.html
 
