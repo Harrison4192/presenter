@@ -16,7 +16,7 @@ make_flextable(
 \arguments{
 \item{df}{data frame}
 
-\item{header_words}{header words}
+\item{header_words}{header words. Takes a character vector of header words. will be automatically generate via a heuristic if left NULL. can be completely disabled by the string "disable"}
 
 \item{last_id_col}{last id col}
 

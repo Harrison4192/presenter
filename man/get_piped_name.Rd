@@ -20,3 +20,4 @@ this function captures the name of a data frame piped into a function as a strin
 \details{
 citation: <https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/>
 }
+\keyword{internal}

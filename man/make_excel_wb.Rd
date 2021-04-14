@@ -9,7 +9,8 @@ make_excel_wb(
   object,
   last_id_col = NULL,
   header_word = NULL,
-  widths = 13
+  widths = 13,
+  random_color_seed = 1
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ make_excel_wb(
 \item{header_word}{character vector of header words}
 
 \item{widths}{col widths}
+
+\item{random_color_seed}{seed for random color scheme}
 }
 \value{
 excel wb object

@@ -8,11 +8,11 @@ make_pivot_table(
   tbl,
   col1,
   col2,
-  show_percentages = T,
-  tbl_nm = NULL,
-  tabyl_denominator = c("all", "row", "col"),
+  show_totals = F,
+  show_percentages = c("none", "all", "row", "col"),
   theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",
-    "alafoli")
+    "alafoli"),
+  tbl_nm = NULL
 )
 }
 \arguments{
@@ -22,13 +22,13 @@ make_pivot_table(
 
 \item{col2}{unquoted col 2}
 
-\item{show_percentages}{logical; show percentages with numbers}
+\item{show_totals}{logical; show row and col totals}
 
-\item{tbl_nm}{string to name table. If not given, automatically defaults to table name.}
-
-\item{tabyl_denominator}{denominator to use when calculating percentages}
+\item{show_percentages}{string; denominator to use when calculating percentages}
 
 \item{theme}{string to choose a predefined theme}
+
+\item{tbl_nm}{string to name table. If not given, automatically defaults to table name.}
 }
 \value{
 a flextable

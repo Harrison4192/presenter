@@ -4,7 +4,13 @@
 \alias{make_excel}
 \title{Create Excel}
 \usage{
-make_excel(df, last_id_col = NULL, header_word = NULL, widths = 13)
+make_excel(
+  df,
+  last_id_col = NULL,
+  header_word = NULL,
+  widths = 13,
+  random_color_seed = 1
+)
 }
 \arguments{
 \item{df}{data frame}
@@ -14,6 +20,8 @@ make_excel(df, last_id_col = NULL, header_word = NULL, widths = 13)
 \item{header_word}{character vector of header words}
 
 \item{widths}{col widths}
+
+\item{random_color_seed}{seed for random color scheme}
 }
 \value{
 an excel file

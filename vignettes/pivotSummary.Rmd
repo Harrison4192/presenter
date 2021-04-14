@@ -1,0 +1,96 @@
+---
+title: "pivotSummary"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pivotSummary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(presenteR)
+library(dplyr)
+```
+
+# Pivot summary
+
+Transpose a tibble of summary statistics in tidy format. Convenient function for transposing the output of dplyr"s `group_by` and `summarize` operation.
+
+## 0 groups
+
+Transpose a 1 row numerical summary:
+
+**wide format**
+
+```{r}
+iris %>% 
+  summarize(across(where(is.numeric), mean), .groups = "drop") -> sumr0
+
+sumr0
+```
+
+**long format**
+
+```{r}
+
+sumr0 %>% 
+  pivot_summary()
+
+```
+
+## 1 group
+
+A grouped summary can be transposed by providing the name of the group column.
+
+**wide format**
+
+```{r}
+iris %>% 
+  group_by(Species) %>% 
+  summarize(across(where(is.numeric), mean), .groups = "drop") -> sumr1
+
+sumr1
+```
+**long format**
+
+```{r}
+
+sumr1 %>% 
+  pivot_summary(Species)
+```
+
+
+## 2 groups
+
+Supports transposing numerical summaries with multiple groups using tidyselect. 
+
+**long format**
+
+
+```{r}
+
+iris %>%
+  mutate(Species1 = sample(Species)) %>%
+  group_by(Species, Species1) %>% 
+  summarize(across(where(is.numeric), mean), .groups = "drop") -> sumr2
+ 
+sumr2
+```
+
+
+Group names are concatenated and pivoted.
+
+**wide format**
+
+```{r}
+sumr2 %>% 
+   pivot_summary(matches("Spec")) 
+```
+
