@@ -22,6 +22,9 @@ reference:
   contents:
   - '`format_percent`'
   - '`format_number`'
+- title: Reshape Data
+  contents:
+  - '`pivot_summary`'
 articles:
 - title: All vignettes
   desc: null

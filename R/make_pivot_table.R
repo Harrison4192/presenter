@@ -121,6 +121,7 @@ if(show_totals){
     flextable::fix_border_issues() -> f1
 
   if(theme == "zebra_blue"){
+
     f1 %>%
     flextable::bg(i = 1:2, j = 1:2, bg = "steelblue3", part = "header") %>%
     flextable::bg(j = 1,  bg = "steelblue3") %>%
@@ -140,11 +141,6 @@ if(show_totals){
 
     if(show_totals){
       f1 %>%
-        flextable::hline(i = (nrow(tbl1) - 1), border = officer::fp_border(color = "black", style = "solid", width = 3)) %>%
-        flextable::vline(
-          j = ncol(tbl1) - 1,
-          border = officer::fp_border(color = "black", style = "solid", width = 3)) %>%
-        flextable::fix_border_issues() %>%
         flextable::color(i = nrow(tbl1), color = "gray43") %>%
         flextable::color(j = ncol(tbl1), color = "gray43") -> f1
 
@@ -154,8 +150,24 @@ if(show_totals){
         flextable::vline(i = nrow(tbl1), j = 1, border = officer::fp_border(color = "white", width = 1.5), part = "body")-> f1
 
     }
+
+
+    if (show_totals){
+      f1 %>%
+        flextable::border_inner(border = officer::fp_border(color = "black", style = "solid", width = 1), part = "body") -> f1
+    }
+
+    f1 %>%
+    flextable::border(i = 1:(nrow(tbl1)), j = 1:2,  border = officer::fp_border(color = "black", style = "solid", width = 3), part = "body") %>%
+      flextable::border(i = 1:2, j = 1:ncol(tbl1),  border = officer::fp_border(color = "black", style = "solid", width = 3), part = "header") %>%
+      flextable::border(i = nrow(tbl1), j = 1,  border = officer::fp_border(color = "white", style = "solid", width = 3), part = "body") %>%
+      flextable::border_outer(border = officer::fp_border(color = "black", style = "solid", width = 3)) -> f1
   }
   else if(theme == "zebra_gold"){
+
+    if (show_totals){
+      f1 %>%
+        flextable::border_inner(border = officer::fp_border(color = "black", style = "solid", width = 1), part = "body") -> f1}
 
     odd_header = "darkgoldenrod2"
     even_header = "gold2"
@@ -194,7 +206,18 @@ if(show_totals){
             }
 
 
-        }}
+          }
+        if (show_totals){
+          f1 %>%
+            flextable::border_inner(border = officer::fp_border(color = "black", style = "solid", width = 1), part = "body") -> f1
+        }
+
+        f1 %>%
+          flextable::border(i = 1:(nrow(tbl1)), j = 1:2,  border = officer::fp_border(color = "black", style = "solid", width = 3), part = "body") %>%
+          flextable::border(i = 1:2, j = 1:ncol(tbl1),  border = officer::fp_border(color = "black", style = "solid", width = 3), part = "header") %>%
+          flextable::border(i = nrow(tbl1), j = 1,  border = officer::fp_border(color = "white", style = "solid", width = 3), part = "body") %>%
+          flextable::border_outer(border = officer::fp_border(color = "black", style = "solid", width = 3)) -> f1
+        }
   else if(theme %in% c("booktabs", "box", "vanilla")){
   f1 %>%
     flextable::color(j = 1:2, color = "black")-> f1
@@ -216,12 +239,59 @@ if(show_totals){
 
     }
 
+
+    f1 %>%
+      flextable::border(i = 1:(nrow(tbl1)), j = 1:2,  border = officer::fp_border(color = "gray", style = "solid", width = 3), part = "body") %>%
+      flextable::border(i = 1:2, j = 1:ncol(tbl1),  border = officer::fp_border(color = "gray", style = "solid", width = 3), part = "header") %>%
+      flextable::border(i = nrow(tbl1), j = 1,  border = officer::fp_border(color = "white", style = "solid", width = 3), part = "body") %>%
+      flextable::border_outer(border = officer::fp_border(color = "gray", style = "solid", width = 3)) -> f1
+
     }
-  else if(theme %in% c("vader", "tron")){
+  else if(theme %in% c( "tron")){
     f1 %>%
       flextable::color(j = 1:2, color = "white") -> f1
 
-}
+    if(show_totals){
+      f1 %>%
+        flextable::hline(i = (nrow(tbl1) - 1), border = officer::fp_border(color = "skyblue", style = "solid", width = 3)) %>%
+        flextable::vline(
+          j = ncol(tbl1) - 1,
+          border = officer::fp_border(color = "skyblue", style = "solid", width = 3)) %>%
+        flextable::fix_border_issues() %>%
+        flextable::color(i = nrow(tbl1), color = "skyblue") %>%
+        flextable::color(j = ncol(tbl1), color = "skyblue") -> f1}
+
+
+    f1 %>%
+      flextable::border(i = 1:(nrow(tbl1)), j = 1:2,  border = officer::fp_border(color = "skyblue", style = "solid", width = 3), part = "body") %>%
+      flextable::border(i = 1:2, j = 1:ncol(tbl1),  border = officer::fp_border(color = "skyblue", style = "solid", width = 3), part = "header") %>%
+      flextable::border(i = nrow(tbl1), j = 1,  border = officer::fp_border(color = "black", style = "solid", width = 3), part = "body") %>%
+      flextable::border_outer(border = officer::fp_border(color = "skyblue", style = "solid", width = 3)) -> f1
+
+
+  }else if(theme %in% c("vader")){
+    f1 %>%
+      flextable::color(j = 1:2, color = "white") -> f1
+
+    if(show_totals){
+      f1 %>%
+        flextable::hline(i = (nrow(tbl1) - 1), border = officer::fp_border(color = "pink", style = "solid", width = 3)) %>%
+        flextable::vline(
+          j = ncol(tbl1) - 1,
+          border = officer::fp_border(color = "pink", style = "solid", width = 3)) %>%
+        flextable::fix_border_issues() %>%
+        flextable::color(i = nrow(tbl1), color = "pink") %>%
+        flextable::color(j = ncol(tbl1), color = "pink") -> f1}
+
+
+    f1 %>%
+      flextable::border(i = 1:(nrow(tbl1)), j = 1:2,  border = officer::fp_border(color = "pink", style = "solid", width = 3), part = "body") %>%
+      flextable::border(i = 1:2, j = 1:ncol(tbl1),  border = officer::fp_border(color = "pink", style = "solid", width = 3), part = "header") %>%
+      flextable::border(i = nrow(tbl1), j = 1,  border = officer::fp_border(color = "black", style = "solid", width = 3), part = "body") %>%
+      flextable::border_outer(border = officer::fp_border(color = "pink", style = "solid", width = 3)) -> f1
+
+
+  }
 f1 %>%
   flextable::fontsize(j = 1:2, size = 16) %>%
   flextable::bold(j = 1:2) %>%
@@ -229,6 +299,9 @@ f1 %>%
   flextable::fix_border_issues() %>%
   flextable::width( j = 2:ncol(tbl1) , width = .5) %>%
   flextable::width(j = 1, width = .35) -> f1
+
+
+
 
 if(show_percentages == "col"){
   f1 %>%
@@ -239,6 +312,7 @@ if(show_percentages == "col"){
 }
 
 f1
+
 }
 
 
