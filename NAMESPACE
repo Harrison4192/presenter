@@ -2,6 +2,7 @@
 
 export("%>%")
 export(finish_excel_wb)
+export(format_currency)
 export(format_number)
 export(format_percent)
 export(make_excel)
