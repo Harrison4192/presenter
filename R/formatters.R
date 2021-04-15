@@ -68,7 +68,7 @@ format_currency <- function(tbl, ..., symbol = "\u00A5", digits = 0){
 
   tbl %>% select_otherwise(..., otherwise = matches("SALES|PRICE")) -> col_indx
 
-  tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~formattable::currency(., symbol = symbol, digits = digits)))
+  tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~formattable::currency(as.double(.), symbol = symbol, digits = digits)))
 }
 
 is_percentage <- function(x){
