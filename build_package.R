@@ -6,7 +6,7 @@
 library(pacman)
 p_load(rstudioapi, devtools, roxygen2, usethis, pkgdown,
        ymlthis, magrittr, fs, covr, gitcreds, credentials,
-       badger, hexSticker, gh, xfun, tidyverse)
+       badger, hexSticker, gh, xfun, tidyverse, r2symbols)
 
 
 # add this file to .Rbuildignore ------------------------------------------

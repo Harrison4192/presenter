@@ -65,7 +65,7 @@ format_number <- function(tbl, ..., digits = 0){
 #'
 #' @return dataframe
 #' @export
-format_currency <- function(tbl, ..., symbol = "￥", digits = 0){
+format_currency <- function(tbl, ..., symbol = "\u00A5", digits = 0){
 
   tbl %>% select_otherwise(..., otherwise = matches("SALES|PRICE")) -> col_indx
 
