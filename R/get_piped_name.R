@@ -31,7 +31,6 @@ get_lhs <- function(){
 #' @return string
 #' @keywords internal
 #'
-#' @examples
 get_piped_name <- function(objName, default_name = "Title") {
   z <- get_lhs()
 

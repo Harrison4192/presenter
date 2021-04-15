@@ -60,11 +60,14 @@ format_number <- function(tbl, ..., digits = 0){
 #'
 #' @param tbl dataframe
 #' @param ... tidyselect.
+#' @param symbol chr. currency symbol
 #' @param digits integer. trailing digits
 #'
 #' @return dataframe
 #' @export
-format_currency <- function(tbl, ..., symbol = "\u00A5", digits = 0){
+format_currency <- function(tbl, ..., symbol = "yen", digits = 0){
+
+  if(symbol == "yen"){symbol <- "\u00A5"}
 
   tbl %>% select_otherwise(..., otherwise = matches("SALES|PRICE")) -> col_indx
 

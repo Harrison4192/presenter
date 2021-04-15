@@ -4,12 +4,14 @@
 \alias{format_currency}
 \title{format currency}
 \usage{
-format_currency(tbl, ..., symbol = "¥", digits = 0)
+format_currency(tbl, ..., symbol = "yen", digits = 0)
 }
 \arguments{
 \item{tbl}{dataframe}
 
 \item{...}{tidyselect.}
+
+\item{symbol}{chr. currency symbol}
 
 \item{digits}{integer. trailing digits}
 }
