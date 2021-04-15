@@ -22,6 +22,7 @@ reference:
   contents:
   - '`format_percent`'
   - '`format_number`'
+  - '`format_currency`'
 - title: Reshape Data
   contents:
   - '`pivot_summary`'

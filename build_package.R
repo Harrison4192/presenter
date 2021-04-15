@@ -51,7 +51,7 @@ usethis::use_package("formattable")
 usethis::use_package("badger", type = "Suggests")
 
 usethis::use_r("formatters")
-usethis::use_vignette("formattedFlextable")
+usethis::use_vignette("pivotSummary")
 # edit R profile ----------------------------------------------------------
 
 
@@ -102,6 +102,7 @@ usethis::use_github_actions()
 usethis::use_github_links()
 # usethis::use_github_pages()
 
+
 # build and check ---------------------------------------------------------
 devtools::load_all()
 document()
@@ -109,6 +110,7 @@ build_readme()
 build_site()
 devtools::check()
 preview_site()
+build_vignettes()
 
 
 # checks ------------------------------------------------------------------

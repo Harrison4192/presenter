@@ -53,6 +53,25 @@ format_number <- function(tbl, ..., digits = 0){
 
   tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~formattable::accounting(., digits = digits)))
 }
+
+
+#' format currency
+#'
+#' formats a monetary value with the currency symbol
+#'
+#' @param tbl dataframe
+#' @param ... tidyselect.
+#' @param digits integer. trailing digits
+#'
+#' @return dataframe
+#' @export
+format_currency <- function(tbl, ..., symbol = "￥", digits = 0){
+
+  tbl %>% select_otherwise(..., otherwise = matches("SALES|PRICE")) -> col_indx
+
+  tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~formattable::currency(., symbol = symbol, digits = digits)))
+}
+
 is_percentage <- function(x){
 
   suppressWarnings({
