@@ -54,7 +54,6 @@ format_number <- function(tbl, ..., digits = 0){
   tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~formattable::accounting(., digits = digits)))
 }
 
-
 #' format currency
 #'
 #' formats a monetary value with the currency symbol
