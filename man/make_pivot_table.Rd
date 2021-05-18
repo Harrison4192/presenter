@@ -10,6 +10,7 @@ make_pivot_table(
   col2,
   show_totals = F,
   show_percentages = c("none", "all", "row", "col"),
+  show_chi_test = T,
   theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",
     "alafoli"),
   tbl_nm = NULL
@@ -25,6 +26,8 @@ make_pivot_table(
 \item{show_totals}{logical; show row and col totals}
 
 \item{show_percentages}{string; denominator to use when calculating percentages}
+
+\item{show_chi_test}{logical; show results of chi squared test in footnote}
 
 \item{theme}{string to choose a predefined theme}
 

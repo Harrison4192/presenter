@@ -5,6 +5,7 @@
 #' @param col2 unquoted col 2
 #' @param show_totals logical; show row and col totals
 #' @param show_percentages string; denominator to use when calculating percentages
+#' @param show_chi_test logical; show results of chi squared test in footnote
 #' @param tbl_nm string to name table. If not given, automatically defaults to table name.
 #' @param theme string to choose a predefined theme
 #'
@@ -16,6 +17,7 @@ make_pivot_table <- function(tbl,
                              col2,
                              show_totals = F,
                              show_percentages = c("none", "all", "row", "col"),
+                             show_chi_test = T,
                              theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli"),
                              tbl_nm = NULL){
 
@@ -40,6 +42,12 @@ show_percentages <- match.arg(show_percentages)
     dplyr::mutate(dplyr::across(c(!!col1, !!col2), as.factor)) %>%
     janitor::tabyl(!!col1, !!col2)  -> tbl1
 
+  suppressWarnings({
+  tbl1 %>%
+    janitor::chisq.test() %>%
+    utils::capture.output() %>%
+    purrr::pluck(5) -> chi_test_res
+})
 
 # create totals -----------------------------------------------------------
 
@@ -309,6 +317,10 @@ if(show_percentages == "col"){
 } else if(show_percentages == "row"){
   f1 %>%
     flextable::add_footer_row(values = "* rows add to 100%", colwidths = ncol(tbl1)) -> f1
+}
+
+if(show_chi_test){
+  flextable::add_footer_row(f1, values = chi_test_res, colwidths = ncol(tbl1)) -> f1
 }
 
 f1
