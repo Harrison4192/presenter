@@ -105,7 +105,7 @@ usethis::use_github_links()
 
 # build and check ---------------------------------------------------------
 devtools::load_all()
-document()
+devtools::document()
 build_readme()
 build_site()
 devtools::check()

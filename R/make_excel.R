@@ -66,6 +66,8 @@ make_excel_wb <- function(wb = NULL,
   file_name <- rlang::as_name(rlang::enexpr(object))
   wb_name <- file_name %>% stringr::str_c(".xlsx", collapse = "")
 
+  object <- dplyr::rename_with(object, .fn = enc2utf8)
+
   if(!is.null(last_id_col)){
   id_col_range <- 1:(last_id_col) }
   else{id_col_range <- NULL}
