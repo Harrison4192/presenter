@@ -46,7 +46,7 @@ show_percentages <- match.arg(show_percentages)
   tbl1 %>%
     janitor::chisq.test() %>%
     utils::capture.output() %>%
-    purrr::pluck(5) -> chi_test_res
+      purrr::pluck(length(.) - 1) -> chi_test_res
 })
 
 # create totals -----------------------------------------------------------
