@@ -14,6 +14,7 @@ make_flextable <- function(df,
                            header_words = NULL,
                            last_id_col = NULL,
                            merge_col_indices = NULL,
+                           dbl_digits = 2,
                            theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli")){
 
 
@@ -191,7 +192,7 @@ f1 %>% flextable::colformat_int(j = int_nms) -> f1
 df %>%
   select_otherwise(where(rlang::is_bare_double), return_type = "names") -> dbl_nms
 
-if(!rlang::is_empty(dbl_nms)) {f1 %>% flextable::colformat_double(j = dbl_nms) -> f1}
+if(!rlang::is_empty(dbl_nms)) {f1 %>% flextable::colformat_double(j = dbl_nms, digits = dbl_digits) -> f1}
 
 
 # get char cols
