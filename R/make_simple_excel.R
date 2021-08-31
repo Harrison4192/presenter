@@ -19,7 +19,7 @@ make_simple_excel <- function(object, show = T){
     paste0(stringi::stri_rand_strings(1, 4))  %>%
     stringr::str_c(".xlsx", collapse = "")-> output_file
 
-  openxlsx::write.xlsx(object, output_file,
+  openxlsx::write.xlsx(object, output_file, overwrite = T,
                        headerStyle =  openxlsx::createStyle(textDecoration = "BOLD",
                                                   fontColour = "#FFFFFF",
                                                   fontSize=12, fontName="Arial Narrow",

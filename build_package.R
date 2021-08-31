@@ -122,5 +122,10 @@ iris %>%
   make_flextable() %>%
   list() -> tbl1
 
+list(il = iris, il2 =  iris, iris) -> tb1
+
+
+tb1 %>%
+  make_simple_excel()
 
 
