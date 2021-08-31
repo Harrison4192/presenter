@@ -9,6 +9,7 @@ make_flextable(
   header_words = NULL,
   last_id_col = NULL,
   merge_col_indices = NULL,
+  dbl_digits = 2,
   theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",
     "alafoli")
 )

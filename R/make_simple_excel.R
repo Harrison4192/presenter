@@ -12,7 +12,8 @@ make_simple_excel <- function(object, show = T){
   object1 <- rlang::ensym(object)
   get_piped_name(!!object1) -> sheetname
 
-  object <- dplyr::rename_with(object, enc2utf8)
+  if(is.data.frame(object)){
+  object <- dplyr::rename_with(object, enc2utf8)}
 
   sheetname %>%
     paste0(stringi::stri_rand_strings(1, 4))  %>%
