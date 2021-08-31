@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r setup, message=F, warning=F}
-library(presenteR)
+library(presenter)
 library(dplyr)
 ```
 

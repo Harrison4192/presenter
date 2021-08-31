@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make pivot table — make_pivot_table • presenteR</title>
+<title>Make pivot table — make_pivot_table • presenter</title>
 
 
 <!-- jquery -->
@@ -81,7 +81,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">presenteR</a>
+        <a class="navbar-link" href="../index.html">presenter</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -127,7 +127,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Harrison4192/presenteR/">
+  <a href="https://github.com/Harrison4192/presenter/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -149,7 +149,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make pivot table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/presenteR/blob/master/R/make_pivot_table.R'><code>R/make_pivot_table.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/presenter/blob/master/R/make_pivot_table.R'><code>R/make_pivot_table.R</code></a></small>
     <div class="hidden name"><code>make_pivot_table.Rd</code></div>
     </div>
 
@@ -163,6 +163,7 @@
   <span class='va'>col2</span>,
   show_totals <span class='op'>=</span> <span class='cn'>F</span>,
   show_percentages <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"none"</span>, <span class='st'>"all"</span>, <span class='st'>"row"</span>, <span class='st'>"col"</span><span class='op'>)</span>,
+  show_chi_test <span class='op'>=</span> <span class='cn'>T</span>,
   theme <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"zebra_blue"</span>, <span class='st'>"zebra_gold"</span>, <span class='st'>"tron"</span>, <span class='st'>"vader"</span>, <span class='st'>"vanilla"</span>, <span class='st'>"booktabs"</span>,
     <span class='st'>"alafoli"</span><span class='op'>)</span>,
   tbl_nm <span class='op'>=</span> <span class='cn'>NULL</span>
@@ -190,6 +191,10 @@
     <tr>
       <th>show_percentages</th>
       <td><p>string; denominator to use when calculating percentages</p></td>
+    </tr>
+    <tr>
+      <th>show_chi_test</th>
+      <td><p>logical; show results of chi squared test in footnote</p></td>
     </tr>
     <tr>
       <th>theme</th>

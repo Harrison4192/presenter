@@ -1,3 +1,4 @@
+xfun::gsub_dir(pattern = "presenteR", replacement = "presenter", recursive = T)
 
 # load developer libraries ------------------------------------------------
 
@@ -106,11 +107,11 @@ usethis::use_github_links()
 # build and check ---------------------------------------------------------
 devtools::load_all()
 devtools::document()
-build_readme()
-build_site()
+devtools::build_readme()
+devtools::build_site()
 devtools::check()
-preview_site()
-build_vignettes()
+devtools::preview_site()
+devtools::build_vignettes()
 
 
 # checks ------------------------------------------------------------------

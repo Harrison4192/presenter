@@ -13,33 +13,33 @@ knitr::opts_chunk$set(
 )
 ```
 
-# presenteR
+# presenter
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/presenteR)](https://CRAN.R-project.org/package=presenteR)
-[![R-CMD-check](https://github.com/Harrison4192/presenteR/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/presenteR/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/presenter)](https://CRAN.R-project.org/package=presenter)
+[![R-CMD-check](https://github.com/Harrison4192/presenter/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/presenter/actions)
 
-`r badger::badge_cran_download("presenteR", "grand-total", "blue")`
-`r badger::badge_code_size("Harrison4192/presenteR")`
-`r badger::badge_last_commit("Harrison4192/presenteR")`
+`r badger::badge_cran_download("presenter", "grand-total", "blue")`
+`r badger::badge_code_size("Harrison4192/presenter")`
+`r badger::badge_last_commit("Harrison4192/presenter")`
 <!-- badges: end -->
 
 
   
 ## Installation
 
-You can install the released version of presenteR from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of presenter from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("presenteR")
+install.packages("presenter")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Harrison4192/presenteR")
+devtools::install_github("Harrison4192/presenter")
 ```
 ## Package Description
 

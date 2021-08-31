@@ -1,5 +1,5 @@
 ## ----setup, message=F, warning=F----------------------------------------------
-library(presenteR)
+library(presenter)
 library(dplyr)
 
 ## ----eval=FALSE---------------------------------------------------------------

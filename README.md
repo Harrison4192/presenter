@@ -1,35 +1,35 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# presenteR
+# presenter
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/presenteR)](https://CRAN.R-project.org/package=presenteR)
-[![R-CMD-check](https://github.com/Harrison4192/presenteR/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/presenteR/actions)
+status](https://www.r-pkg.org/badges/version/presenter)](https://CRAN.R-project.org/package=presenter)
+[![R-CMD-check](https://github.com/Harrison4192/presenter/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/presenter/actions)
 
-[![](http://cranlogs.r-pkg.org/badges/grand-total/presenteR?color=blue)](https://cran.r-project.org/package=presenteR)
-[![](https://img.shields.io/github/languages/code-size/Harrison4192/presenteR.svg)](https://github.com/Harrison4192/presenteR)
-[![](https://img.shields.io/github/last-commit/Harrison4192/presenteR.svg)](https://github.com/Harrison4192/presenteR/commits/master)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/presenter?color=blue)](https://cran.r-project.org/package=presenter)
+[![](https://img.shields.io/github/languages/code-size/Harrison4192/presenter.svg)](https://github.com/Harrison4192/presenter)
+[![](https://img.shields.io/github/last-commit/Harrison4192/presenter.svg)](https://github.com/Harrison4192/presenter/commits/main)
 <!-- badges: end -->
 
 ## Installation
 
-You can install the released version of presenteR from
+You can install the released version of presenter from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("presenteR")
+install.packages("presenter")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Harrison4192/presenteR")
+devtools::install_github("Harrison4192/presenter")
 ```
 
 ## Package Description

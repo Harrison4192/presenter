@@ -1,6 +1,6 @@
-Package: presenteR
+Package: presenter
 Type: Package
-Title: presenteR
+Title: presenter
 Version: 0.1.0
 Authors@R: 
     person(given = "Harrison",
@@ -41,5 +41,5 @@ Suggests:
     badger,
     ggplot2
 VignetteBuilder: knitr
-URL: https://github.com/Harrison4192/presenteR
-BugReports: https://github.com/Harrison4192/presenteR/issues
+URL: https://github.com/Harrison4192/presenter
+BugReports: https://github.com/Harrison4192/presenter/issues
