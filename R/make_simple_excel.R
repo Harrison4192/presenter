@@ -9,15 +9,20 @@
 #' @export
 make_simple_excel <- function(object, show = T){
 
+  sheetname1 <- NULL
+
   object1 <- rlang::ensym(object)
   get_piped_name(!!object1) -> sheetname
 
   if(is.data.frame(object)){
-  object <- dplyr::rename_with(object, enc2utf8)}
+    object <- dplyr::rename_with(object, enc2utf8)
+    sheetname1 <- sheetname}
 
   sheetname %>%
     paste0(stringi::stri_rand_strings(1, 4))  %>%
     stringr::str_c(".xlsx", collapse = "")-> output_file
+
+
 
   openxlsx::write.xlsx(object, output_file, overwrite = T,
                        headerStyle =  openxlsx::createStyle(textDecoration = "BOLD",
@@ -28,7 +33,7 @@ make_simple_excel <- function(object, show = T){
                        asTable = T,
                        borders = "rows",
                        tabColour = "snow2",
-                       sheetName = sheetname,
+                       sheetName = sheetname1,
                        borderColour = "steelblue3"
 
   )
