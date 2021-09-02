@@ -18,7 +18,7 @@ status](https://www.r-pkg.org/badges/version/presenter)](https://CRAN.R-project.
 
 ## Installation
 
-You can install the released version of presenter from
+You can Install the released version of presenter from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r

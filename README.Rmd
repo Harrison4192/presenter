@@ -5,6 +5,8 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+library(badger)
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -29,7 +31,7 @@ knitr::opts_chunk$set(
   
 ## Installation
 
-You can install the released version of presenter from [CRAN](https://CRAN.R-project.org) with:
+You can Install the released version of presenter from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("presenter")

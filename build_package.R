@@ -1,4 +1,3 @@
-xfun::gsub_dir(pattern = "presenteR", replacement = "presenter", recursive = T)
 
 # load developer libraries ------------------------------------------------
 
@@ -84,7 +83,7 @@ create_github_token()
 gitcreds_set()
 gitcreds_get()
 set_github_pat()
-# credentials::git_credential_forget()
+credentials::git_credential_forget()
 gh::gh_whoami()
 gh_token()
 
@@ -108,10 +107,10 @@ usethis::use_github_links()
 devtools::load_all()
 devtools::document()
 devtools::build_readme()
-devtools::build_site()
+build_site()
 devtools::check()
-devtools::preview_site()
-devtools::build_vignettes()
+preview_site()
+build_vignettes()
 
 
 # checks ------------------------------------------------------------------
@@ -122,10 +121,5 @@ iris %>%
   make_flextable() %>%
   list() -> tbl1
 
-list(il = iris, il2 =  iris, iris) -> tb1
-
-
-tb1 %>%
-  make_simple_excel()
 
 
