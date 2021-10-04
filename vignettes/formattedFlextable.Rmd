@@ -16,13 +16,15 @@ knitr::opts_chunk$set(
 
 ```{r setup, message=F, warning=F}
 library(presenter)
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(stringr)
 ```
 
 # Custom formatting
 
 * create a header word using `dplyr::rename_with`
-* format percentages with `presenteR::format_percent`
+* format percentages with `presenter::format_percent`
 
 ```{r}
 diamonds %>% 

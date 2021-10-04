@@ -33,12 +33,13 @@ Imports:
     berryFunctions,
     rvg,
     tidyselect,
-    formattable
+    formattable,
+    badger
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
-    badger,
+    markdown,
     ggplot2
 VignetteBuilder: knitr
 URL: https://github.com/Harrison4192/presenter
