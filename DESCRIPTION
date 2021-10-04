@@ -9,7 +9,7 @@ Authors@R:
            email = "Harrison4192@gmail.com")
 Maintainer: Harrison Tietze <harrison4192@gmail.com>
 Description: This package consists of custom wrapper functions using packages
-    openxlsx, flextable, and officer to create highly formatted MS office friendly output of your data frames.
+    'openxlsx', 'flextable', and 'officer' to create highly formatted MS office friendly output of your data frames.
     These viewer friendly outputs are intended to match expectations of professional looking presentations
     in business and consulting scenarios. The functions are opinionated in the sense that they expect the input data
     frame to have certain properties in order to take advantage of the automated formatting.
@@ -38,7 +38,6 @@ Imports:
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
-    rmarkdown,
     markdown,
     ggplot2
 VignetteBuilder: knitr
