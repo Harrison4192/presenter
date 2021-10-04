@@ -37,7 +37,6 @@ Imports:
     badger
 RoxygenNote: 7.1.1
 Suggests: 
-    knitr, 
     rmarkdown,
     ggplot2
 VignetteBuilder: knitr
