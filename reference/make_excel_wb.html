@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>create excel wb — make_excel_wb • presenteR</title>
+<title>create excel wb — make_excel_wb • presenter</title>
 
 
 <!-- jquery -->
@@ -81,7 +81,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">presenteR</a>
+        <a class="navbar-link" href="../index.html">presenter</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -113,6 +113,12 @@
     <li>
       <a href="../articles/flextableThemes.html">flextableThemes</a>
     </li>
+    <li>
+      <a href="../articles/formattedFlextable.html">formattedFlextable</a>
+    </li>
+    <li>
+      <a href="../articles/pivotSummary.html">pivotSummary</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -121,7 +127,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Harrison4192/presenteR/">
+  <a href="https://github.com/Harrison4192/presenter/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -143,7 +149,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>create excel wb</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/presenteR/blob/master/R/make_excel.R'><code>R/make_excel.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Harrison4192/presenter/blob/master/R/make_excel.R'><code>R/make_excel.R</code></a></small>
     <div class="hidden name"><code>make_excel_wb.Rd</code></div>
     </div>
 
@@ -156,7 +162,8 @@
   <span class='va'>object</span>,
   last_id_col <span class='op'>=</span> <span class='cn'>NULL</span>,
   header_word <span class='op'>=</span> <span class='cn'>NULL</span>,
-  widths <span class='op'>=</span> <span class='fl'>13</span>
+  widths <span class='op'>=</span> <span class='fl'>13</span>,
+  random_color_seed <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -181,6 +188,10 @@
     <tr>
       <th>widths</th>
       <td><p>col widths</p></td>
+    </tr>
+    <tr>
+      <th>random_color_seed</th>
+      <td><p>seed for random color scheme</p></td>
     </tr>
     </table>
 
