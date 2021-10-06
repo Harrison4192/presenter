@@ -20,17 +20,29 @@ get_lhs <- function(){
 
 #' get piped name
 #'
-#'this function captures the name of a data frame piped into a function as a string. Powers the automatic naming found in presenter.
+#'this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
 #'
-#'citation: <https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/>
+#'citation: \url{https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/}
 #'
 #'
 #' @param objName an object
 #' @param default_name default name if object name is not able to be accessed in case of a long pipe
 #'
 #' @return string
-#' @keywords internal
+#' @export
 #'
+#' @examples
+#'
+#' ## works if the object is piped or given as an argument
+#' iris %>%
+#' get_piped_name
+#'
+#' get_piped_name(iris)
+#'
+#' ## does not work for multistep pipes. instead the 'default_name' is printed
+#' iris %>%
+#' dplyr::select(1:3) %>%
+#' get_piped_name
 get_piped_name <- function(objName, default_name = "Title") {
   z <- get_lhs()
 

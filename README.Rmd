@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 # presenter
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/presenter)](https://CRAN.R-project.org/package=presenter)
 [![R-CMD-check](https://github.com/Harrison4192/presenter/workflows/R-CMD-check/badge.svg)](https://github.com/Harrison4192/presenter/actions)
 

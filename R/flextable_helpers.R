@@ -120,7 +120,7 @@ get_headers <- function(db){
     nms1 <- nms
   } else{
     nms %>%
-      str_subset(stringr::str_c(hdrs, collapse = "|"), negate = T) -> nms1
+      stringr::str_subset(stringr::str_c(hdrs, collapse = "|"), negate = T) -> nms1
 
   }
 

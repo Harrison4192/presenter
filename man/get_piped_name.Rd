@@ -15,9 +15,21 @@ get_piped_name(objName, default_name = "Title")
 string
 }
 \description{
-this function captures the name of a data frame piped into a function as a string. Powers the automatic naming found in presenter.
+this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
 }
 \details{
-citation: <https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/>
+citation: \url{https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/}
 }
-\keyword{internal}
+\examples{
+
+## works if the object is piped or given as an argument
+iris \%>\%
+get_piped_name
+
+get_piped_name(iris)
+
+## does not work for multistep pipes. instead the 'default_name' is printed
+iris \%>\%
+dplyr::select(1:3) \%>\%
+get_piped_name
+}

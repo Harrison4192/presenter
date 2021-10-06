@@ -23,6 +23,8 @@ make_flextable(
 
 \item{merge_col_indices}{merge specific column indices}
 
+\item{dbl_digits}{integer. how many trailing digits should be displayed on dbls}
+
 \item{theme}{string to choose a preselected theme}
 }
 \value{

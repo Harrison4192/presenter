@@ -10,7 +10,7 @@ make_pivot_table(
   col2,
   show_totals = F,
   show_percentages = c("none", "all", "row", "col"),
-  show_chi_test = T,
+  show_chi_test = F,
   theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",
     "alafoli"),
   tbl_nm = NULL

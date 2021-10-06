@@ -7,6 +7,7 @@
 #' @param last_id_col last id col
 #' @param merge_col_indices merge specific column indices
 #' @param theme string to choose a preselected theme
+#' @param dbl_digits integer. how many trailing digits should be displayed on dbls
 #'
 #' @return a flextable
 #' @export
@@ -48,7 +49,7 @@ theme <- match.arg(theme)
 id_col_nums <- NULL
 
 
-  if(!is.null(header_words) && header_words == "disable"){
+  if(!is.null(header_words) && "disable" %in% header_words){
 
     f1 <- f1
 

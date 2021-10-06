@@ -26,6 +26,9 @@ reference:
 - title: Reshape Data
   contents:
   - '`pivot_summary`'
+- title: Developer Functions
+  contents:
+  - '`get_piped_name`'
 articles:
 - title: All vignettes
   desc: null

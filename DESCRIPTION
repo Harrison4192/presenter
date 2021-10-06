@@ -25,6 +25,7 @@ Imports:
     purrr,
     officer,
     randomcoloR,
+    tidyr,
     openxlsx,
     lubridate,
     janitor,
@@ -34,7 +35,8 @@ Imports:
     rvg,
     tidyselect,
     formattable,
-    badger
+    badger,
+    framecleaner
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

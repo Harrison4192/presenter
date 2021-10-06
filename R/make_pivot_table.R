@@ -17,9 +17,11 @@ make_pivot_table <- function(tbl,
                              col2,
                              show_totals = F,
                              show_percentages = c("none", "all", "row", "col"),
-                             show_chi_test = T,
+                             show_chi_test = F,
                              theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli"),
                              tbl_nm = NULL){
+
+  Total <- pct <- NULL
 
   if(is.null(tbl_nm)){
   tbl1 <- rlang::ensym(tbl)
@@ -54,37 +56,37 @@ show_percentages <- match.arg(show_percentages)
 if(show_totals){
   ### col totals
   tbl1 %>%
-    as_tibble() %>%
+    tibble::as_tibble() %>%
     dplyr::mutate(dplyr::across(where(is.double), as.integer))-> tblx
 
   tblx %>%
     dplyr::summarise(dplyr::across(where(is.numeric), sum)) %>%
     dplyr::rowwise() %>%
-    mutate(Total = sum(dplyr::c_across())) -> sum1
+    dplyr::mutate(Total = sum(dplyr::c_across())) -> sum1
 
   sum1 %>%
     dplyr::rowwise() %>%
-    mutate(across(.fns = ~./Total)) %>%
+    dplyr::mutate(dplyr::across(.fns = ~./Total)) %>%
     format_percent() %>%
-    mutate(across(.fns = as.character)) %>%
+    dplyr::mutate(dplyr::across(.fns = as.character)) %>%
     dplyr::ungroup() -> pct1
 
-  bind_rows(pct1, sum1 %>%  mutate(across(.fns = ~stringr::str_c("(", ., ")"))) ) %>%
+  dplyr::bind_rows(pct1, sum1 %>%  dplyr::mutate(dplyr::across(.fns = ~stringr::str_c("(", ., ")"))) ) %>%
     dplyr::summarize(dplyr::across(.fns = ~stringr::str_c(., collapse = " ")), .groups = "drop") -> col_totals
 
 
   ### row totals
   tblx %>%
     dplyr::rowwise() %>%
-    mutate(Total = sum(dplyr::c_across(where(is.numeric)))) -> pct2
+    dplyr::mutate(Total = sum(dplyr::c_across(where(is.numeric)))) -> pct2
 
   pct2 %>%
-    mutate(pct = Total / sum(.$Total), .before = "Total") -> sum2
+    dplyr::mutate(pct = Total / sum(.$Total), .before = "Total") -> sum2
 
   sum2 %>%
     format_percent() %>%
-    mutate(Total = stringr::str_c("(", Total, ")")) %>%
-    unite(col = "Total", sep = " ", pct, Total) %>%
+    dplyr::mutate(Total = stringr::str_c("(", Total, ")")) %>%
+    tidyr::unite(col = "Total", sep = " ", pct, Total) %>%
     dplyr::select(Total) -> row_totals
 }
 
@@ -115,7 +117,7 @@ if(show_totals){
     rlang::set_names(names(.) %>% stringr::str_c(col2_nm,"_", .) %>% replace(1:2, c(tbl_nm, tbl_nm1 ))) -> tbl1
 
   if(show_totals){
-    tbl1 %>% rename(" " := tidyselect::last_col()) -> tbl1
+    tbl1 %>% dplyr::rename(" " := tidyselect::last_col()) -> tbl1
     tbl1[nrow(tbl1), 1] <- " "}
 
 # make flextable ----------------------------------------------------------

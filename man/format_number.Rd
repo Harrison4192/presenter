@@ -2,20 +2,64 @@
 % Please edit documentation in R/formatters.R
 \name{format_number}
 \alias{format_number}
+\alias{format_percent}
+\alias{format_currency}
 \title{format number}
 \usage{
 format_number(tbl, ..., digits = 0)
+
+format_percent(tbl, ..., digits = 0)
+
+format_currency(tbl, ..., symbol = "yen", digits = 0)
 }
 \arguments{
 \item{tbl}{dataframe}
 
-\item{...}{tidyselect. default selection is integer.}
+\item{...}{tidyselect.}
 
 \item{digits}{integer. trailing digits}
+
+\item{symbol}{chr. currency symbol}
 }
 \value{
 dataframe
+
+dataframe
 }
 \description{
-formats a number accounting style by inserting commas
+Number formatters to apply to a column in a dataframe. Helpful for displaying tibbles in console or in conjunction
+with \code{\link{make_flextable}}.
+Based off the \href{https://renkun-ken.github.io/formattable/}{formattable} package.
+}
+\details{
+\itemize{
+\item{\code{format_number}}{ formats a number accounting style by inserting commas. default selection is integer columns}
+\item{\code{format_percent}}{ formats a number as a percentage. default selection is numeric columnsin between -1 and 1.}
+\item{\code{format_currency}}{ formats a monetary value with the currency symbol. default currency symbol is yen.}}
+}
+\examples{
+
+tibble::tibble(
+y = seq(1000L, 10000L, by = 1000L),
+z = c(-.59, -.23, -.11, 0, .1, .21, .3, .4, .6, .9),
+w = c(.1, 1.4, .23, -.10, 0, -2.3, .2,.3,.4,.5)) -> tbl1
+
+tbl1
+
+# automatically formats the integer column
+tbl1 \%>\%
+format_number()
+
+# automatically formats to yen
+tbl1 \%>\%
+format_currency(y)
+
+# automatically detects columns between -1 and 1 to convert to percentages
+tbl1 \%>\%
+format_percent()
+
+# select specific columns to convert.
+tbl1 \%>\%
+format_percent(z, w)
+
 }
