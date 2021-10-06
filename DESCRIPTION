@@ -1,6 +1,6 @@
 Package: presenter
 Type: Package
-Title: Present Data With Style
+Title: Present Data with Style
 Version: 0.1.0
 Authors@R: 
     person(given = "Harrison",
