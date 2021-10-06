@@ -12,3 +12,5 @@
 ^README\.Rmd$
 ^/Users/Harrison/Desktop/packages/presenteR/_pkgdown\.yml$
 ^\.github$
+^cran-comments\.md$
+^CRAN-RELEASE$

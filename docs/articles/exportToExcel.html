@@ -137,7 +137,7 @@
 <div id="header-words" class="section level2">
 <h2 class="hasAnchor">
 <a href="#header-words" class="anchor"></a>header words</h2>
-<p>If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to mantain ease of read / write compatability of the workbook with R.</p>
+<p>If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to maintain ease of read / write compatibility of the workbook with R.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/make_excel.html">make_excel</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">iris</span>, 
            header_word <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal"</span>, <span class="st">"Petal"</span><span class="op">)</span>,
@@ -149,7 +149,7 @@
 <div id="make-simple-excel" class="section level2">
 <h2 class="hasAnchor">
 <a href="#make-simple-excel" class="anchor"></a>make simple excel</h2>
-<p><code>make_simple_excel</code> allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specfied otherwise in `output_file, the resulting excel file will be named after the data frame.</p>
+<p><code>make_simple_excel</code> allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specified otherwise in `output_file, the resulting excel file will be named after the data frame.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/make_simple_excel.html">make_simple_excel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>

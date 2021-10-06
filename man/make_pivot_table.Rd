@@ -19,7 +19,7 @@ make_pivot_table(
 \arguments{
 \item{tbl}{a data frame to pivot}
 
-\item{col1}{unqouted col 1}
+\item{col1}{unquoted col 1}
 
 \item{col2}{unquoted col 2}
 

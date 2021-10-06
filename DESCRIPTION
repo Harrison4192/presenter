@@ -1,21 +1,20 @@
 Package: presenter
 Type: Package
-Title: presenter
+Title: Present Data With Style
 Version: 0.1.0
 Authors@R: 
     person(given = "Harrison",
            family = "Tietze",
            role = c("aut", "cre"),
            email = "Harrison4192@gmail.com")
-Maintainer: Harrison Tietze <harrison4192@gmail.com>
-Description: This package consists of custom wrapper functions using packages
+Maintainer: Harrison Tietze <Harrison4192@gmail.com>
+Description: Consists of custom wrapper functions using packages
     'openxlsx', 'flextable', and 'officer' to create highly formatted MS office friendly output of your data frames.
     These viewer friendly outputs are intended to match expectations of professional looking presentations
     in business and consulting scenarios. The functions are opinionated in the sense that they expect the input data
     frame to have certain properties in order to take advantage of the automated formatting.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Imports: 
     flextable,
     magrittr,

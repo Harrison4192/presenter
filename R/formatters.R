@@ -9,7 +9,7 @@
 #'
 #' \itemize{
 #' \item{\code{format_number}}{ formats a number accounting style by inserting commas. default selection is integer columns}
-#' \item{\code{format_percent}}{ formats a number as a percentage. default selection is numeric columnsin between -1 and 1.}
+#' \item{\code{format_percent}}{ formats a number as a percentage. default selection is numeric columns in between -1 and 1.}
 #' \item{\code{format_currency}}{ formats a monetary value with the currency symbol. default currency symbol is yen.}}
 #'
 #' @param tbl dataframw

@@ -21,5 +21,5 @@ Transposes a data frame, intended for use on the output of a  dplyr::summarize o
 \details{
 for an ungrouped summarize, ... argument can be left empty
 for a grouped summarize, use column names or tidyselect to pivot the group names. Multiple groups
-will be concatenaed before pivoting.
+will be concatenated before pivoting.
 }

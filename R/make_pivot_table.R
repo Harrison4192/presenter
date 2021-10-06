@@ -1,7 +1,7 @@
 #' Make pivot table
 #'
 #' @param tbl a data frame to pivot
-#' @param col1 unqouted col 1
+#' @param col1 unquoted col 1
 #' @param col2 unquoted col 2
 #' @param show_totals logical; show row and col totals
 #' @param show_percentages string; denominator to use when calculating percentages

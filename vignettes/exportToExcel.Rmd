@@ -28,7 +28,7 @@ The recommended ouput format is to put ID style columns first and and value colu
 
 ## header words
 
-If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to mantain ease of read / write compatability of the workbook with R. 
+If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to maintain ease of read / write compatibility of the workbook with R. 
 
 
 ```{r eval=FALSE}
@@ -44,7 +44,7 @@ make_excel(df = iris,
 
 ## make simple excel
 
-`make_simple_excel` allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specfied otherwise in `output_file, the resulting excel file will be named after the data frame. 
+`make_simple_excel` allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specified otherwise in `output_file, the resulting excel file will be named after the data frame. 
 
 ```{r eval = FALSE}
 iris %>% 
