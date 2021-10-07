@@ -16,7 +16,7 @@ make_powerpoint <- function(tbl,
                               output_file = NULL,
                               layout = "Two Content",
                               master = "Office Theme",
-                              show = T){
+                              show = TRUE){
 
 
   tbl1 <- rlang::ensym(tbl)

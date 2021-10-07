@@ -7,7 +7,7 @@
 #'
 #' @return an .xlsx file
 #' @export
-make_simple_excel <- function(object, show = T){
+make_simple_excel <- function(object, show = TRUE){
 
   sheetname1 <- NULL
 

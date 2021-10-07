@@ -9,7 +9,7 @@ make_powerpoint(
   output_file = NULL,
   layout = "Two Content",
   master = "Office Theme",
-  show = T
+  show = TRUE
 )
 }
 \arguments{

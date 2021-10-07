@@ -4,7 +4,7 @@
 \alias{make_simple_excel}
 \title{Make a simple excel}
 \usage{
-make_simple_excel(object, show = T)
+make_simple_excel(object, show = TRUE)
 }
 \arguments{
 \item{object}{a data frame or list thereof}
