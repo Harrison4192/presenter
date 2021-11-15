@@ -1,36 +1,4 @@
 
-
-#' get lhs
-#' @keywords internal
-#' @export
-get_lhs <- function(){
-  calls <- sys.calls()
-
-  lapply(calls, rlang::call_standardise) -> l1
-
-
-
-  rlang::call_args(l1[[1]])  -> arg
-
-  if(any((names(arg) == "objName"))){
-
-    return(rlang::as_name(arg$objName))}
-
-  arg$lhs -> c1
-
-  while(rlang::is_call(c1)){
-    c1 %>%
-      rlang::call_args() %>%
-      purrr::pluck(1) -> c1
-
-  }
-
-  rlang::as_name(c1)
-
-}
-
-
-
 #' get piped name
 #'
 #'this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
@@ -70,9 +38,29 @@ get_lhs <- function(){
 #' find_name()
 get_piped_name <- function(objName, default_name = "Title") {
 
-  utils::getFromNamespace("get_lhs", "presenter")
+  calls <- sys.calls()
 
-  z <- get_lhs()
+  lapply(calls, rlang::call_standardise) -> l1
+
+
+
+  rlang::call_args(l1[[1]])  -> arg
+
+  if(any((names(arg) == "objName"))){
+
+    return(rlang::as_name(arg$objName))}
+
+  arg$lhs -> c1
+
+  while(rlang::is_call(c1)){
+    c1 %>%
+      rlang::call_args() %>%
+      purrr::pluck(1) -> c1
+
+  }
+
+  rlang::as_name(c1) -> z
+
 
 
 
