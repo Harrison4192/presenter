@@ -203,91 +203,96 @@ Based off the <a href='https://renkun-ken.github.io/formattable/'>formattable</a
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1000L</span>, <span class='fl'>10000L</span>, by <span class='op'>=</span> <span class='fl'>1000L</span><span class='op'>)</span>,
-z <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>.59</span>, <span class='op'>-</span><span class='fl'>.23</span>, <span class='op'>-</span><span class='fl'>.11</span>, <span class='fl'>0</span>, <span class='fl'>.1</span>, <span class='fl'>.21</span>, <span class='fl'>.3</span>, <span class='fl'>.4</span>, <span class='fl'>.6</span>, <span class='fl'>.9</span><span class='op'>)</span>,
-w <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.1</span>, <span class='fl'>1.4</span>, <span class='fl'>.23</span>, <span class='op'>-</span><span class='fl'>.10</span>, <span class='fl'>0</span>, <span class='op'>-</span><span class='fl'>2.3</span>, <span class='fl'>.2</span>,<span class='fl'>.3</span>,<span class='fl'>.4</span>,<span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>tbl1</span>
-
-<span class='va'>tbl1</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 3</span>
-#&gt;        y     z     w
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>000 -<span style='color: #BB0000;'>0.59</span>  0.1 
-#&gt; <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 -<span style='color: #BB0000;'>0.23</span>  1.4 
-#&gt; <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>3</span>000 -<span style='color: #BB0000;'>0.11</span>  0.23
-#&gt; <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>4</span>000  0    -<span style='color: #BB0000;'>0.1</span> 
-#&gt; <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>5</span>000  0.1   0   
-#&gt; <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>6</span>000  0.21 -<span style='color: #BB0000;'>2.3</span> 
-#&gt; <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>7</span>000  0.3   0.2 
-#&gt; <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>8</span>000  0.4   0.3 
-#&gt; <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>9</span>000  0.6   0.4 
-#&gt; <span style='color: #BCBCBC;'>10</span> <span style='text-decoration: underline;'>10</span>000  0.9   0.5 </div><div class='input'>
-<span class='co'># automatically formats the integer column</span>
-<span class='va'>tbl1</span> <span class='op'>%&gt;%</span>
-<span class='fu'>format_number</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 3</span>
-#&gt;    y              z     w
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 1,000      -<span style='color: #BB0000;'>0.59</span>  0.1 
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2,000      -<span style='color: #BB0000;'>0.23</span>  1.4 
-#&gt; <span style='color: #BCBCBC;'> 3</span> 3,000      -<span style='color: #BB0000;'>0.11</span>  0.23
-#&gt; <span style='color: #BCBCBC;'> 4</span> 4,000       0    -<span style='color: #BB0000;'>0.1</span> 
-#&gt; <span style='color: #BCBCBC;'> 5</span> 5,000       0.1   0   
-#&gt; <span style='color: #BCBCBC;'> 6</span> 6,000       0.21 -<span style='color: #BB0000;'>2.3</span> 
-#&gt; <span style='color: #BCBCBC;'> 7</span> 7,000       0.3   0.2 
-#&gt; <span style='color: #BCBCBC;'> 8</span> 8,000       0.4   0.3 
-#&gt; <span style='color: #BCBCBC;'> 9</span> 9,000       0.6   0.4 
-#&gt; <span style='color: #BCBCBC;'>10</span> 10,000      0.9   0.5 </div><div class='input'>
-<span class='co'># automatically formats to yen</span>
-<span class='va'>tbl1</span> <span class='op'>%&gt;%</span>
-<span class='fu'>format_currency</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 3</span>
-#&gt;    y              z     w
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> ¥1,000     -<span style='color: #BB0000;'>0.59</span>  0.1 
-#&gt; <span style='color: #BCBCBC;'> 2</span> ¥2,000     -<span style='color: #BB0000;'>0.23</span>  1.4 
-#&gt; <span style='color: #BCBCBC;'> 3</span> ¥3,000     -<span style='color: #BB0000;'>0.11</span>  0.23
-#&gt; <span style='color: #BCBCBC;'> 4</span> ¥4,000      0    -<span style='color: #BB0000;'>0.1</span> 
-#&gt; <span style='color: #BCBCBC;'> 5</span> ¥5,000      0.1   0   
-#&gt; <span style='color: #BCBCBC;'> 6</span> ¥6,000      0.21 -<span style='color: #BB0000;'>2.3</span> 
-#&gt; <span style='color: #BCBCBC;'> 7</span> ¥7,000      0.3   0.2 
-#&gt; <span style='color: #BCBCBC;'> 8</span> ¥8,000      0.4   0.3 
-#&gt; <span style='color: #BCBCBC;'> 9</span> ¥9,000      0.6   0.4 
-#&gt; <span style='color: #BCBCBC;'>10</span> ¥10,000     0.9   0.5 </div><div class='input'>
-<span class='co'># automatically detects columns between -1 and 1 to convert to percentages</span>
-<span class='va'>tbl1</span> <span class='op'>%&gt;%</span>
-<span class='fu'>format_percent</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 3</span>
-#&gt;        y z              w
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>000 -59%        0.1 
-#&gt; <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 -23%        1.4 
-#&gt; <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>3</span>000 -11%        0.23
-#&gt; <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>4</span>000 0%         -<span style='color: #BB0000;'>0.1</span> 
-#&gt; <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>5</span>000 10%         0   
-#&gt; <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>6</span>000 21%        -<span style='color: #BB0000;'>2.3</span> 
-#&gt; <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>7</span>000 30%         0.2 
-#&gt; <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>8</span>000 40%         0.3 
-#&gt; <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>9</span>000 60%         0.4 
-#&gt; <span style='color: #BCBCBC;'>10</span> <span style='text-decoration: underline;'>10</span>000 90%         0.5 </div><div class='input'>
-<span class='co'># select specific columns to convert.</span>
-<span class='va'>tbl1</span> <span class='op'>%&gt;%</span>
-<span class='fu'>format_percent</span><span class='op'>(</span><span class='va'>z</span>, <span class='va'>w</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 3</span>
-#&gt;        y z          w         
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>000 -59%       10%       
-#&gt; <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 -23%       140%      
-#&gt; <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>3</span>000 -11%       23%       
-#&gt; <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>4</span>000 0%         -10%      
-#&gt; <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>5</span>000 10%        0%        
-#&gt; <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>6</span>000 21%        -230%     
-#&gt; <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>7</span>000 30%        20%       
-#&gt; <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>8</span>000 40%        30%       
-#&gt; <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>9</span>000 60%        40%       
-#&gt; <span style='color: #BCBCBC;'>10</span> <span style='text-decoration: underline;'>10</span>000 90%        50%       </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
+<span class='r-in'>y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1000L</span>, <span class='fl'>10000L</span>, by <span class='op'>=</span> <span class='fl'>1000L</span><span class='op'>)</span>,</span>
+<span class='r-in'>z <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>.59</span>, <span class='op'>-</span><span class='fl'>.23</span>, <span class='op'>-</span><span class='fl'>.11</span>, <span class='fl'>0</span>, <span class='fl'>.1</span>, <span class='fl'>.21</span>, <span class='fl'>.3</span>, <span class='fl'>.4</span>, <span class='fl'>.6</span>, <span class='fl'>.9</span><span class='op'>)</span>,</span>
+<span class='r-in'>w <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.1</span>, <span class='fl'>1.4</span>, <span class='fl'>.23</span>, <span class='op'>-</span><span class='fl'>.10</span>, <span class='fl'>0</span>, <span class='op'>-</span><span class='fl'>2.3</span>, <span class='fl'>.2</span>,<span class='fl'>.3</span>,<span class='fl'>.4</span>,<span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>tbl1</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>tbl1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        y     z     w</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>000 -<span style='color: #BB0000;'>0.59</span>  0.1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 -<span style='color: #BB0000;'>0.23</span>  1.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>3</span>000 -<span style='color: #BB0000;'>0.11</span>  0.23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>4</span>000  0    -<span style='color: #BB0000;'>0.1</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>5</span>000  0.1   0   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>6</span>000  0.21 -<span style='color: #BB0000;'>2.3</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>7</span>000  0.3   0.2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>8</span>000  0.4   0.3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>9</span>000  0.6   0.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> <span style='text-decoration: underline;'>10</span>000  0.9   0.5 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># automatically formats the integer column</span></span>
+<span class='r-in'><span class='va'>tbl1</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'><span class='fu'>format_number</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    y              z     w</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 1,000      -<span style='color: #BB0000;'>0.59</span>  0.1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 2,000      -<span style='color: #BB0000;'>0.23</span>  1.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 3,000      -<span style='color: #BB0000;'>0.11</span>  0.23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 4,000       0    -<span style='color: #BB0000;'>0.1</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 5,000       0.1   0   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 6,000       0.21 -<span style='color: #BB0000;'>2.3</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 7,000       0.3   0.2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 8,000       0.4   0.3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 9,000       0.6   0.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 10,000      0.9   0.5 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># automatically formats to yen</span></span>
+<span class='r-in'><span class='va'>tbl1</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'><span class='fu'>format_currency</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    y              z     w</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> ¥1,000     -<span style='color: #BB0000;'>0.59</span>  0.1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> ¥2,000     -<span style='color: #BB0000;'>0.23</span>  1.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> ¥3,000     -<span style='color: #BB0000;'>0.11</span>  0.23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> ¥4,000      0    -<span style='color: #BB0000;'>0.1</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> ¥5,000      0.1   0   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> ¥6,000      0.21 -<span style='color: #BB0000;'>2.3</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> ¥7,000      0.3   0.2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> ¥8,000      0.4   0.3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> ¥9,000      0.6   0.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> ¥10,000     0.9   0.5 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># automatically detects columns between -1 and 1 to convert to percentages</span></span>
+<span class='r-in'><span class='va'>tbl1</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'><span class='fu'>format_percent</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        y z              w</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>000 -59%        0.1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 -23%        1.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>3</span>000 -11%        0.23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>4</span>000 0%         -<span style='color: #BB0000;'>0.1</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>5</span>000 10%         0   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>6</span>000 21%        -<span style='color: #BB0000;'>2.3</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>7</span>000 30%         0.2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>8</span>000 40%         0.3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>9</span>000 60%         0.4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> <span style='text-decoration: underline;'>10</span>000 90%         0.5 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># select specific columns to convert.</span></span>
+<span class='r-in'><span class='va'>tbl1</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'><span class='fu'>format_percent</span><span class='op'>(</span><span class='va'>z</span>, <span class='va'>w</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        y z          w         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;formttbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>000 -59%       10%       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 -23%       140%      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>3</span>000 -11%       23%       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>4</span>000 0%         -10%      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>5</span>000 10%        0%        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>6</span>000 21%        -230%     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>7</span>000 30%        20%       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>8</span>000 40%        30%       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>9</span>000 60%        40%       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> <span style='text-decoration: underline;'>10</span>000 90%        50%       </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

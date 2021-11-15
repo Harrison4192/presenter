@@ -151,7 +151,7 @@
 <a href="#make-simple-excel" class="anchor"></a>make simple excel</h2>
 <p><code>make_simple_excel</code> allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specified otherwise in `output_file, the resulting excel file will be named after the data frame.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iris</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/make_simple_excel.html">make_simple_excel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="simpleexceloutput.png" alt=""><p class="caption">output of make simple excel</p>
@@ -162,13 +162,13 @@
 <a href="#export-list-of-dfs" class="anchor"></a>export list of dfs</h2>
 <p><code>make_simple_excel</code> also accepts a list of dfs, and exports one per sheet. This is useful when you automatically generated a list of tables, or saved a bunch of table summaries in a list.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iris</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">iris_summary</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">iris_summary</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">iris_list</span>
 
-<span class="va">iris_list</span> <span class="op">%&gt;%</span> 
+<span class="va">iris_list</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/make_simple_excel.html">make_simple_excel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="excellist.png" alt=""><p class="caption">list of dfs to excel wb</p>
@@ -182,10 +182,10 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/make_excel_wb.html">make_excel_wb</a></span><span class="op">(</span>wb <span class="op">=</span> <span class="cn">NULL</span>,
               object <span class="op">=</span> <span class="va">iris</span>,
               last_id_col <span class="op">=</span> <span class="cn">NULL</span>,
-              header_word <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal"</span>, <span class="st">"Petal"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+              header_word <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal"</span>, <span class="st">"Petal"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/make_excel_wb.html">make_excel_wb</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">anscombe</span>,
                 last_id_col <span class="op">=</span> <span class="cn">NULL</span>,
-                header_word <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                header_word <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/finish_excel_wb.html">finish_excel_wb</a></span><span class="op">(</span>wb_name <span class="op">=</span> <span class="st">"data_workbook"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="formattedexcelwb.png" alt=""><p class="caption">custom excel wb</p>

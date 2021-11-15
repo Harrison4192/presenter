@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="get piped name — get_piped_name" />
-<meta property="og:description" content="this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter." />
+<meta property="og:description" content="this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
+Currently throws an error when used in building vignettes or function examples." />
 
 
 
@@ -154,7 +155,8 @@
     </div>
 
     <div class="ref-description">
-    <p>this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.</p>
+    <p>this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
+Currently throws an error when used in building vignettes or function examples.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_piped_name</span><span class='op'>(</span><span class='va'>objName</span>, default_name <span class='op'>=</span> <span class='st'>"Title"</span><span class='op'>)</span></pre>
@@ -177,21 +179,35 @@
     <p>string</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>citation: <a href='https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/'>https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/</a></p>
+    <p>Inspiration for function: <a href='https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/'>https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/</a>
+The function body has been rewritten to leverage <code>rlang</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## works if the object is piped or given as an argument</span>
-<span class='va'>iris</span> <span class='op'>%&gt;%</span>
-<span class='va'>get_piped_name</span>
-</div><div class='output co'>#&gt; [1] "iris"</div><div class='input'>
-<span class='fu'>get_piped_name</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "iris"</div><div class='input'>
-<span class='co'>## does not work for multistep pipes. instead the 'default_name' is printed</span>
-<span class='va'>iris</span> <span class='op'>%&gt;%</span>
-<span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-<span class='va'>get_piped_name</span>
-</div><div class='output co'>#&gt; [1] "Title"</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='co'>### works if the object is piped or given as an argument</span></span>
+<span class='r-in'><span class='co'>#iris %&gt;%</span></span>
+<span class='r-in'><span class='co'>#get_piped_name()</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#get_piped_name(iris)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>### can even extract name from multistep pipes</span></span>
+<span class='r-in'><span class='co'>#iris %&gt;%</span></span>
+<span class='r-in'><span class='co'>#dplyr::select(1:3) %&gt;%</span></span>
+<span class='r-in'><span class='co'>#get_piped_name()</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>### can be placed inside other functions to capture the name and save it</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#find_name &lt;- function(x){</span></span>
+<span class='r-in'><span class='co'># get_piped_name() -&gt; new_name</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># new_name</span></span>
+<span class='r-in'><span class='co'>#}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#iris %&gt;%</span></span>
+<span class='r-in'><span class='co'>#dplyr:select(1:3) %&gt;%</span></span>
+<span class='r-in'><span class='co'>#find_name()</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
