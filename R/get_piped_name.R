@@ -1,5 +1,8 @@
 
 
+#' get lhs
+#' @keywords internal
+#' @export
 get_lhs <- function(){
   calls <- sys.calls()
 
@@ -82,5 +85,6 @@ get_piped_name <- function(objName, default_name = "Title") {
 
   z
 }
+
 
 

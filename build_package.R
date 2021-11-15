@@ -110,7 +110,7 @@ devtools::build_readme()
 build_site()
 devtools::check()
 preview_site()
-build_vignettes()
+devtools::build_vignettes()
 
 
 # checks ------------------------------------------------------------------
