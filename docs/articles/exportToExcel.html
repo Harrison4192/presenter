@@ -25,6 +25,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -82,13 +84,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Harrison4192/presenter/">
+  <a href="https://github.com/Harrison4192/presenter/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://harrison4192.github.io/TidyConsultant/">TC</a>
+  <a href="https://harrison4192.github.io/TidyConsultant/" class="external-link">TC</a>
 </li>
       </ul>
 </div>
@@ -100,13 +102,13 @@
 
       
 
-      </header><script src="exportToExcel_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>exportToExcel</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Harrison4192/presenter/blob/master/vignettes/exportToExcel.Rmd"><code>vignettes/exportToExcel.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Harrison4192/presenter/blob/HEAD/vignettes/exportToExcel.Rmd" class="external-link"><code>vignettes/exportToExcel.Rmd</code></a></small>
       <div class="hidden name"><code>exportToExcel.Rmd</code></div>
 
     </div>
@@ -114,78 +116,78 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Harrison4192/presenter">presenter</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
-<div id="automatic-formatting" class="section level1">
-<h1 class="hasAnchor">
-<a href="#automatic-formatting" class="anchor"></a>automatic formatting</h1>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Harrison4192/presenter" class="external-link">presenter</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></code></pre></div>
+<div class="section level1">
+<h1 id="automatic-formatting">automatic formatting<a class="anchor" aria-label="anchor" href="#automatic-formatting"></a>
+</h1>
 <p>Output is automatically formatted depending on the mode of the columns</p>
 </div>
-<div id="argument-descriptions" class="section level1">
-<h1 class="hasAnchor">
-<a href="#argument-descriptions" class="anchor"></a>argument descriptions</h1>
-<div id="df" class="section level2">
-<h2 class="hasAnchor">
-<a href="#df" class="anchor"></a>df</h2>
+<div class="section level1">
+<h1 id="argument-descriptions">argument descriptions<a class="anchor" aria-label="anchor" href="#argument-descriptions"></a>
+</h1>
+<div class="section level2">
+<h2 id="df">df<a class="anchor" aria-label="anchor" href="#df"></a>
+</h2>
 <p>When using make excel, the first input is a dataframe, but do not input an expression or use a pipe. A variable name is necessary for proper naming of the excel output, which is sent to the working directory and named after the data frame.</p>
 </div>
-<div id="last-id-col" class="section level2">
-<h2 class="hasAnchor">
-<a href="#last-id-col" class="anchor"></a>last id col</h2>
+<div class="section level2">
+<h2 id="last-id-col">last id col<a class="anchor" aria-label="anchor" href="#last-id-col"></a>
+</h2>
 <p>The recommended ouput format is to put ID style columns first and and value columns after. Last_id_col takes the integer index of the last id column.</p>
 </div>
-<div id="header-words" class="section level2">
-<h2 class="hasAnchor">
-<a href="#header-words" class="anchor"></a>header words</h2>
+<div class="section level2">
+<h2 id="header-words">header words<a class="anchor" aria-label="anchor" href="#header-words"></a>
+</h2>
 <p>If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to maintain ease of read / write compatibility of the workbook with R.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/make_excel.html">make_excel</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">iris</span>, 
-           header_word <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal"</span>, <span class="st">"Petal"</span><span class="op">)</span>,
+           header_word <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal"</span>, <span class="st">"Petal"</span><span class="op">)</span>,
            last_id_col <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="exceloutput.png" alt=""><p class="caption">output of make excel</p>
 </div>
 </div>
-<div id="make-simple-excel" class="section level2">
-<h2 class="hasAnchor">
-<a href="#make-simple-excel" class="anchor"></a>make simple excel</h2>
+<div class="section level2">
+<h2 id="make-simple-excel">make simple excel<a class="anchor" aria-label="anchor" href="#make-simple-excel"></a>
+</h2>
 <p><code>make_simple_excel</code> allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specified otherwise in `output_file, the resulting excel file will be named after the data frame.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iris</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/make_simple_excel.html">make_simple_excel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="simpleexceloutput.png" alt=""><p class="caption">output of make simple excel</p>
 </div>
 </div>
-<div id="export-list-of-dfs" class="section level2">
-<h2 class="hasAnchor">
-<a href="#export-list-of-dfs" class="anchor"></a>export list of dfs</h2>
+<div class="section level2">
+<h2 id="export-list-of-dfs">export list of dfs<a class="anchor" aria-label="anchor" href="#export-list-of-dfs"></a>
+</h2>
 <p><code>make_simple_excel</code> also accepts a list of dfs, and exports one per sheet. This is useful when you automatically generated a list of tables, or saved a bunch of table summaries in a list.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iris</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">iris_summary</span>
+<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">iris_summary</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">iris_summary</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">iris_list</span>
+<span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">iris_summary</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">iris_list</span>
 
-<span class="va">iris_list</span> <span class="op">%&gt;%</span> 
+<span class="va">iris_list</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/make_simple_excel.html">make_simple_excel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="excellist.png" alt=""><p class="caption">list of dfs to excel wb</p>
 </div>
 </div>
-<div id="make-an-excel-workbook-with-multiple-sheets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#make-an-excel-workbook-with-multiple-sheets" class="anchor"></a>make an excel workbook with multiple sheets</h2>
+<div class="section level2">
+<h2 id="make-an-excel-workbook-with-multiple-sheets">make an excel workbook with multiple sheets<a class="anchor" aria-label="anchor" href="#make-an-excel-workbook-with-multiple-sheets"></a>
+</h2>
 <p>Use the automated formatting paradigm and customize the id cols and header words for each sheet.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/make_excel_wb.html">make_excel_wb</a></span><span class="op">(</span>wb <span class="op">=</span> <span class="cn">NULL</span>,
               object <span class="op">=</span> <span class="va">iris</span>,
               last_id_col <span class="op">=</span> <span class="cn">NULL</span>,
-              header_word <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal"</span>, <span class="st">"Petal"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+              header_word <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal"</span>, <span class="st">"Petal"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/make_excel_wb.html">make_excel_wb</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">anscombe</span>,
                 last_id_col <span class="op">=</span> <span class="cn">NULL</span>,
-                header_word <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                header_word <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/finish_excel_wb.html">finish_excel_wb</a></span><span class="op">(</span>wb_name <span class="op">=</span> <span class="st">"data_workbook"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="formattedexcelwb.png" alt=""><p class="caption">custom excel wb</p>
@@ -205,11 +207,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Harrison Tietze.</p>
+  <p></p>
+<p>Developed by Harrison Tietze.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
       </footer>
@@ -217,6 +221,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="header-words" class="section level2">
 <h2>header words</h2>
-<p>If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to mantain ease of read / write compatability of the workbook with R.</p>
+<p>If value columns are organized by header words they can be included in a character string. This will color code the column headers. Split and merge cells are not used to maintain ease of read / write compatibility of the workbook with R.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_excel</span>(<span class="at">df =</span> iris, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">header_word =</span> <span class="fu">c</span>(<span class="st">&quot;Sepal&quot;</span>, <span class="st">&quot;Petal&quot;</span>),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">last_id_col =</span> <span class="cn">NULL</span>)</span></code></pre></div>
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="make-simple-excel" class="section level2">
 <h2>make simple excel</h2>
-<p><code>make_simple_excel</code> allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specfied otherwise in `output_file, the resulting excel file will be named after the data frame.</p>
+<p><code>make_simple_excel</code> allows the user to export to excel but with minimal formatting. THe data frame can be piped in, and unless specified otherwise in `output_file, the resulting excel file will be named after the data frame.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_simple_excel</span>()</span></code></pre></div>
 <div class="figure">

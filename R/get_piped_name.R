@@ -2,6 +2,7 @@
 #' get piped name
 #'
 #'this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
+#'Currently throws an error when used in building vignettes or function examples.
 #'
 #'Inspiration for function: \url{https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/}
 #'The function body has been rewritten to leverage \code{rlang}.
@@ -14,28 +15,28 @@
 #'
 #' @examples
 #'
-#' ## works if the object is piped or given as an argument
-#' iris %>%
-#' get_piped_name()
+#' ### works if the object is piped or given as an argument
+#' #iris %>%
+#' #get_piped_name()
 #'
-#' get_piped_name(iris)
+#' #get_piped_name(iris)
 #'
-#' ## can even extract name from multistep pipes
-#' iris %>%
-#' dplyr::select(1:3) %>%
-#' get_piped_name()
+#' ### can even extract name from multistep pipes
+#' #iris %>%
+#' #dplyr::select(1:3) %>%
+#' #get_piped_name()
 #'
-#' ## can be placed inside other functions to capture the name and save it
+#' ### can be placed inside other functions to capture the name and save it
 #'
-#' find_name <- function(x){
-#'  get_piped_name() -> new_name
+#' #find_name <- function(x){
+#' # get_piped_name() -> new_name
+#' #
+#' # new_name
+#' #}
 #'
-#'  new_name
-#' }
-#'
-#' iris %>%
-#' dplyr:select(1:3) %>%
-#' find_name()
+#' #iris %>%
+#' #dplyr:select(1:3) %>%
+#' #find_name()
 get_piped_name <- function(objName, default_name = "Title") {
 
   calls <- sys.calls()

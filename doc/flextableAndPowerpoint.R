@@ -17,14 +17,14 @@ make_flextable(iris_slice, header_words = header_words, last_id_col = last_id_co
 
 myflex
 
-## -----------------------------------------------------------------------------
-tibble::tibble(my_letters = sample(letters[1:4], 100, T),
-       my_numbers = sample(1:4, 100, T)) -> cross_table
-
-cross_table %>% 
-  make_pivot_table(my_letters, my_numbers, theme = "tron") -> tron_cross_table
-
-tron_cross_table
+## ----eval=FALSE, include=FALSE------------------------------------------------
+#  tibble::tibble(my_letters = sample(letters[1:4], 100, T),
+#         my_numbers = sample(1:4, 100, T)) -> cross_table
+#  
+#  cross_table %>%
+#    make_pivot_table(my_letters, my_numbers, theme = "tron") -> tron_cross_table
+#  
+#  tron_cross_table
 
 ## -----------------------------------------------------------------------------
 iris %>% 
@@ -38,7 +38,7 @@ tbl
 #  myflex %>%
 #    export_powerpoint() # a new ppt is created, named after the table
 #  
-#  tron_cross_table %>%
-#    export_powerpoint("myflex.pptx") # append this slide to the previous ppt
+#  # tron_cross_table %>%
+#  #   export_powerpoint("myflex.pptx") # append this slide to the previous ppt
 #  
 

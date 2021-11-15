@@ -8,7 +8,7 @@ make_pivot_table(
   tbl,
   col1,
   col2,
-  show_totals = FALSE,
+  show_totals = TRUE,
   show_percentages = c("none", "all", "row", "col"),
   show_chi_test = FALSE,
   theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",

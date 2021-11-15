@@ -107,10 +107,10 @@ usethis::use_github_links()
 devtools::load_all()
 devtools::document()
 devtools::build_readme()
-build_site()
+devtools::build_site()
 devtools::check()
 preview_site()
-devtools::build_vignettes()
+devtools::build_vignettes(pkg = getwd(), clean = T, quiet = F)
 
 
 # checks ------------------------------------------------------------------

@@ -20,9 +20,7 @@ reference:
   - '`make_powerpoint`'
 - title: Formatters
   contents:
-  - '`format_percent`'
   - '`format_number`'
-  - '`format_currency`'
 - title: Reshape Data
   contents:
   - '`pivot_summary`'
