@@ -1,9 +1,5 @@
 
 
-#' get lhs
-#'
-#' @keywords internal
-#'
 get_lhs <- function(){
   calls <- sys.calls()
 
