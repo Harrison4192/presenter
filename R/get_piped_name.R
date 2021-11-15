@@ -1,8 +1,6 @@
 
 
-#' get lhs
-#' @keywords internal
-#' @export
+
 get_lhs <- function(){
   calls <- sys.calls()
 
@@ -69,6 +67,9 @@ get_lhs <- function(){
 #' dplyr:select(1:3) %>%
 #' find_name()
 get_piped_name <- function(objName, default_name = "Title") {
+
+  utils::getFromNamespace("get_lhs", "presenter")
+
   z <- get_lhs()
 
 
