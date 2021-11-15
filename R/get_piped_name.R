@@ -1,6 +1,8 @@
 
 
-
+#' get lhs
+#' @keywords internal
+#' @export
 get_lhs <- function(){
   calls <- sys.calls()
 
