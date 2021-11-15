@@ -115,11 +115,7 @@ build_vignettes()
 
 # checks ------------------------------------------------------------------
 load_all()
-iris %>%
-  janitor::tabyl(Species) %>%
-  janitor::adorn_pct_formatting() %>%
-  make_flextable() %>%
-  list() -> tbl1
+
 
 
 devtools::spell_check()
