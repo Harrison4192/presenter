@@ -2,80 +2,64 @@
 #' get piped name
 #'
 #'this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
-#'Currently throws an error when used in building vignettes or function examples.
 #'
-#'Inspiration for function: \url{https://michaelbarrowman.co.uk/post/getting-a-variable-name-in-a-pipeline/}
-#'The function body has been rewritten to leverage \code{rlang}.
+#'The behavior doesn't work as expected when examples or vignettes are being knitted, so instead
+#'you can specify a default output.
 #'
-#' @param objName an object
-#' @param default_name default name if object name is not able to be accessed in case of a long pipe
+#'
+#' @param object an object
+#' @param default_name string
 #'
 #' @return string
 #' @export
 #'
 #' @examples
 #'
-#' ### works if the object is piped or given as an argument
-#' #iris %>%
-#' #get_piped_name()
+#' ### on local machine the output will be "iris" for each example
 #'
-#' #get_piped_name(iris)
+#' ### works if the object is piped or given as an argument
+#' iris %>%
+#' get_piped_name()
+#'
+#' get_piped_name(iris)
 #'
 #' ### can even extract name from multistep pipes
-#' #iris %>%
-#' #dplyr::select(1:3) %>%
-#' #get_piped_name()
+#' iris %>%
+#' dplyr::select(1:3) %>%
+#' get_piped_name()
 #'
 #' ### can be placed inside other functions to capture the name and save it
 #'
-#' #find_name <- function(x){
-#' # get_piped_name() -> new_name
-#' #
-#' # new_name
-#' #}
+#' find_name <- function(x){
+#'  get_piped_name() -> new_name
 #'
-#' #iris %>%
-#' #dplyr:select(1:3) %>%
-#' #find_name()
-get_piped_name <- function(objName, default_name = "Title") {
+#'  new_name
+#' }
+#'
+#' iris %>%
+#' dplyr:select(1:3) %>%
+#' find_name()
+get_piped_name <- function(object, default_name = "Table") {
 
-  calls <- sys.calls()
-
-  lapply(calls, rlang::call_standardise) -> l1
-
+  calls <- sys.calls() %>%
+    as.list()
 
 
-  rlang::call_args(l1[[1]])  -> arg
+  calls %>%
+    purrr::pluck(1) %>%
+    as.character() %>%
+    purrr::pluck(2) %>%
+    stringr::str_split(pattern = stringr::boundary("word")) %>%
+    purrr::pluck(1, 1) -> the_call
 
-  if(any((names(arg) == "objName"))){
+  if(the_call == "withCallingHandlers" | is.null(the_call)){
 
-    return(rlang::as_name(arg$objName))}
-
-  arg$lhs -> c1
-
-  while(rlang::is_call(c1)){
-    c1 %>%
-      rlang::call_args() %>%
-      purrr::pluck(1) -> c1
-
+    the_call <- default_name
   }
 
-  rlang::as_name(c1) -> z
+  the_call
 
 
-
-
-  if(is.character(z)){
-    z <- z
-  } else if (is.null(z)) {
-    z <- rlang::enexpr(objName)
-  } else if  (rlang::is_symbol(z)) {
-    z <- rlang::as_name(z)
-  } else{
-    z <- default_name
-  }
-
-  z
 }
 
 

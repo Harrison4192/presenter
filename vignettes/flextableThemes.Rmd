@@ -49,7 +49,7 @@ iris1 %>%
 
 # tron
 
-```{r eval=FALSE, include=FALSE}
+```{r }
 iris2 %>% 
   make_pivot_table(col1 = Species, col2 = Species_random, theme = "tron")
 ```
@@ -63,7 +63,7 @@ iris1 %>%
 
 # vanilla
 
-```{r eval=FALSE, include=FALSE}
+```{r }
 iris2 %>% 
   make_pivot_table(col1 = Species, col2 = Species_random, theme = "vanilla")
 ```

@@ -32,7 +32,7 @@ myflex
 ```
 ## Create a pivot table with flextable
 
-```{r eval=FALSE, include=FALSE}
+```{r }
 tibble::tibble(my_letters = sample(letters[1:4], 100, T),
        my_numbers = sample(1:4, 100, T)) -> cross_table
 
@@ -57,8 +57,8 @@ tbl
 myflex %>% 
   export_powerpoint() # a new ppt is created, named after the table
 
-# tron_cross_table %>% 
-#   export_powerpoint("myflex.pptx") # append this slide to the previous ppt
+tron_cross_table %>%
+  export_powerpoint("myflex.pptx") # append this slide to the previous ppt
 
 ```
 ![Multiple powerpoint slides](powerpointexample.png)
