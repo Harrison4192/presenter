@@ -51,7 +51,7 @@ usethis::use_package("formattable")
 usethis::use_package("badger", type = "Suggests")
 
 usethis::use_r("formatters")
-usethis::use_vignette("pivotSummary")
+usethis::use_vignette("pipedname")
 # edit R profile ----------------------------------------------------------
 
 
@@ -111,8 +111,7 @@ devtools::build_site()
 devtools::check()
 preview_site()
 devtools::build_vignettes(pkg = getwd(), clean = T, quiet = F)
-
-
+tools::buildVignette("pipedname.Rmd")
 # checks ------------------------------------------------------------------
 load_all()
 

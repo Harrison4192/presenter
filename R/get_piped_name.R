@@ -44,9 +44,15 @@ get_piped_name <- function(object, default_name = "Table") {
   calls <- sys.calls() %>%
     as.list()
 
+  if(length(calls) > 22){
+    start <- 23
+  } else{
+    start <- 1
+  }
+
 
   calls %>%
-    purrr::pluck(1) %>%
+    purrr::pluck(start) %>%
     as.character() %>%
     purrr::pluck(2) %>%
     stringr::str_split(pattern = stringr::boundary("word")) %>%
@@ -59,8 +65,83 @@ get_piped_name <- function(object, default_name = "Table") {
 
   the_call
 
-
 }
 
+## debug function in vignettes
 
-
+# new_fun <- function(x){
+#
+#   get_piped_name()
+# }
+#
+# new_fun_pipe <- function(x){
+#
+#  new_pipe() -> cl
+#   x %>%
+#     dplyr::select(1:3) -> x
+#
+#   x %>%
+#     new_pipe() -> stuff
+#
+#   stuff
+#
+#   1+1 -> h1
+#
+#   cl
+# }
+#
+# new_pipe <- function(object){
+#
+#   calls <- sys.calls() %>%
+#     as.list()
+#
+#   calls
+# }
+#
+# ---
+#   title: "pipedname"
+# output: rmarkdown::html_vignette
+# vignette: >
+#   %\VignetteIndexEntry{pipedname}
+# %\VignetteEngine{knitr::rmarkdown}
+# %\VignetteEncoding{UTF-8}
+# ---
+#
+#   ```{r, include = FALSE}
+# knitr::opts_chunk$set(
+#   collapse = TRUE,
+#   comment = "#>"
+# )
+# ```
+#
+# ```{r setup}
+# library(presenter)
+# library(dplyr)
+# library(purrr)
+# ```
+#
+# ```{r}
+# iris %>%
+#   mutate(Species = Species) %>%
+#   new_fun_pipe() %>%
+#   pluck(1)
+# ```
+#
+# ```{r}
+# iris %>%
+#   mutate(Species = Species) %>%
+#   get_piped_name()
+# ```
+#
+# ```{r}
+# iris %>%
+#   mutate(Species = Species) %>%
+#   new_fun() %>%
+#   new_fun()
+# ```
+#
+# ```{r}
+# iris %>%
+#   mutate(Species = Species) %>%
+#   new_fun_pipe()
+# ```
