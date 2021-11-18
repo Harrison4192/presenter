@@ -9,17 +9,13 @@ get_piped_name(object, default_name = "Table")
 \arguments{
 \item{object}{an object}
 
-\item{default_name}{string}
+\item{default_name}{string Attempts to return this string if an error occurs.}
 }
 \value{
 string
 }
 \description{
 this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
-}
-\details{
-The behavior doesn't work as expected when examples or vignettes are being knitted, so instead
-you can specify a default output.
 }
 \examples{
 

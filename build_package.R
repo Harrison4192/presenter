@@ -113,6 +113,9 @@ preview_site()
 devtools::build_vignettes(pkg = getwd(), clean = T, quiet = F)
 devtools::document()
 devtools::run_examples()
+usethis::use_version(which = "patch")
+devtools::submit_cran()
+
 # checks ------------------------------------------------------------------
 load_all()
 
