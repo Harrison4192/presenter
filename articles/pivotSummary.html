@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">presenter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -199,15 +199,15 @@
 <span class="co">#&gt; # A tibble: 9 × 6</span>
 <span class="co">#&gt;   Species    Species1   Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
 <span class="co">#&gt;   &lt;fct&gt;      &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 setosa     setosa             5.08        3.54         1.46       0.25 </span>
-<span class="co">#&gt; 2 setosa     versicolor         5.02        3.46         1.48       0.244</span>
-<span class="co">#&gt; 3 setosa     virginica          4.93        3.31         1.45       0.244</span>
-<span class="co">#&gt; 4 versicolor setosa             6.01        2.92         4.33       1.38 </span>
-<span class="co">#&gt; 5 versicolor versicolor         5.95        2.69         4.34       1.37 </span>
-<span class="co">#&gt; 6 versicolor virginica          5.85        2.69         4.1        1.23 </span>
-<span class="co">#&gt; 7 virginica  setosa             6.39        2.9          5.44       1.96 </span>
-<span class="co">#&gt; 8 virginica  versicolor         6.59        3.06         5.56       2.05 </span>
-<span class="co">#&gt; 9 virginica  virginica          6.79        2.96         5.66       2.07</span></code></pre></div>
+<span class="co">#&gt; 1 setosa     setosa             4.91        3.26         1.41       0.229</span>
+<span class="co">#&gt; 2 setosa     versicolor         5.05        3.52         1.47       0.273</span>
+<span class="co">#&gt; 3 setosa     virginica          5.04        3.47         1.49       0.238</span>
+<span class="co">#&gt; 4 versicolor setosa             5.92        2.84         4.34       1.35 </span>
+<span class="co">#&gt; 5 versicolor versicolor         5.81        2.68         4.17       1.31 </span>
+<span class="co">#&gt; 6 versicolor virginica          6.08        2.77         4.24       1.31 </span>
+<span class="co">#&gt; 7 virginica  setosa             6.69        2.95         5.77       2.09 </span>
+<span class="co">#&gt; 8 virginica  versicolor         6.58        2.98         5.46       2.01 </span>
+<span class="co">#&gt; 9 virginica  virginica          6.49        2.99         5.44       1.98</span></code></pre></div>
 <p>Group names are concatenated and pivoted.</p>
 <p><strong>wide format</strong></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -216,10 +216,10 @@
 <span class="co">#&gt; # A tibble: 4 × 10</span>
 <span class="co">#&gt;   column       setosa_setosa setosa_versicolor setosa_virginica versicolor_seto…</span>
 <span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Sepal.Length          5.08             5.02             4.93              6.01</span>
-<span class="co">#&gt; 2 Sepal.Width           3.54             3.46             3.31              2.92</span>
-<span class="co">#&gt; 3 Petal.Length          1.46             1.48             1.45              4.33</span>
-<span class="co">#&gt; 4 Petal.Width           0.25             0.244            0.244             1.38</span>
+<span class="co">#&gt; 1 Sepal.Length         4.91              5.05             5.04              5.92</span>
+<span class="co">#&gt; 2 Sepal.Width          3.26              3.52             3.47              2.84</span>
+<span class="co">#&gt; 3 Petal.Length         1.41              1.47             1.49              4.34</span>
+<span class="co">#&gt; 4 Petal.Width          0.229             0.273            0.238             1.35</span>
 <span class="co">#&gt; # … with 5 more variables: versicolor_versicolor &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   versicolor_virginica &lt;dbl&gt;, virginica_setosa &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   virginica_versicolor &lt;dbl&gt;, virginica_virginica &lt;dbl&gt;</span></code></pre></div>
