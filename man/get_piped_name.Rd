@@ -23,7 +23,9 @@ you can specify a default output.
 }
 \examples{
 
-### on local machine the output will be "iris" for each example
+#necessary to specify this option when using get_piped_name in knitr
+options(rlang_trace_top_env = rlang::current_env())
+
 
 ### works if the object is piped or given as an argument
 iris \%>\%
@@ -47,4 +49,5 @@ find_name <- function(x){
 iris \%>\%
 dplyr:select(1:3) \%>\%
 find_name()
+
 }

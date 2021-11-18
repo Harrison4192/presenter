@@ -3,19 +3,20 @@
 #'
 #'this function captures the name of an object piped into a function, and returns as a string. Powers the automatic naming found in presenter.
 #'
-#'The behavior doesn't work as expected when examples or vignettes are being knitted, so instead
-#'you can specify a default output.
+#'
 #'
 #'
 #' @param object an object
-#' @param default_name string
+#' @param default_name string Attempts to return this string if an error occurs.
 #'
 #' @return string
 #' @export
 #'
 #' @examples
 #'
-#' ### on local machine the output will be "iris" for each example
+#' #necessary to specify this option when using get_piped_name in knitr
+#' options(rlang_trace_top_env = rlang::current_env())
+#'
 #'
 #' ### works if the object is piped or given as an argument
 #' iris %>%
@@ -39,26 +40,28 @@
 #' iris %>%
 #' dplyr:select(1:3) %>%
 #' find_name()
+#'
 get_piped_name <- function(object, default_name = "Table") {
 
-  calls <- sys.calls() %>%
-    as.list()
+  rlang::trace_back() -> f_trace
 
-  if(length(calls) > 22){
-    start <- 23
-  } else{
-    start <- 1
-  }
+  f_trace$calls -> f_calls
 
+  length(f_calls) -> f_len
 
-  calls %>%
-    purrr::pluck(start) %>%
+## if the option isn't specified, this workaround can bypass all the calls from knitr
+ if(f_len > 7){
+   f_calls[(f_len-2):f_len] -> f_calls
+ }
+
+  f_calls %>%
+    purrr::pluck(1) %>%
     as.character() %>%
     purrr::pluck(2) %>%
     stringr::str_split(pattern = stringr::boundary("word")) %>%
     purrr::pluck(1, 1) -> the_call
 
-  if(the_call == "withCallingHandlers" | is.null(the_call)){
+  if(is.null(the_call)){
 
     the_call <- default_name
   }
@@ -69,34 +72,36 @@ get_piped_name <- function(object, default_name = "Table") {
 
 ## debug function in vignettes
 
-# new_fun <- function(x){
-#
-#   get_piped_name()
-# }
-#
-# new_fun_pipe <- function(x){
-#
-#  new_pipe() -> cl
-#   x %>%
-#     dplyr::select(1:3) -> x
-#
-#   x %>%
-#     new_pipe() -> stuff
-#
-#   stuff
-#
-#   1+1 -> h1
-#
-#   cl
-# }
-#
-# new_pipe <- function(object){
-#
-#   calls <- sys.calls() %>%
-#     as.list()
-#
-#   calls
-# }
+#' new_fun <- function(x){
+#'
+#'   get_piped_name()
+#' }
+#'
+#'
+#' #' new fun pipe
+#' #'
+#' #' @param x
+#' #'
+#' #' @export
+#' new_fun_pipe <- function(x){
+#'
+#'  new_pipe() -> cl
+#'
+#' cl
+#'
+#' }
+#'
+#' #' new pipe
+#' #'
+#' #' @param object
+#' #'
+#' #' @export
+#' new_pipe <- function(object){
+#'
+#'
+#'   rlang::trace_back() -> tr
+#'   tr$calls
+#' }
 #
 # ---
 #   title: "pipedname"

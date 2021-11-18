@@ -111,7 +111,8 @@ devtools::build_site()
 devtools::check()
 preview_site()
 devtools::build_vignettes(pkg = getwd(), clean = T, quiet = F)
-tools::buildVignette("pipedname.Rmd")
+devtools::document()
+devtools::run_examples()
 # checks ------------------------------------------------------------------
 load_all()
 

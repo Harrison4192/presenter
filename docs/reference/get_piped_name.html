@@ -113,21 +113,23 @@ you can specify a default output.</p>
     <div id="examples">
     <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co">### on local machine the output will be "iris" for each example</span></span>
+<span class="r-in"><span class="co">#necessary to specify this option when using get_piped_name in knitr</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>rlang_trace_top_env <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/caller_env.html" class="external-link">current_env</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">### works if the object is piped or given as an argument</span></span>
 <span class="r-in"><span class="va">iris</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in"><span class="fu">get_piped_name</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "iris"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">get_piped_name</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "iris"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">### can even extract name from multistep pipes</span></span>
 <span class="r-in"><span class="va">iris</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in"><span class="fu">get_piped_name</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "iris"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">### can be placed inside other functions to capture the name and save it</span></span>
 <span class="r-in"></span>
@@ -140,7 +142,8 @@ you can specify a default output.</p>
 <span class="r-in"><span class="va">iris</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in"><span class="va">dplyr</span><span class="op">:</span><span class="fu">select</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in"><span class="fu">find_name</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Table"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "iris"</span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </div>
