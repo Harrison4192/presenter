@@ -7,13 +7,14 @@
 make_pivot_table(
   tbl,
   col1,
-  col2,
+  col2 = NULL,
   show_totals = TRUE,
   show_percentages = c("none", "all", "row", "col"),
   show_chi_test = FALSE,
   theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs",
     "alafoli"),
-  tbl_nm = NULL
+  tbl_nm = NULL,
+  arrange_desc = TRUE
 )
 }
 \arguments{
@@ -32,10 +33,12 @@ make_pivot_table(
 \item{theme}{string to choose a predefined theme}
 
 \item{tbl_nm}{string to name table. If not given, automatically defaults to table name.}
+
+\item{arrange_desc}{param for single col pivot table. if True arranges table by decreasing n size}
 }
 \value{
 a flextable
 }
 \description{
-Make pivot table
+If col2 is not supplied, will make a frequency table for 1 column.
 }

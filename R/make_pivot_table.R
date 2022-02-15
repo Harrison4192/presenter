@@ -1,5 +1,7 @@
 #' Make pivot table
 #'
+#' If col2 is not supplied, will make a frequency table for 1 column.
+#'
 #' @param tbl a data frame to pivot
 #' @param col1 unquoted col 1
 #' @param col2 unquoted col 2
@@ -8,20 +10,22 @@
 #' @param show_chi_test logical; show results of chi squared test in footnote
 #' @param tbl_nm string to name table. If not given, automatically defaults to table name.
 #' @param theme string to choose a predefined theme
+#' @param arrange_desc param for single col pivot table. if True arranges table by decreasing n size
 #'
 #' @return a flextable
 #' @export
 
 make_pivot_table <- function(tbl,
                              col1,
-                             col2,
+                             col2 = NULL,
                              show_totals = TRUE,
                              show_percentages = c("none", "all", "row", "col"),
                              show_chi_test = FALSE,
                              theme = c("zebra_blue", "zebra_gold", "tron", "vader", "vanilla", "booktabs", "alafoli"),
-                             tbl_nm = NULL){
+                             tbl_nm = NULL,
+                             arrange_desc = TRUE){
 
-  Total <- pct <- NULL
+  Total <- pct <- n <- NULL
 
   if(is.null(tbl_nm)){
   tbl1 <- rlang::ensym(tbl)
@@ -34,7 +38,32 @@ show_percentages <- match.arg(show_percentages)
 
   col1 <- rlang::ensym(col1)
   col1_nm <- rlang::as_string(col1)
-  col2 <- rlang::ensym(col2)
+  col2 <- rlang::enexpr(col2)
+
+  if(is.null(col2)){
+
+    tbl %>%
+      janitor::tabyl(!!col1) %>%
+      janitor::adorn_pct_formatting() -> tbl1
+
+    if(arrange_desc){
+      tbl1 %>%
+        dplyr::arrange(dplyr::desc(n)) -> tbl1
+    }
+
+    tbl1 %>%
+      janitor::adorn_totals() %>%
+      framecleaner::set_int(n) -> tbl1
+
+
+
+    tbl1 %>%
+      make_flextable(theme = theme ) -> f1
+
+
+  } else{
+
+
   col2_nm <- rlang::as_string(col2)
   tbl_nm1 <- tbl_nm %>% stringr::str_c(" ")
 
@@ -324,7 +353,7 @@ if(show_percentages == "col"){
 if(show_chi_test){
   flextable::add_footer_row(f1, values = chi_test_res, colwidths = ncol(tbl1)) -> f1
 }
-
+}
 f1
 
 }

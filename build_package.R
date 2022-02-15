@@ -117,7 +117,7 @@ usethis::use_version(which = "patch")
 devtools::submit_cran()
 
 # checks ------------------------------------------------------------------
-load_all()
+devtools::load_all()
 
 
 

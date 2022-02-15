@@ -45,7 +45,7 @@ get_piped_name <- function(object, default_name = "Table") {
 
   rlang::trace_back() -> f_trace
 
-  f_trace$calls -> f_calls
+  f_trace$call -> f_calls
 
   length(f_calls) -> f_len
 
