@@ -22,4 +22,3 @@ library(presenter)
 c(.1, 0, .5) \%>\%
 is_percentage
 }
-\keyword{internal}

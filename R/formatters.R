@@ -100,7 +100,6 @@ format_currency <- function(tbl, ..., symbol = "yen", digits = 0){
 #'
 #' @return logical
 #' @export
-#' @keywords internal
 #'
 #' @examples
 #'
