@@ -1,4 +1,4 @@
-template:
+  template:
   params:
     bootswatch: cerulean
     ganalytics: G-VD1VCCZHJK
@@ -27,6 +27,7 @@ reference:
 - title: Developer Functions
   contents:
   - '`get_piped_name`'
+  - '`is_percentage`'
 articles:
 - title: All vignettes
   desc: null
