@@ -61,9 +61,9 @@ formatting. Certain novel features of this package include:
     generation so you can inspect your output.
 
 -   **header words:** By supplying a character vector to the
-    “header\_word” argument, you can automatically merge or color
+    “header_word” argument, you can automatically merge or color
     adjacent column headers based off a common key word. This
-    functionality relies on word separation with “.” or "\_" and will
+    functionality relies on word separation with “.” or “\_” and will
     not work properly in other cases like snakeCase. Can be left blank
     for no special formatting.
 
