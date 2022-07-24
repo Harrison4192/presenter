@@ -120,7 +120,7 @@ pkgdown::check_pkgdown()
 
 # checks ------------------------------------------------------------------
 devtools::load_all()
-
+devtools::check()
 
 
 devtools::spell_check()

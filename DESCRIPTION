@@ -34,13 +34,13 @@ Imports:
     rvg,
     tidyselect,
     formattable,
-    badger,
     framecleaner
 RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     rmarkdown,
-    ggplot2
+    ggplot2,
+    badger
 VignetteBuilder: knitr
 URL: https://github.com/Harrison4192/presenter
 BugReports: https://github.com/Harrison4192/presenter/issues

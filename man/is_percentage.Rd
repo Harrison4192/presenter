@@ -16,8 +16,6 @@ logical
 is_percentage
 }
 \examples{
-f
-library(presenter)
 
 c(.1, 0, .5) \%>\%
 is_percentage
