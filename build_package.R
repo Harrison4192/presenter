@@ -116,6 +116,8 @@ devtools::run_examples()
 usethis::use_version(which = "patch")
 devtools::submit_cran()
 
+pkgdown::check_pkgdown()
+
 # checks ------------------------------------------------------------------
 devtools::load_all()
 

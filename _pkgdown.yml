@@ -1,7 +1,8 @@
-  template:
+template:
   params:
-    bootswatch: cerulean
-    ganalytics: G-VD1VCCZHJK
+   bootstrap: 5
+   bootswatch: cerulean
+   ganalytics: G-VD1VCCZHJK
 
 development:
   mode: auto

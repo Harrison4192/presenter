@@ -67,7 +67,7 @@ format_number <- function(tbl, ..., digits = 0){
 #'
 format_percent <- function(tbl, ..., digits = 0){
 
-  tbl %>% select_otherwise(..., otherwise = where(is_percentage)) -> col_indx
+  tbl %>% select_otherwise(..., otherwise = where(presenter::is_percentage)) -> col_indx
 
   # tbl %>% dplyr::mutate(dplyr::across(tidyselect::any_of(col_indx), ~ifelse(. == 0, . + .0000000000001, .))) -> tbl
 
@@ -102,7 +102,7 @@ format_currency <- function(tbl, ..., symbol = "yen", digits = 0){
 #' @export
 #'
 #' @examples
-#'
+#'f
 #' library(presenter)
 #'
 #' c(.1, 0, .5) %>%
