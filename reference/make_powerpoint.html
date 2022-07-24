@@ -40,7 +40,7 @@ on an existing powerpoint."><!-- mathjax --><script src="https://cdnjs.cloudflar
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -94,31 +94,42 @@ on an existing powerpoint.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">make_powerpoint</span><span class="op">(</span>
-  <span class="va">tbl</span>,
-  output_file <span class="op">=</span> <span class="cn">NULL</span>,
-  layout <span class="op">=</span> <span class="st">"Two Content"</span>,
-  master <span class="op">=</span> <span class="st">"Office Theme"</span>,
-  show <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">make_powerpoint</span><span class="op">(</span></span>
+<span>  <span class="va">tbl</span>,</span>
+<span>  output_file <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  layout <span class="op">=</span> <span class="st">"Two Content"</span>,</span>
+<span>  master <span class="op">=</span> <span class="st">"Office Theme"</span>,</span>
+<span>  show <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tbl</dt>
 <dd><p>a data frame,  flextable, or a list thereof</p></dd>
+
+
 <dt>output_file</dt>
 <dd><p>path to existing ppt</p></dd>
+
+
 <dt>layout</dt>
 <dd><p>master layout</p></dd>
+
+
 <dt>master</dt>
 <dd><p>master theme</p></dd>
+
+
 <dt>show</dt>
 <dd><p>logical to open the ppt</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>none</p>
+    
+
+<p>none</p>
     </div>
 
   </div>
@@ -133,7 +144,7 @@ on an existing powerpoint.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

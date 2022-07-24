@@ -55,7 +55,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -116,16 +116,16 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Harrison4192/presenter" class="external-link">presenter</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Harrison4192/presenter" class="external-link">presenter</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="pivot-summary">Pivot summary<a class="anchor" aria-label="anchor" href="#pivot-summary"></a>
 </h2>
@@ -136,24 +136,24 @@
 <p>Transpose a 1 row numerical summary:</p>
 <p><strong>wide format</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">sumr0</span>
-
-<span class="va">sumr0</span>
-<span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
-<span class="co">#&gt; 1     5.843333    3.057333        3.758    1.199333</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">sumr0</span></span>
+<span></span>
+<span><span class="va">sumr0</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt; 1     5.843333    3.057333        3.758    1.199333</span></span></code></pre></div>
 <p><strong>long format</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">sumr0</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/pivot_summary.html">pivot_summary</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 2</span></span>
-<span class="co">#&gt;   column          V1</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal.Length  5.84</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal.Width   3.06</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal.Length  3.76</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal.Width   1.20</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">sumr0</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/pivot_summary.html">pivot_summary</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 2</span></span></span>
+<span><span class="co">#&gt;   column          V1</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal.Length  5.84</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal.Width   3.06</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal.Length  3.76</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal.Width   1.20</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="group">1 group<a class="anchor" aria-label="anchor" href="#group"></a>
@@ -161,29 +161,29 @@
 <p>A grouped summary can be transposed by providing the name of the group column.</p>
 <p><strong>wide format</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">sumr1</span>
-
-<span class="va">sumr1</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span>
-<span class="co">#&gt;   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> setosa             5.01        3.43         1.46       0.246</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> versicolor         5.94        2.77         4.26       1.33 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> virginica          6.59        2.97         5.55       2.03</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">sumr1</span></span>
+<span></span>
+<span><span class="va">sumr1</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
+<span><span class="co">#&gt;   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> setosa             5.01        3.43         1.46       0.246</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> versicolor         5.94        2.77         4.26       1.33 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> virginica          6.59        2.97         5.55       2.03</span></span></code></pre></div>
 <p><strong>long format</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">sumr1</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/pivot_summary.html">pivot_summary</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span>
-<span class="co">#&gt;   column       setosa versicolor virginica</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal.Length  5.01        5.94      6.59</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal.Width   3.43        2.77      2.97</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal.Length  1.46        4.26      5.55</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal.Width   0.246       1.33      2.03</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">sumr1</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/pivot_summary.html">pivot_summary</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
+<span><span class="co">#&gt;   column       setosa versicolor virginica</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal.Length  5.01        5.94      6.59</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal.Width   3.43        2.77      2.97</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal.Length  1.46        4.26      5.55</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal.Width   0.246       1.33      2.03</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="groups-1">2 groups<a class="anchor" aria-label="anchor" href="#groups-1"></a>
@@ -191,40 +191,41 @@
 <p>Supports transposing numerical summaries with multiple groups using tidyselect.</p>
 <p><strong>long format</strong></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Species1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Species</span>, <span class="va">Species1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">sumr2</span>
- 
-<span class="va">sumr2</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 6</span></span>
-<span class="co">#&gt;   Species    Species1   Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> setosa     setosa             4.93        3.36         1.41       0.227</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> setosa     versicolor         4.96        3.3          1.42       0.238</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> setosa     virginica          5.11        3.59         1.54       0.268</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> versicolor setosa             5.89        2.78         4.2        1.31 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> versicolor versicolor         5.87        2.74         4.24       1.35 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> versicolor virginica          6.09        2.79         4.38       1.32 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">7</span> virginica  setosa             6.64        2.98         5.58       2.05 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">8</span> virginica  versicolor         6.71        3.02         5.67       2.06 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">9</span> virginica  virginica          6.43        2.93         5.43       1.97</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">iris</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Species1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Species</span>, <span class="va">Species1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">sumr2</span></span>
+<span> </span>
+<span><span class="va">sumr2</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 6</span></span></span>
+<span><span class="co">#&gt;   Species    Species1   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> setosa     setosa             4.97        3.36         1.43       0.238</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> setosa     versicolor         4.9         3.35         1.48       0.246</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> setosa     virginica          5.10        3.53         1.48       0.252</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> versicolor setosa             6.11        2.74         4.41       1.36 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> versicolor versicolor         5.93        2.84         4.23       1.33 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> versicolor virginica          5.78        2.69         4.16       1.29 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> virginica  setosa             6.48        2.9          5.48       1.92 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> virginica  versicolor         6.74        3.05         5.63       2.09 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> virginica  virginica          6.58        2.99         5.57       2.11</span></span></code></pre></div>
 <p>Group names are concatenated and pivoted.</p>
 <p><strong>wide format</strong></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sumr2</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-   <span class="fu"><a href="../reference/pivot_summary.html">pivot_summary</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"Spec"</span><span class="op">)</span><span class="op">)</span> 
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span>
-<span class="co">#&gt;   column       setosa_setosa setosa_versicolor setosa_virginica versicolor_seto…</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal.Length         4.93              4.96             5.11              5.89</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal.Width          3.36              3.3              3.59              2.78</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal.Length         1.41              1.42             1.54              4.2 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal.Width          0.227             0.238            0.268             1.31</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 5 more variables: versicolor_versicolor &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   versicolor_virginica &lt;dbl&gt;, virginica_setosa &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   virginica_versicolor &lt;dbl&gt;, virginica_virginica &lt;dbl&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sumr2</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>   <span class="fu"><a href="../reference/pivot_summary.html">pivot_summary</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"Spec"</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span></span>
+<span><span class="co">#&gt;   column setos…¹ setos…² setos…³ versi…⁴ versi…⁵ versi…⁶ virgi…⁷ virgi…⁸ virgi…⁹</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal…   4.97    4.9     5.10     6.11    5.93    5.78    6.48    6.74    6.58</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal…   3.36    3.35    3.53     2.74    2.84    2.69    2.9     3.05    2.99</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal…   1.43    1.48    1.48     4.41    4.23    4.16    5.48    5.63    5.57</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal…   0.238   0.246   0.252    1.36    1.33    1.29    1.92    2.09    2.11</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​setosa_setosa, ²​setosa_versicolor,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ³​setosa_virginica, ⁴​versicolor_setosa, ⁵​versicolor_versicolor,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁶​versicolor_virginica, ⁷​virginica_setosa, ⁸​virginica_versicolor,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁹​virginica_virginica</span></span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -246,7 +247,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

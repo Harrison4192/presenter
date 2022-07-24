@@ -40,7 +40,7 @@ Based off the formattable package."><!-- mathjax --><script src="https://cdnjs.c
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -94,28 +94,39 @@ Based off the <a href="https://renkun-ken.github.io/formattable/" class="externa
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">format_number</span><span class="op">(</span><span class="va">tbl</span>, <span class="va">...</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-
-<span class="fu">format_percent</span><span class="op">(</span><span class="va">tbl</span>, <span class="va">...</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-
-<span class="fu">format_currency</span><span class="op">(</span><span class="va">tbl</span>, <span class="va">...</span>, symbol <span class="op">=</span> <span class="st">"yen"</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">format_number</span><span class="op">(</span><span class="va">tbl</span>, <span class="va">...</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">format_percent</span><span class="op">(</span><span class="va">tbl</span>, <span class="va">...</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">format_currency</span><span class="op">(</span><span class="va">tbl</span>, <span class="va">...</span>, symbol <span class="op">=</span> <span class="st">"yen"</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tbl</dt>
 <dd><p>dataframe</p></dd>
+
+
 <dt>...</dt>
 <dd><p>tidyselect.</p></dd>
+
+
 <dt>digits</dt>
 <dd><p>integer. trailing digits</p></dd>
+
+
 <dt>symbol</dt>
 <dd><p>chr. currency symbol</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>dataframe
-dataframe</p>
+    
+
+<p>dataframe</p>
+
+
+<p>dataframe</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -127,13 +138,13 @@ dataframe</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1000L</span>, <span class="fl">10000L</span>, by <span class="op">=</span> <span class="fl">1000L</span><span class="op">)</span>,</span>
-<span class="r-in">z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.59</span>, <span class="op">-</span><span class="fl">.23</span>, <span class="op">-</span><span class="fl">.11</span>, <span class="fl">0</span>, <span class="fl">.1</span>, <span class="fl">.21</span>, <span class="fl">.3</span>, <span class="fl">.4</span>, <span class="fl">.6</span>, <span class="fl">.9</span><span class="op">)</span>,</span>
-<span class="r-in">w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.1</span>, <span class="fl">1.4</span>, <span class="fl">.23</span>, <span class="op">-</span><span class="fl">.10</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">2.3</span>, <span class="fl">.2</span>,<span class="fl">.3</span>,<span class="fl">.4</span>,<span class="fl">.5</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tbl1</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">tbl1</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1000L</span>, <span class="fl">10000L</span>, by <span class="op">=</span> <span class="fl">1000L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.59</span>, <span class="op">-</span><span class="fl">.23</span>, <span class="op">-</span><span class="fl">.11</span>, <span class="fl">0</span>, <span class="fl">.1</span>, <span class="fl">.21</span>, <span class="fl">.3</span>, <span class="fl">.4</span>, <span class="fl">.6</span>, <span class="fl">.9</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.1</span>, <span class="fl">1.4</span>, <span class="fl">.23</span>, <span class="op">-</span><span class="fl">.10</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">2.3</span>, <span class="fl">.2</span>,<span class="fl">.3</span>,<span class="fl">.4</span>,<span class="fl">.5</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tbl1</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">tbl1</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        y     z     w</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -147,10 +158,10 @@ dataframe</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">8</span>000  0.4   0.3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">9</span>000  0.6   0.4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="text-decoration: underline;">10</span>000  0.9   0.5 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># automatically formats the integer column</span></span>
-<span class="r-in"><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in"><span class="fu">format_number</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># automatically formats the integer column</span></span></span>
+<span class="r-in"><span><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu">format_number</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    y              z     w</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;formttbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -164,10 +175,10 @@ dataframe</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 8,000       0.4   0.3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 9,000       0.6   0.4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 10,000      0.9   0.5 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># automatically formats to yen</span></span>
-<span class="r-in"><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in"><span class="fu">format_currency</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># automatically formats to yen</span></span></span>
+<span class="r-in"><span><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu">format_currency</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    y              z     w</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;formttbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -181,10 +192,10 @@ dataframe</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ¥8,000      0.4   0.3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ¥9,000      0.6   0.4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ¥10,000     0.9   0.5 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># automatically detects columns between -1 and 1 to convert to percentages</span></span>
-<span class="r-in"><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in"><span class="fu">format_percent</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># automatically detects columns between -1 and 1 to convert to percentages</span></span></span>
+<span class="r-in"><span><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu">format_percent</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        y z              w</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;formttbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -198,10 +209,10 @@ dataframe</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">8</span>000 40%         0.3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">9</span>000 60%         0.4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="text-decoration: underline;">10</span>000 90%         0.5 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># select specific columns to convert.</span></span>
-<span class="r-in"><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in"><span class="fu">format_percent</span><span class="op">(</span><span class="va">z</span>, <span class="va">w</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># select specific columns to convert.</span></span></span>
+<span class="r-in"><span><span class="va">tbl1</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu">format_percent</span><span class="op">(</span><span class="va">z</span>, <span class="va">w</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        y z          w         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;formttbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;formttbl&gt;</span></span>
@@ -215,7 +226,7 @@ dataframe</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">8</span>000 40%        30%       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">9</span>000 60%        40%       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="text-decoration: underline;">10</span>000 90%        50%       </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -230,7 +241,7 @@ dataframe</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

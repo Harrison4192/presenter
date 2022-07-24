@@ -38,7 +38,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -90,44 +90,63 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">make_pivot_table</span><span class="op">(</span>
-  <span class="va">tbl</span>,
-  <span class="va">col1</span>,
-  col2 <span class="op">=</span> <span class="cn">NULL</span>,
-  show_totals <span class="op">=</span> <span class="cn">TRUE</span>,
-  show_percentages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"all"</span>, <span class="st">"row"</span>, <span class="st">"col"</span><span class="op">)</span>,
-  show_chi_test <span class="op">=</span> <span class="cn">FALSE</span>,
-  theme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"zebra_blue"</span>, <span class="st">"zebra_gold"</span>, <span class="st">"tron"</span>, <span class="st">"vader"</span>, <span class="st">"vanilla"</span>, <span class="st">"booktabs"</span>,
-    <span class="st">"alafoli"</span><span class="op">)</span>,
-  tbl_nm <span class="op">=</span> <span class="cn">NULL</span>,
-  arrange_desc <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">make_pivot_table</span><span class="op">(</span></span>
+<span>  <span class="va">tbl</span>,</span>
+<span>  <span class="va">col1</span>,</span>
+<span>  col2 <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  show_totals <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  show_percentages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"all"</span>, <span class="st">"row"</span>, <span class="st">"col"</span><span class="op">)</span>,</span>
+<span>  show_chi_test <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  theme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"zebra_blue"</span>, <span class="st">"zebra_gold"</span>, <span class="st">"tron"</span>, <span class="st">"vader"</span>, <span class="st">"vanilla"</span>, <span class="st">"booktabs"</span>,</span>
+<span>    <span class="st">"alafoli"</span><span class="op">)</span>,</span>
+<span>  tbl_nm <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  arrange_desc <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tbl</dt>
 <dd><p>a data frame to pivot</p></dd>
+
+
 <dt>col1</dt>
 <dd><p>unquoted col 1</p></dd>
+
+
 <dt>col2</dt>
 <dd><p>unquoted col 2</p></dd>
+
+
 <dt>show_totals</dt>
 <dd><p>logical; show row and col totals</p></dd>
+
+
 <dt>show_percentages</dt>
 <dd><p>string; denominator to use when calculating percentages</p></dd>
+
+
 <dt>show_chi_test</dt>
 <dd><p>logical; show results of chi squared test in footnote</p></dd>
+
+
 <dt>theme</dt>
 <dd><p>string to choose a predefined theme</p></dd>
+
+
 <dt>tbl_nm</dt>
 <dd><p>string to name table. If not given, automatically defaults to table name.</p></dd>
+
+
 <dt>arrange_desc</dt>
 <dd><p>param for single col pivot table. if True arranges table by decreasing n size</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a flextable</p>
+    
+
+<p>a flextable</p>
     </div>
 
   </div>
@@ -142,7 +161,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
