@@ -201,15 +201,15 @@
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 6</span></span></span>
 <span><span class="co">#&gt;   Species    Species1   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> setosa     setosa             5.05        3.45         1.5        0.274</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> setosa     versicolor         4.97        3.35         1.49       0.241</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> setosa     virginica          4.99        3.49         1.38       0.214</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> versicolor setosa             5.89        2.78         4.24       1.32 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> versicolor versicolor         5.88        2.74         4.21       1.28 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> versicolor virginica          6.03        2.79         4.32       1.37 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> virginica  setosa             6.49        2.81         5.49       1.96 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> virginica  versicolor         6.72        3.14         5.67       2.07 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> virginica  virginica          6.55        2.96         5.49       2.05</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> setosa     setosa             4.99        3.46         1.43       0.221</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> setosa     versicolor         4.98        3.33         1.49       0.233</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> setosa     virginica          5.05        3.53         1.46       0.287</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> versicolor setosa             6.07        2.87         4.38       1.33 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> versicolor versicolor         5.98        2.79         4.27       1.37 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> versicolor virginica          5.79        2.67         4.15       1.30 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> virginica  setosa             6.55        2.87         5.58       1.98 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> virginica  versicolor         6.52        2.99         5.42       2.06 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> virginica  virginica          6.71        3.07         5.67       2.03</span></span></code></pre></div>
 <p>Group names are concatenated and pivoted.</p>
 <p><strong>wide format</strong></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -218,10 +218,10 @@
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 10</span></span></span>
 <span><span class="co">#&gt;   column setos…¹ setos…² setos…³ versi…⁴ versi…⁵ versi…⁶ virgi…⁷ virgi…⁸ virgi…⁹</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal…   5.05    4.97    4.99     5.89    5.88    6.03    6.49    6.72    6.55</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal…   3.45    3.35    3.49     2.78    2.74    2.79    2.81    3.14    2.96</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal…   1.5     1.49    1.38     4.24    4.21    4.32    5.49    5.67    5.49</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal…   0.274   0.241   0.214    1.32    1.28    1.37    1.96    2.07    2.05</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Sepal…   4.99    4.98    5.05     6.07    5.98    5.79    6.55    6.52    6.71</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Sepal…   3.46    3.33    3.53     2.87    2.79    2.67    2.87    2.99    3.07</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Petal…   1.43    1.49    1.46     4.38    4.27    4.15    5.58    5.42    5.67</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Petal…   0.221   0.233   0.287    1.33    1.37    1.30    1.98    2.06    2.03</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​setosa_setosa, ²​setosa_versicolor,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ³​setosa_virginica, ⁴​versicolor_setosa, ⁵​versicolor_versicolor,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁶​versicolor_virginica, ⁷​virginica_setosa, ⁸​virginica_versicolor,</span></span></span>
