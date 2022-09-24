@@ -108,7 +108,7 @@ format_currency <- function(tbl, ..., symbol = "yen", digits = 0){
 is_percentage <- function(x){
 
   suppressWarnings({
-    all(dplyr::between(x, -1, 1), na.rm = T) & is.double(x) & !rlang::is_integerish(x)
+    is.double(x) && all(dplyr::between(x, -1, 1), na.rm = T) & !rlang::is_integerish(x)
   })
 
 }
