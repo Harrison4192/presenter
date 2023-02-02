@@ -55,10 +55,10 @@ tbl
 ```{r eval=F}
 
 myflex %>% 
-  export_powerpoint() # a new ppt is created, named after the table
+  make_powerpoint() # a new ppt is created, named after the table
 
 tron_cross_table %>%
-  export_powerpoint("myflex.pptx") # append this slide to the previous ppt
+  make_powerpoint("myflex.pptx") # append this slide to the previous ppt
 
 ```
 ![Multiple powerpoint slides](powerpointexample.png)

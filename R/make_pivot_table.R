@@ -68,6 +68,13 @@ show_percentages <- match.arg(show_percentages)
   tbl_nm1 <- tbl_nm %>% stringr::str_c(" ")
 
 
+  if(is.character(col2)){
+    col2 = rlang::sym(col2)
+  }
+
+  if(is.character(col1)){
+    col1 = rlang::sym(col1)
+  }
 
   tbl %>%
     dplyr::mutate(dplyr::across(c(!!col1, !!col2), as.factor)) %>%
@@ -91,13 +98,13 @@ if(show_totals){
   tblx %>%
     dplyr::summarise(dplyr::across(where(is.numeric), sum)) %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(Total = sum(dplyr::c_across())) -> sum1
+    dplyr::mutate(Total = sum(dplyr::c_across(cols = where(is.numeric)))) -> sum1
 
   sum1 %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(dplyr::across(.fns = ~./Total)) %>%
+    dplyr::mutate(dplyr::across(.cols = where(is.numeric), .fns = ~./Total)) %>%
     format_percent() %>%
-    dplyr::mutate(dplyr::across(.fns = as.character)) %>%
+    dplyr::mutate(dplyr::across(.cols = where(is.numeric), .fns = as.character)) %>%
     dplyr::ungroup() -> pct1
 
   dplyr::bind_rows(pct1, sum1 %>%  dplyr::mutate(dplyr::across(.fns = ~stringr::str_c("(", ., ")"))) ) %>%
