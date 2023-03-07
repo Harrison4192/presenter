@@ -104,11 +104,12 @@ if(show_totals){
     dplyr::rowwise() %>%
     dplyr::mutate(dplyr::across(.cols = where(is.numeric), .fns = ~./Total)) %>%
     format_percent() %>%
-    dplyr::mutate(dplyr::across(.cols = where(is.numeric), .fns = as.character)) %>%
+    dplyr::mutate(dplyr::across(.cols = where(is.numeric),
+                                .fns = as.character)) %>%
     dplyr::ungroup() -> pct1
 
-  dplyr::bind_rows(pct1, sum1 %>%  dplyr::mutate(dplyr::across(.fns = ~stringr::str_c("(", ., ")"))) ) %>%
-    dplyr::summarize(dplyr::across(.fns = ~stringr::str_c(., collapse = " ")), .groups = "drop") -> col_totals
+  dplyr::bind_rows(pct1, sum1 %>%  dplyr::mutate(dplyr::across(.cols = tidyselect::everything(), .fns = ~stringr::str_c("(", ., ")"))) ) %>%
+    dplyr::summarize(dplyr::across(.cols = tidyselect::everything(), .fns = ~stringr::str_c(., collapse = " ")), .groups = "drop") -> col_totals
 
 
   ### row totals
@@ -141,7 +142,7 @@ if(show_totals){
   if(show_totals){
 
     tbl1 %>%
-      dplyr::mutate(dplyr::across(.fns = as.character)) %>%
+      dplyr::mutate(dplyr::across(.cols = tidyselect::everything(), .fns = as.character)) %>%
       dplyr::bind_cols(row_totals) %>%
       dplyr::bind_rows(col_totals) -> tbl1
   }
