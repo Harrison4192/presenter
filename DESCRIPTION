@@ -42,5 +42,5 @@ Suggests:
     ggplot2,
     badger
 VignetteBuilder: knitr
-URL: https://github.com/Harrison4192/presenter
+URL: https://github.com/Harrison4192/presenter, https://harrison4192.github.io/presenter/
 BugReports: https://github.com/Harrison4192/presenter/issues
