@@ -62,7 +62,6 @@ make_excel_wb <- function(wb = NULL,
 
   # create workbook -----------------------------------------------------
 
-
   file_name <- rlang::as_name(rlang::enexpr(object))
   wb_name <- file_name %>% stringr::str_c(".xlsx", collapse = "")
 
@@ -93,7 +92,7 @@ set.seed(random_color_seed)
 
   value_header_format_1 <- openxlsx::createStyle(
     fgFill = "darkolivegreen3",
-    halign = "left",
+    halign = "center",
     textDecoration = "Bold",
     border = c("bottom", "right"),
     fontColour = "black",
@@ -107,7 +106,7 @@ set.seed(random_color_seed)
 
   text_header_format <- openxlsx::createStyle(
     fgFill = "honeydew3",
-    halign = "left",
+    halign = "center",
     textDecoration = "Bold",
     border = c("bottom", "right"),
     fontColour = "black",
@@ -148,7 +147,6 @@ set.seed(random_color_seed)
     halign = "center",
     border =  c("top", "bottom", "left", "right"),
     fontColour = "black",
-    textDecoration = "italic",
     borderStyle = "dashed",
     valign = "center",
     borderColour = "black",
@@ -156,15 +154,15 @@ set.seed(random_color_seed)
     wrapText = T)
 
   value_cell_text_format <- openxlsx::createStyle(
-    fgFill = "gray81",
+    fgFill = "#F7F3E9",
     halign = "center",
     border =  c("top", "bottom", "left", "right"),
-    textDecoration = "italic",
+    # textDecoration = "bold",
     fontColour = "black",
     borderStyle = "dashed",
     valign = "center",
     borderColour = "black",
-    fontSize = 10,
+    fontSize = 11,
     fontName = "Bell MT",
     wrapText = T)
 
@@ -182,6 +180,8 @@ set.seed(random_color_seed)
     fontSize = 13,
     wrapText = T)
 
+
+
   id_cell_format <- openxlsx::createStyle(
     fgFill = "khaki1",
     halign = "left",
@@ -195,9 +195,23 @@ set.seed(random_color_seed)
     wrapText = T
   )
   date_cell_format <- openxlsx::createStyle(
-    numFmt = "DATE",
+    numFmt = "yyyy-mm-dd",
     fgFill = "lightgoldenrod2",
-    halign = "left",
+    halign = "center",
+    textDecoration = "Bold",
+    border =  c("top", "bottom", "left", "right"),
+    fontColour = "black",
+    borderStyle = "thin",
+    valign = "center",
+    borderColour = "black",
+    fontSize = 10,
+    wrapText = T
+  )
+
+  dateym_cell_format <- openxlsx::createStyle(
+    numFmt = "yyyy-mm",
+    fgFill = "lightgoldenrod2",
+    halign = "center",
     textDecoration = "Bold",
     border =  c("top", "bottom", "left", "right"),
     fontColour = "black",
@@ -210,6 +224,7 @@ set.seed(random_color_seed)
 
 
 
+
   # format sheets -----------------------------------------------------------
 
 if(is.null(last_id_col)){last_id_col <- 0}
@@ -218,13 +233,22 @@ if(is.null(last_id_col)){last_id_col <- 0}
   which(purrr::map_lgl(object, ~(is.character(.) | is.factor(.)))) %>%
     setdiff(id_col_range) -> character_col_range
 
-  which(purrr::map_lgl(object, is.double)) %>%
-    setdiff(id_col_range) -> numeric_col_range
 
-  which(purrr::map_lgl(object, rlang::is_integerish)) %>%
-    setdiff(id_col_range) -> integer_col_range
+  which(purrr::map_lgl(t1, ~lubridate::is.Date(.) && all(lubridate::day(.) == 1))) -> dateym_col_range
 
   which(purrr::map_lgl(object, lubridate::is.Date)) -> date_col_range
+
+  date_col_range %>% setdiff(dateym_col_range) -> dateymd_col_range
+
+
+  which(purrr::map_lgl(object, is.double)) %>%
+    setdiff(id_col_range) %>%
+    setdiff(date_col_range) -> numeric_col_range
+
+  which(purrr::map_lgl(object, rlang::is_integerish)) %>%
+    setdiff(id_col_range) %>%
+    setdiff(date_col_range) -> integer_col_range
+
 
   row_range <- 2:(nrow(object) +1)
 
@@ -258,10 +282,17 @@ if(is.null(last_id_col)){last_id_col <- 0}
   # style date cells
   openxlsx::addStyle(wb,
            sheet = sheet ,
-           cols = date_col_range,
+           cols = dateymd_col_range,
            rows = row_range,
            style = date_cell_format,
            gridExpand = T)
+
+  openxlsx::addStyle(wb,
+                     sheet = sheet ,
+                     cols = dateym_col_range,
+                     rows = row_range,
+                     style = dateym_cell_format,
+                     gridExpand = T)
 
 
 
@@ -291,7 +322,7 @@ if(is.null(last_id_col)){last_id_col <- 0}
 
   ## style value percent cells
 
-  names(object) %>% stringr::str_which("PERCENT|percent|ratio|RATIO|PCT|pct") -> percent_cols
+  names(object) %>% stringr::str_which("PERCENT|percent|ratio|RATIO|PCT|pct|%") -> percent_cols
 
 
   openxlsx::addStyle(wb,
@@ -344,7 +375,31 @@ if(is.null(last_id_col)){last_id_col <- 0}
     widths = widths
   )
 
-
+#   group_borders <- openxlsx::createStyle(
+#     border =  "bottom",
+#     borderStyle = "thick",
+#     borderColour = "black"
+#   )
+#
+#
+#   object %>%
+#     dplyr::group_by({{grouping_cols}}) %>%
+#     dplyr::summarise(n = n(), .groups = "drop") %>%
+#     mutate(n1 = cumsum(n) + 1) %>%
+#     dplyr::pull(n1) %>%
+#     c(1, .) -> grouping_inds
+#
+#
+# for(i in grouping_inds){
+#
+#   openxlsx::addStyle(wb,
+#                      sheet = sheet ,
+#                      cols = 1:ncol(object),
+#                      rows = i,
+#                      style = group_borders,
+#                      gridExpand = T,
+#                      stack = TRUE)
+# }
 
   if(length(date_col_range > 0)){
 

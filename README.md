@@ -45,30 +45,28 @@ opinionated in the sense that they expect the input data frame to have
 certain properties in order to take advantage of the automated
 formatting. Certain novel features of this package include:
 
--   **Supports Lists:** `make_simple_excel` and `make_powerpoint` can
-    accept single tables or lists of tables, which will be given
-    separate sheets
+- **Supports Lists:** `make_simple_excel` and `make_powerpoint` can
+  accept single tables or lists of tables, which will be given separate
+  sheets
 
--   **Automatic Naming:** You can pipe your data frame, list, or
-    flextable directly into the function. An excel or powerpoint will be
-    generated with no further arguments necessary, named after your
-    table. In order to avoid name clashing, a random string is appended
-    to the name so files will not be overwritten. In the case of a
-    multi-pipe operation piped into your function, a generic name will
-    be randomly generated.
+- **Automatic Naming:** You can pipe your data frame, list, or flextable
+  directly into the function. An excel or powerpoint will be generated
+  with no further arguments necessary, named after your table. In order
+  to avoid name clashing, a random string is appended to the name so
+  files will not be overwritten. In the case of a multi-pipe operation
+  piped into your function, a generic name will be randomly generated.
 
--   **Automatic Opening:** Files are automatically opened upon
-    generation so you can inspect your output.
+- **Automatic Opening:** Files are automatically opened upon generation
+  so you can inspect your output.
 
--   **header words:** By supplying a character vector to the
-    “header_word” argument, you can automatically merge or color
-    adjacent column headers based off a common key word. This
-    functionality relies on word separation with “.” or “\_” and will
-    not work properly in other cases like snakeCase. Can be left blank
-    for no special formatting.
+- **header words:** By supplying a character vector to the “header_word”
+  argument, you can automatically merge or color adjacent column headers
+  based off a common key word. This functionality relies on word
+  separation with “.” or “\_” and will not work properly in other cases
+  like snakeCase. Can be left blank for no special formatting.
 
--   **last id col:** This package is optimized for tables that begin
-    with their “id” or “group” columns and then followed by “value”
-    columns. By supplying an integer position of the last id column, you
-    can apply special formatting for the id cols. Can be left blank for
-    no special formatting.
+- **last id col:** This package is optimized for tables that begin with
+  their “id” or “group” columns and then followed by “value” columns. By
+  supplying an integer position of the last id column, you can apply
+  special formatting for the id cols. Can be left blank for no special
+  formatting.

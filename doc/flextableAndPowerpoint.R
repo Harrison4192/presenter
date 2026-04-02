@@ -34,11 +34,11 @@ iris %>%
 tbl
 
 ## ----eval=F-------------------------------------------------------------------
-#  
-#  myflex %>%
-#    export_powerpoint() # a new ppt is created, named after the table
-#  
-#  tron_cross_table %>%
-#    export_powerpoint("myflex.pptx") # append this slide to the previous ppt
-#  
+# 
+# myflex %>%
+#   make_powerpoint() # a new ppt is created, named after the table
+# 
+# tron_cross_table %>%
+#   make_powerpoint("myflex.pptx") # append this slide to the previous ppt
+# 
 
