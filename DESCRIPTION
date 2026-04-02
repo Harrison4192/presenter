@@ -1,7 +1,7 @@
 Package: presenter
 Type: Package
 Title: Present Data with Style
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
     person(given = "Harrison",
            family = "Tietze",
@@ -35,7 +35,7 @@ Imports:
     tidyselect,
     formattable,
     framecleaner
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     rmarkdown,
