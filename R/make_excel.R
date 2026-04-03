@@ -234,7 +234,7 @@ if(is.null(last_id_col)){last_id_col <- 0}
     setdiff(id_col_range) -> character_col_range
 
 
-  which(purrr::map_lgl(t1, ~lubridate::is.Date(.) && all(lubridate::day(.) == 1))) -> dateym_col_range
+  which(purrr::map_lgl(object, ~lubridate::is.Date(.) && all(lubridate::day(.) == 1))) -> dateym_col_range
 
   which(purrr::map_lgl(object, lubridate::is.Date)) -> date_col_range
 
